@@ -32,7 +32,7 @@ export function Footer() {
       <div className="mb-4 flex flex-wrap justify-center gap-6">
         {links.map((l) => <Link key={l.to} to={l.to} className="hover:text-gold">{l.label}</Link>)}
       </div>
-      <p>PetShop Mayer · Pet shop Gilău, județul Cluj, Cluj · <a href={PHONE_HREF} className="hover:text-gold">{PHONE}</a></p>
+      <p>PetShop Mayer · Pet shop Gilău, județul Cluj · <a href={PHONE_HREF} className="hover:text-gold">{PHONE}</a></p>
     </footer>
   );
 }
