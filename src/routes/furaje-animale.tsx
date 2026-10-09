@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
-import img from "@/assets/accessories.jpg";
+import fbFuraje from "@/assets/fb-furaje.jpg.asset.json";
+const img = fbFuraje.url;
 
 const faqs = [
   { q: "Ce furaje aveți pentru păsări?", a: "Amestecuri de semințe pentru peruși, canari, papagali și porumbei, plus mei, floarea-soarelui și grit." },
