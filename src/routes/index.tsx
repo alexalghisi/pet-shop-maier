@@ -4,7 +4,7 @@ import hero from "@/assets/hero.jpg";
 import food from "@/assets/food.jpg";
 import accessories from "@/assets/accessories.jpg";
 
-const TITLE = "PetShop Mayer Gilău – Hrană și furaje pentru animale, județul Cluj Cluj";
+const TITLE = "PetShop Mayer Gilău – Hrană și furaje pentru animale, județul Cluj";
 const DESC =
   "Pet shop în Gilău, județul Cluj: hrană pentru câini și pisici, furaje, semințe pentru păsări, accesorii și jucării. Branduri premium, prețuri corecte, consiliere prietenoasă.";
 
@@ -55,7 +55,7 @@ const categories = [
 ];
 
 const faqs = [
-  { q: "Unde se află PetShop Mayer?", a: "Suntem în cartierul Gilău, județul Cluj, Cluj, pe Gilău." },
+  { q: "Unde se află PetShop Mayer?", a: "Suntem în comuna Gilău, județul Cluj." },
   { q: "Ce hrană pentru animale aveți?", a: "Hrană pentru câini și pisici de la branduri cunoscute, furaje și semințe pentru păsări, hrană pentru rozătoare și pești." },
   { q: "Pot comanda telefonic?", a: "Da, sunați-ne și vă pregătim comanda pentru ridicare din magazin." },
 ];
@@ -69,7 +69,7 @@ function Index() {
         <img src={hero} alt="Interiorul pet shop-ului Mayer din Gilău cu hrană pentru câini și pisici" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
         <div className="hero-overlay absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-6 text-primary-foreground">
-          <p className="eyebrow">Gilău · județul Cluj · Cluj</p>
+          <p className="eyebrow">Gilău · județul Cluj</p>
           <h1 className="mt-5 max-w-3xl text-5xl leading-[1.05] font-medium md:text-7xl">
             Pet shop în Gilău — hrană și furaje pentru animale
           </h1>
@@ -142,7 +142,7 @@ function Index() {
           <p className="eyebrow">Te așteptăm</p>
           <h2 className="mt-3 text-4xl md:text-5xl">Vizitează-ne în Gilău</h2>
           <div className="mt-12 grid gap-10 md:grid-cols-3">
-            <div><h3 className="text-2xl">Adresă</h3><p className="mt-2 opacity-80">Gilău, județul Cluj, Cluj</p></div>
+            <div><h3 className="text-2xl">Adresă</h3><p className="mt-2 opacity-80">Gilău, județul Cluj</p></div>
             <div><h3 className="text-2xl">Program</h3><p className="mt-2 opacity-80">Luni–Sâmbătă 09:00–20:00<br />Duminică 09:00–14:00</p></div>
             <div><h3 className="text-2xl">Telefon</h3><a href={PHONE_HREF} className="mt-2 block opacity-80 hover:text-gold">{PHONE}</a></div>
           </div>
