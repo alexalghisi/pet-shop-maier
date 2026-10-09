@@ -47,21 +47,8 @@ function ProductsPage() {
       </section>
       <section className="mx-auto max-w-6xl px-6 py-10 sm:py-12">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-5">
-          <h2 className="text-2xl">Alege categoria</h2>
+          <h2 className="text-2xl">Toate produsele</h2>
           <span className="text-sm text-muted-foreground">{data.length > 0 ? `${list.length} produse` : "Magazinul din Str. Eroilor 1"}</span>
-        </div>
-        <div className="mt-6 flex flex-wrap gap-2" aria-label="Categorii de produse">
-          {[{ id: "toate", label: "Toate" }, ...CATEGORIES].map((c) => (
-            <Button
-              key={c.id}
-              variant={cat === c.id ? "default" : "secondary"}
-              aria-pressed={cat === c.id}
-              onClick={() => setCat(c.id)}
-              className="h-10 px-5"
-            >
-              {c.label}
-            </Button>
-          ))}
         </div>
         {list.length === 0 ? (
           <div className="mt-10 grid items-center gap-8 border-t border-border pt-10 md:grid-cols-2 md:gap-12">
