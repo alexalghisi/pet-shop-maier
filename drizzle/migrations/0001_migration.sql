@@ -1,0 +1,2 @@
+drop policy if exists "public read media" on storage.objects;
+create policy "admin read media" on storage.objects for select to authenticated using (bucket_id = 'product-media' and public.has_role(auth.uid(), 'admin'));
