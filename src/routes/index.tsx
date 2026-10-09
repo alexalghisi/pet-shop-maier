@@ -4,16 +4,16 @@ import hero from "@/assets/hero.jpg";
 import food from "@/assets/food.jpg";
 import accessories from "@/assets/accessories.jpg";
 
-const TITLE = "PetShop Mayer Giulești – Hrană și furaje pentru animale, Sector 6 București";
+const TITLE = "PetShop Mayer Gilău – Hrană și furaje pentru animale, județul Cluj Cluj";
 const DESC =
-  "Pet shop în Giulești, Sector 6: hrană pentru câini și pisici, furaje, semințe pentru păsări, accesorii și jucării. Branduri premium, prețuri corecte, consiliere prietenoasă.";
+  "Pet shop în Gilău, județul Cluj: hrană pentru câini și pisici, furaje, semințe pentru păsări, accesorii și jucării. Branduri premium, prețuri corecte, consiliere prietenoasă.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: TITLE },
       { name: "description", content: DESC },
-      { name: "keywords", content: "pet shop Giulești, petshop sector 6, hrană câini, hrană pisici, furaje animale, mâncare animale București, semințe păsări, accesorii animale" },
+      { name: "keywords", content: "pet shop Gilău, petshop județul Cluj, hrană câini, hrană pisici, furaje animale, mâncare animale Cluj, semințe păsări, accesorii animale" },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
@@ -33,12 +33,12 @@ export const Route = createFileRoute("/")({
           description: DESC,
           address: {
             "@type": "PostalAddress",
-            streetAddress: "Calea Giulești",
-            addressLocality: "București",
-            addressRegion: "Sector 6",
+            streetAddress: "Gilău",
+            addressLocality: "Cluj",
+            addressRegion: "județul Cluj",
             addressCountry: "RO",
           },
-          areaServed: ["Giulești", "Sector 6", "București"],
+          areaServed: ["Gilău", "județul Cluj", "Cluj"],
           openingHours: ["Mo-Sa 09:00-20:00", "Su 09:00-14:00"],
         }),
       },
@@ -55,7 +55,7 @@ const categories = [
 ];
 
 const faqs = [
-  { q: "Unde se află PetShop Mayer?", a: "Suntem în cartierul Giulești, Sector 6, București, pe Calea Giulești." },
+  { q: "Unde se află PetShop Mayer?", a: "Suntem în cartierul Gilău, județul Cluj, Cluj, pe Gilău." },
   { q: "Ce hrană pentru animale aveți?", a: "Hrană pentru câini și pisici de la branduri cunoscute, furaje și semințe pentru păsări, hrană pentru rozătoare și pești." },
   { q: "Pot comanda telefonic?", a: "Da, sunați-ne și vă pregătim comanda pentru ridicare din magazin." },
 ];
@@ -66,12 +66,12 @@ function Index() {
       <Header overlay />
 
       <section className="relative flex min-h-[92vh] items-center">
-        <img src={hero} alt="Interiorul pet shop-ului Mayer din Giulești cu hrană pentru câini și pisici" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
+        <img src={hero} alt="Interiorul pet shop-ului Mayer din Gilău cu hrană pentru câini și pisici" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
         <div className="hero-overlay absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-6 text-primary-foreground">
-          <p className="eyebrow">Giulești · Sector 6 · București</p>
+          <p className="eyebrow">Gilău · județul Cluj · Cluj</p>
           <h1 className="mt-5 max-w-3xl text-5xl leading-[1.05] font-medium md:text-7xl">
-            Pet shop în Giulești — hrană și furaje pentru animale
+            Pet shop în Gilău — hrană și furaje pentru animale
           </h1>
           <p className="mt-6 max-w-xl text-lg opacity-90">
             Tot ce au nevoie prietenii tăi necuvântători: hrană pentru câini și pisici, semințe pentru păsări, accesorii — cu grijă de cartier.
@@ -108,7 +108,7 @@ function Index() {
             <h2 className="mt-3 text-4xl md:text-5xl">Petshop-ul de cartier în care ai încredere</h2>
             <div className="ornament mt-6" />
             <p className="mt-6 leading-relaxed text-muted-foreground">
-              La PetShop Mayer din Giulești alegem cu atenție fiecare produs. Te ajutăm să găsești hrana potrivită pentru vârsta, talia și sensibilitățile animalului tău — fie că ai un câine, o pisică, un papagal sau un iepuraș.
+              La PetShop Mayer din Gilău alegem cu atenție fiecare produs. Te ajutăm să găsești hrana potrivită pentru vârsta, talia și sensibilitățile animalului tău — fie că ai un câine, o pisică, un papagal sau un iepuraș.
             </p>
             <ul className="mt-8 space-y-3 text-sm">
               <li>— Branduri de hrană premium și super-premium</li>
@@ -140,9 +140,9 @@ function Index() {
       <section id="contact" className="bg-primary py-24 text-primary-foreground">
         <div className="mx-auto max-w-6xl px-6 text-center">
           <p className="eyebrow">Te așteptăm</p>
-          <h2 className="mt-3 text-4xl md:text-5xl">Vizitează-ne în Giulești</h2>
+          <h2 className="mt-3 text-4xl md:text-5xl">Vizitează-ne în Gilău</h2>
           <div className="mt-12 grid gap-10 md:grid-cols-3">
-            <div><h3 className="text-2xl">Adresă</h3><p className="mt-2 opacity-80">Calea Giulești, Sector 6, București</p></div>
+            <div><h3 className="text-2xl">Adresă</h3><p className="mt-2 opacity-80">Gilău, județul Cluj, Cluj</p></div>
             <div><h3 className="text-2xl">Program</h3><p className="mt-2 opacity-80">Luni–Sâmbătă 09:00–20:00<br />Duminică 09:00–14:00</p></div>
             <div><h3 className="text-2xl">Telefon</h3><a href={PHONE_HREF} className="mt-2 block opacity-80 hover:text-gold">{PHONE}</a></div>
           </div>
