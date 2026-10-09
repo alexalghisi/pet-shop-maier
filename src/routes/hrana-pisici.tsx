@@ -6,11 +6,11 @@ const faqs = [
   { q: "De câte ori pe zi mănâncă o pisică?", a: "Pisicile adulte preferă mai multe mese mici pe zi, de 2–4 ori. Puii au nevoie de mese și mai dese." },
   { q: "Pisica mea bea puțină apă, ce fac?", a: "Introdu hrană umedă (plicuri, conserve) și pune o fântână de apă – pisicile beau mai mult din apă curgătoare." },
   { q: "Ce hrană e potrivită pentru pisicile sterilizate?", a: "Hrană special formulată pentru pisici sterilizate, cu mai puține calorii, care ajută la menținerea greutății și sănătatea urinară." },
-  { q: "Unde găsesc hrană pentru pisici în Giulești?", a: "La PetShop Mayer, în Sector 6, avem hrană uscată și umedă, nisip și recompense pentru pisici." },
+  { q: "Unde găsesc hrană pentru pisici în Gilău?", a: "La PetShop Mayer, în județul Cluj, avem hrană uscată și umedă, nisip și recompense pentru pisici." },
 ];
 
-const TITLE = "Hrană pentru pisici în Giulești, Sector 6 – ghid complet | PetShop Mayer";
-const DESC = "Hrană uscată sau umedă pentru pisici, pisici sterilizate, pui și seniori. Sfaturi practice și hrană pentru pisici la PetShop Mayer din Giulești, București.";
+const TITLE = "Hrană pentru pisici în Gilău, județul Cluj – ghid complet | PetShop Mayer";
+const DESC = "Hrană uscată sau umedă pentru pisici, pisici sterilizate, pui și seniori. Sfaturi practice și hrană pentru pisici la PetShop Mayer din Gilău, Cluj.";
 
 export const Route = createFileRoute("/hrana-pisici")({
   head: () => guideHead(TITLE, DESC, "/hrana-pisici", faqs),
