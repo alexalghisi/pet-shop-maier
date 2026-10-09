@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header, Footer, PHONE, PHONE_HREF } from "@/components/site";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { ProductCard } from "@/components/ProductCard";
-import { productsQuery } from "./produse.index";
+import { productsQuery } from "@/lib/products.queries";
 import hero from "@/assets/hero.jpg";
 import food from "@/assets/food.jpg";
 import accessories from "@/assets/accessories.jpg";

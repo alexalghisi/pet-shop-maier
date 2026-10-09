@@ -1,12 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Header, Footer } from "@/components/site";
 import { ProductCard } from "@/components/ProductCard";
-import { listProducts } from "@/lib/products.functions";
+import { productsQuery } from "@/lib/products.queries";
 import { CATEGORIES } from "@/lib/products";
 
-export const productsQuery = queryOptions({ queryKey: ["products"], queryFn: () => listProducts() });
 
 const TITLE = "Produse pentru animale cu prețuri – PetShop Mayer Gilău";
 const DESC = "Hrană pentru câini și pisici, furaje, semințe și accesorii cu prețuri afișate. Comandă online de la PetShop Mayer, Gilău, județul Cluj.";
