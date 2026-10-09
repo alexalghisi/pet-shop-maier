@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Header, Footer, PHONE, PHONE_HREF } from "@/components/site";
 import hero from "@/assets/hero.jpg";
 import food from "@/assets/food.jpg";
 import accessories from "@/assets/accessories.jpg";
@@ -28,6 +29,7 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "PetStore",
           name: "PetShop Mayer",
+          telephone: "+40758639799",
           description: DESC,
           address: {
             "@type": "PostalAddress",
@@ -46,10 +48,10 @@ export const Route = createFileRoute("/")({
 });
 
 const categories = [
-  { t: "Hrană pentru câini", d: "Hrană uscată și umedă, diete pentru pui, adulți și seniori, recompense." },
-  { t: "Hrană pentru pisici", d: "Granule, conserve, plicuri, nisip de calitate și snacks-uri." },
-  { t: "Furaje și semințe", d: "Amestecuri pentru păsări, porumbei, rozătoare, iepuri și furaje la sac." },
-  { t: "Accesorii și îngrijire", d: "Lese, zgărzi, culcușuri, jucării, șampoane și produse antiparazitare." },
+  { to: "/hrana-caini" as const, t: "Hrană pentru câini", d: "Hrană uscată și umedă, diete pentru pui, adulți și seniori, recompense." },
+  { to: "/hrana-pisici" as const, t: "Hrană pentru pisici", d: "Granule, conserve, plicuri, nisip de calitate și snacks-uri." },
+  { to: "/furaje-animale" as const, t: "Furaje și semințe", d: "Amestecuri pentru păsări, porumbei, rozătoare, iepuri și furaje la sac." },
+  { to: undefined, t: "Accesorii și îngrijire", d: "Lese, zgărzi, culcușuri, jucării, șampoane și produse antiparazitare." },
 ];
 
 const faqs = [
@@ -61,16 +63,7 @@ const faqs = [
 function Index() {
   return (
     <main>
-      <header className="absolute inset-x-0 top-0 z-20">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 text-primary-foreground">
-          <a href="#" className="font-serif text-2xl font-semibold">PetShop Mayer</a>
-          <div className="hidden gap-8 text-sm md:flex">
-            <a href="#produse" className="hover:text-gold">Produse</a>
-            <a href="#despre" className="hover:text-gold">Despre noi</a>
-            <a href="#contact" className="hover:text-gold">Contact</a>
-          </div>
-        </nav>
-      </header>
+      <Header overlay />
 
       <section className="relative flex min-h-[92vh] items-center">
         <img src={hero} alt="Interiorul pet shop-ului Mayer din Giulești cu hrană pentru câini și pisici" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
@@ -101,6 +94,7 @@ function Index() {
             <article key={c.t} className="bg-card p-8">
               <h3 className="text-2xl">{c.t}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
+              {c.to && <Link to={c.to} className="mt-4 inline-block text-sm font-semibold text-primary hover:text-gold">Citește ghidul →</Link>}
             </article>
           ))}
         </div>
@@ -150,14 +144,12 @@ function Index() {
           <div className="mt-12 grid gap-10 md:grid-cols-3">
             <div><h3 className="text-2xl">Adresă</h3><p className="mt-2 opacity-80">Calea Giulești, Sector 6, București</p></div>
             <div><h3 className="text-2xl">Program</h3><p className="mt-2 opacity-80">Luni–Sâmbătă 09:00–20:00<br />Duminică 09:00–14:00</p></div>
-            <div><h3 className="text-2xl">Telefon</h3><p className="mt-2 opacity-80">07xx xxx xxx</p></div>
+            <div><h3 className="text-2xl">Telefon</h3><a href={PHONE_HREF} className="mt-2 block opacity-80 hover:text-gold">{PHONE}</a></div>
           </div>
         </div>
       </section>
 
-      <footer className="bg-primary py-8 text-center text-xs text-primary-foreground/60">
-        © {new Date().getFullYear()} PetShop Mayer · Pet shop Giulești, Sector 6, București
-      </footer>
+      <Footer />
     </main>
   );
 }
