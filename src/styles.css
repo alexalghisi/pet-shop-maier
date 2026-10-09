@@ -26,6 +26,7 @@
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-gold: var(--gold);
+  --color-whatsapp: var(--whatsapp);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -50,6 +51,7 @@
   --accent: oklch(0.72 0.17 50);
   --accent-foreground: oklch(1 0 0);
   --gold: oklch(0.68 0.17 50);
+  --whatsapp: oklch(0.72 0.17 150);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
   --border: oklch(0.92 0.005 250);
