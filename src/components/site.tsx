@@ -5,6 +5,7 @@ import { whatsappLink } from "@/lib/products";
 
 export const PHONE = "+40 758 639 799";
 export const PHONE_HREF = "tel:+40758639799";
+export const FACEBOOK_URL = "https://www.facebook.com/p/PET-SHOP-MAIER-61574444792704/";
 
 const links = [
   { to: "/produse", label: "Produse" },
@@ -38,7 +39,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
       <div className="hidden bg-foreground/90 text-xs text-primary-foreground sm:block">
         <div className="mx-auto flex max-w-6xl justify-between px-6 py-1.5">
           <span>Str. Eroilor 1, Gilău, jud. Cluj</span>
-          <span className="flex gap-4"><a href={PHONE_HREF}>📞 {PHONE}</a><a href={whatsappLink()} target="_blank" rel="noopener noreferrer">WhatsApp</a></span>
+          <span className="flex gap-4"><a href={PHONE_HREF}>📞 {PHONE}</a><a href={whatsappLink()} target="_blank" rel="noopener noreferrer">WhatsApp</a><a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer">Facebook</a></span>
         </div>
       </div>
       <nav className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-4">
@@ -75,6 +76,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
             ))}
             <a href={PHONE_HREF} className="mt-1 font-semibold text-gold">{PHONE}</a>
             <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="font-semibold text-gold">WhatsApp</a>
+            <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="font-semibold text-gold">Facebook</a>
           </div>
         </div>
       )}
@@ -90,7 +92,7 @@ export function Footer() {
       <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2">
         {links.map((l) => <Link key={l.to} to={l.to} className="transition hover:text-gold">{l.label}</Link>)}
       </div>
-      <p className="mt-6 px-6">Pet shop Gilău · Str. Eroilor 1, județul Cluj · <a href={PHONE_HREF} className="transition hover:text-gold">{PHONE}</a> · <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="transition hover:text-gold">WhatsApp</a></p>
+      <p className="mt-6 px-6">Pet shop Gilău · Str. Eroilor 1, județul Cluj · <a href={PHONE_HREF} className="transition hover:text-gold">{PHONE}</a> · <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="transition hover:text-gold">WhatsApp</a> · <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="transition hover:text-gold">Facebook</a></p>
     </footer>
   );
 }
