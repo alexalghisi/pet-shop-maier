@@ -33,7 +33,7 @@ export const Route = createFileRoute("/")({
           description: DESC,
           address: {
             "@type": "PostalAddress",
-            streetAddress: "Gilău",
+            streetAddress: "Strada Eroilor 1",
             addressLocality: "Gilău",
             addressRegion: "Cluj",
             addressCountry: "RO",
@@ -55,7 +55,7 @@ const categories = [
 ];
 
 const faqs = [
-  { q: "Unde se află PetShop Mayer?", a: "Suntem în comuna Gilău, județul Cluj." },
+  { q: "Unde se află PetShop Mayer?", a: "Ne găsești pe Strada Eroilor 1, în comuna Gilău, județul Cluj." },
   { q: "Ce hrană pentru animale aveți?", a: "Hrană pentru câini și pisici de la branduri cunoscute, furaje și semințe pentru păsări, hrană pentru rozătoare și pești." },
   { q: "Pot comanda telefonic?", a: "Da, sunați-ne și vă pregătim comanda pentru ridicare din magazin." },
 ];
@@ -142,7 +142,7 @@ function Index() {
           <p className="eyebrow">Te așteptăm</p>
           <h2 className="mt-3 text-4xl md:text-5xl">Vizitează-ne în Gilău</h2>
           <div className="mt-12 grid gap-10 md:grid-cols-3">
-            <div><h3 className="text-2xl">Adresă</h3><p className="mt-2 opacity-80">Gilău, județul Cluj</p></div>
+            <div><h3 className="text-2xl">Adresă</h3><p className="mt-2 opacity-80">Strada Eroilor 1, Gilău, județul Cluj</p></div>
             <div><h3 className="text-2xl">Program</h3><p className="mt-2 opacity-80">Luni–Sâmbătă 09:00–20:00<br />Duminică 09:00–14:00</p></div>
             <div><h3 className="text-2xl">Telefon</h3><a href={PHONE_HREF} className="mt-2 block opacity-80 hover:text-gold">{PHONE}</a></div>
           </div>
