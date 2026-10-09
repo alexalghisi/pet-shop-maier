@@ -32,7 +32,7 @@ export function Footer() {
       <div className="mb-4 flex flex-wrap justify-center gap-6">
         {links.map((l) => <Link key={l.to} to={l.to} className="hover:text-gold">{l.label}</Link>)}
       </div>
-      <p>PetShop Mayer · Pet shop Giulești, Sector 6, București · <a href={PHONE_HREF} className="hover:text-gold">{PHONE}</a></p>
+      <p>PetShop Mayer · Pet shop Gilău, județul Cluj · <a href={PHONE_HREF} className="hover:text-gold">{PHONE}</a></p>
     </footer>
   );
 }
@@ -91,9 +91,9 @@ export function GuidePage(props: {
         </section>
 
         <aside className="rounded-lg border bg-card p-8">
-          <h2 className="text-2xl">Găsești totul la PetShop Mayer din Giulești</h2>
+          <h2 className="text-2xl">Găsești totul la PetShop Mayer din Gilău</h2>
           <p className="mt-3 text-muted-foreground">
-            Vino în magazinul nostru din <Link to="/" className="text-primary underline">Giulești, Sector 6</Link> sau sună-ne la{" "}
+            Vino în magazinul nostru din <Link to="/" className="text-primary underline">Gilău, județul Cluj</Link> sau sună-ne la{" "}
             <a href={PHONE_HREF} className="text-primary underline">{PHONE}</a> și îți pregătim comanda.
           </p>
           <p className="mt-4 text-sm">
