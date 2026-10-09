@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { useCart } from "@/lib/cart";
 import { whatsappLink } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 
@@ -15,15 +14,18 @@ const links = [
   { to: "/furaje-animale", label: "Furaje" },
 ] as const;
 
-function CartLink() {
-  const { count } = useCart();
-  return (
-    <Link to="/cos" aria-label="Coș" className="relative grid h-10 w-10 place-items-center rounded-full border border-current/15">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6h15l-1.5 9h-12z" /><path d="M6 6 5 3H2" /><circle cx="9" cy="20" r="1.5" /><circle cx="18" cy="20" r="1.5" /></svg>
-      {count > 0 && <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-accent px-1 text-xs font-bold text-accent-foreground">{count}</span>}
-    </Link>
-  );
-}
+export const GUIDES = [
+  { to: "/pet-shop-cluj", label: "Pet shop Cluj" },
+  { to: "/hrana-caini", label: "Hrană câini" },
+  { to: "/hrana-pisici", label: "Hrană pisici" },
+  { to: "/nisip-pisici", label: "Nisip pisici" },
+  { to: "/furaje-animale", label: "Furaje animale" },
+  { to: "/furaje-gaini", label: "Furaje găini" },
+  { to: "/hrana-porumbei", label: "Hrană porumbei" },
+  { to: "/hrana-iepuri", label: "Hrană iepuri" },
+  { to: "/accesorii-caini", label: "Accesorii câini" },
+] as const;
+export type GuidePath = (typeof GUIDES)[number]["to"];
 
 export function WhatsAppFloat() {
   return (
@@ -53,7 +55,6 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
             <Link key={l.to} to={l.to} className="font-semibold transition hover:text-gold" activeProps={{ className: "text-gold" }}>{l.label}</Link>
           ))}
         </div>
-        <CartLink />
         <Button
           variant="ghost"
           size="icon"
@@ -93,7 +94,7 @@ export function Footer() {
       <p className="font-serif text-2xl font-semibold text-foreground">PetShop <span className="text-primary">Maier</span></p>
       <div className="ornament mx-auto mt-4" />
       <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2">
-        {links.map((l) => <Link key={l.to} to={l.to} className="transition hover:text-gold">{l.label}</Link>)}
+        {[{ to: "/produse", label: "Produse" } as const, ...GUIDES].map((l) => <Link key={l.to} to={l.to} className="transition hover:text-gold">{l.label}</Link>)}
       </div>
       <p className="mt-6 px-6">Pet shop Gilău · Str. Eroilor 1, județul Cluj · <a href={PHONE_HREF} className="transition hover:text-gold">{PHONE}</a> · <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="transition hover:text-gold">WhatsApp</a> · <a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer" className="transition hover:text-gold">Facebook</a></p>
     </footer>
@@ -110,7 +111,7 @@ export function GuidePage(props: {
   imageAlt: string;
   sections: GuideSection[];
   faqs: { q: string; a: string }[];
-  related: { to: "/hrana-caini" | "/hrana-pisici" | "/furaje-animale"; label: string }[];
+  related: { to: GuidePath; label: string }[];
 }) {
   return (
     <main>
@@ -160,7 +161,7 @@ export function GuidePage(props: {
           <h2 className="text-2xl">Găsești totul la PetShop Maier din Gilău</h2>
           <p className="mt-3 text-muted-foreground">
             Vino în magazinul nostru din <Link to="/" className="text-primary underline">Gilău, județul Cluj</Link> sau sună-ne la{" "}
-            <a href={PHONE_HREF} className="text-primary underline">{PHONE}</a> și îți pregătim comanda.
+            <a href={PHONE_HREF} className="text-primary underline">{PHONE}</a> și îți spunem ce avem pe stoc și ce ți se potrivește.
           </p>
           <p className="mt-4 text-sm">
             Citește și:{" "}

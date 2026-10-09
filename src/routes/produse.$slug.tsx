@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Header, Footer } from "@/components/site";
 import { getProduct } from "@/lib/products.functions";
 import { formatPrice, mediaUrl, categoryLabel, whatsappLink, SITE_URL } from "@/lib/products";
-import { useCart } from "@/lib/cart";
 
 const productQuery = (slug: string) =>
   queryOptions({ queryKey: ["product", slug], queryFn: () => getProduct({ data: { slug } }) });
@@ -75,13 +74,9 @@ function ProductNotFound() {
 function ProductPage() {
   const { slug } = Route.useParams();
   const { data: p } = useSuspenseQuery(productQuery(slug));
-  const cart = useCart();
   const [active, setActive] = useState(0);
-  const [qty, setQty] = useState(1);
-  const [added, setAdded] = useState(false);
   if (!p) return <ProductNotFound />;
   const m = p.media[active];
-  const firstImg = p.media.find((x) => x.type === "image");
   return (
     <main>
       <Header />
@@ -113,27 +108,10 @@ function ProductPage() {
           <h1 className="mt-2 text-3xl md:text-4xl">{p.name}</h1>
           <p className="mt-4 text-3xl font-bold text-primary">{formatPrice(p.price)}</p>
           <p className={`mt-2 text-sm font-semibold ${p.in_stock ? "text-primary" : "text-destructive"}`}>{p.in_stock ? "✓ În stoc" : "Stoc epuizat"}</p>
-          <div className="mt-6 flex items-center gap-3">
-            <div className="flex items-center rounded-lg border">
-              <button className="px-3 py-2" onClick={() => setQty(Math.max(1, qty - 1))}>−</button>
-              <span className="w-8 text-center">{qty}</span>
-              <button className="px-3 py-2" onClick={() => setQty(qty + 1)}>+</button>
-            </div>
-            <button
-              disabled={!p.in_stock}
-              onClick={() => {
-                cart.add({ id: p.id, slug: p.slug, name: p.name, price: p.price, image: firstImg?.path }, qty);
-                setAdded(true);
-              }}
-              className="flex-1 rounded-lg bg-accent px-6 py-3 font-semibold text-accent-foreground transition hover:opacity-90 disabled:opacity-40"
-            >
-              Adaugă în coș
-            </button>
-          </div>
-          {added && <p className="mt-3 text-sm">Adăugat! <Link to="/cos" className="font-semibold text-primary underline">Vezi coșul</Link></p>}
-          <a href={whatsappLink(`Bună! Sunt interesat de: ${p.name}`)} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 rounded-lg border border-primary px-4 py-2 text-sm font-semibold text-primary hover:bg-secondary">
+          <a href={whatsappLink(`Bună! Sunt interesat de: ${p.name}`)} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-lg bg-whatsapp px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">
             Întreabă pe WhatsApp despre acest produs
           </a>
+          <p className="mt-3 text-sm text-muted-foreground">Vino în magazin la Str. Eroilor 1, Gilău, sau sună-ne pentru disponibilitate.</p>
           <div className="mt-8 whitespace-pre-line leading-relaxed text-muted-foreground">{p.description}</div>
         </div>
       </section>
