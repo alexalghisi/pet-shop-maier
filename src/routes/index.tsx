@@ -65,7 +65,7 @@ function Index() {
     <main>
       <Header overlay />
 
-      <section className="relative flex min-h-[88vh] items-center py-24">
+      <section className="relative flex min-h-[70vh] items-center py-24">
         <img src={hero} alt="Interiorul pet shop-ului Mayer din Gilău cu hrană pentru câini și pisici" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
         <div className="hero-overlay absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-6 text-primary-foreground">

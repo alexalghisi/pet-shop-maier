@@ -13,7 +13,7 @@ const links = [
 export function Header({ overlay = false }: { overlay?: boolean }) {
   const [open, setOpen] = useState(false);
   return (
-    <header className={overlay ? "absolute inset-x-0 top-0 z-20 text-primary-foreground" : "bg-primary text-primary-foreground"}>
+    <header className={overlay ? "absolute inset-x-0 top-0 z-20 text-primary-foreground" : "border-b bg-primary text-primary-foreground"}>
       <nav className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-5">
         <Link to="/" className="min-w-0 truncate font-serif text-2xl font-semibold tracking-wide">
           PetShop <span className="text-gold">Mayer</span>
