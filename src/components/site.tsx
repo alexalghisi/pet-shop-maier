@@ -65,6 +65,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
             <span className={`absolute left-0 top-3 h-0.5 w-5 bg-current transition ${open ? "-translate-y-1.5 -rotate-45" : ""}`} />
           </span>
         </button>
+        </div>
       </nav>
       {open && (
         <div className="border-t border-primary-foreground/15 bg-primary px-6 py-4 md:hidden">
@@ -73,6 +74,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
               <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className="py-1 transition hover:text-gold" activeProps={{ className: "text-gold" }}>{l.label}</Link>
             ))}
             <a href={PHONE_HREF} className="mt-1 font-semibold text-gold">{PHONE}</a>
+            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="font-semibold text-gold">WhatsApp</a>
           </div>
         </div>
       )}
