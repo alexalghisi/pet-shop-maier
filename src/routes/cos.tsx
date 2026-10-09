@@ -6,10 +6,10 @@ import { formatPrice, mediaUrl, whatsappLink } from "@/lib/products";
 export const Route = createFileRoute("/cos")({
   head: () => ({
     meta: [
-      { title: "Coșul tău – PetShop Mayer Gilău" },
-      { name: "description", content: "Produsele din coșul tău de la PetShop Mayer Gilău." },
-      { property: "og:title", content: "Coșul tău – PetShop Mayer" },
-      { property: "og:description", content: "Produsele din coșul tău de la PetShop Mayer Gilău." },
+      { title: "Coșul tău – PetShop Maier Gilău" },
+      { name: "description", content: "Produsele din coșul tău de la PetShop Maier Gilău." },
+      { property: "og:title", content: "Coșul tău – PetShop Maier" },
+      { property: "og:description", content: "Produsele din coșul tău de la PetShop Maier Gilău." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "robots", content: "noindex" },
