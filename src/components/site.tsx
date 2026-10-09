@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { useCart } from "@/lib/cart";
 import { whatsappLink } from "@/lib/products";
+import { Button } from "@/components/ui/button";
 
 export const PHONE = "+40 758 639 799";
 export const PHONE_HREF = "tel:+40758639799";
@@ -17,7 +18,7 @@ const links = [
 function CartLink() {
   const { count } = useCart();
   return (
-    <Link to="/cos" aria-label="Coș" className="relative grid h-10 w-10 place-items-center rounded-full bg-primary-foreground/15">
+    <Link to="/cos" aria-label="Coș" className="relative grid h-10 w-10 place-items-center rounded-full border border-current/15">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6h15l-1.5 9h-12z" /><path d="M6 6 5 3H2" /><circle cx="9" cy="20" r="1.5" /><circle cx="18" cy="20" r="1.5" /></svg>
       {count > 0 && <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-accent px-1 text-xs font-bold text-accent-foreground">{count}</span>}
     </Link>
@@ -35,8 +36,8 @@ export function WhatsAppFloat() {
 export function Header({ overlay = false }: { overlay?: boolean }) {
   const [open, setOpen] = useState(false);
   return (
-    <header className={overlay ? "absolute inset-x-0 top-0 z-20 text-primary-foreground" : "border-b bg-primary text-primary-foreground"}>
-      <div className="hidden bg-foreground/90 text-xs text-primary-foreground sm:block">
+    <header className={overlay ? "absolute inset-x-0 top-0 z-20 text-primary-foreground" : "border-b border-border bg-background text-foreground"}>
+      <div className={overlay ? "hidden bg-foreground/90 text-xs text-primary-foreground sm:block" : "hidden border-b border-border bg-muted text-xs text-muted-foreground sm:block"}>
         <div className="mx-auto flex max-w-6xl justify-between px-6 py-1.5">
           <span>Str. Eroilor 1, Gilău, jud. Cluj</span>
           <span className="flex gap-4"><a href={PHONE_HREF}>📞 {PHONE}</a><a href={whatsappLink()} target="_blank" rel="noopener noreferrer">WhatsApp</a><a href={FACEBOOK_URL} target="_blank" rel="noopener noreferrer">Facebook</a></span>
@@ -53,23 +54,25 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
           ))}
         </div>
         <CartLink />
-        <button
+        <Button
+          variant="ghost"
+          size="icon"
           type="button"
           aria-label={open ? "Închide meniul" : "Deschide meniul"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-primary-foreground/30 md:hidden"
+           className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-current/20 md:hidden"
         >
           <span className="relative block h-3.5 w-5">
             <span className={`absolute left-0 top-0 h-0.5 w-5 bg-current transition ${open ? "translate-y-1.5 rotate-45" : ""}`} />
             <span className={`absolute left-0 top-1.5 h-0.5 w-5 bg-current transition ${open ? "opacity-0" : ""}`} />
             <span className={`absolute left-0 top-3 h-0.5 w-5 bg-current transition ${open ? "-translate-y-1.5 -rotate-45" : ""}`} />
           </span>
-        </button>
+        </Button>
         </div>
       </nav>
       {open && (
-        <div className="border-t border-primary-foreground/15 bg-primary px-6 py-4 md:hidden">
+        <div className="border-t border-border bg-background px-6 py-4 text-foreground md:hidden">
           <div className="flex flex-col gap-4 text-sm">
             {links.map((l) => (
               <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className="py-1 transition hover:text-gold" activeProps={{ className: "text-gold" }}>{l.label}</Link>
@@ -86,8 +89,8 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
 
 export function Footer() {
   return (
-    <footer className="bg-primary py-12 text-center text-sm text-primary-foreground/70">
-      <p className="font-serif text-2xl font-semibold text-primary-foreground">PetShop <span className="text-gold">Mayer</span></p>
+    <footer className="border-t border-border bg-muted py-10 text-center text-sm text-muted-foreground">
+      <p className="font-serif text-2xl font-semibold text-foreground">PetShop <span className="text-primary">Mayer</span></p>
       <div className="ornament mx-auto mt-4" />
       <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2">
         {links.map((l) => <Link key={l.to} to={l.to} className="transition hover:text-gold">{l.label}</Link>)}
