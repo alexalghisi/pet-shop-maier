@@ -1,10 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Header, Footer } from "@/components/site";
 import { ProductCard } from "@/components/ProductCard";
 import { productsQuery } from "@/lib/products.queries";
-import { CATEGORIES } from "@/lib/products";
+import { CATEGORIES, whatsappLink } from "@/lib/products";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, MessageCircle, PackageOpen } from "lucide-react";
+import hero from "@/assets/hero.jpg";
+import fbShop from "@/assets/fb-shop.jpg.asset.json";
 
 
 const TITLE = "Produse pentru animale cu prețuri – PetShop Mayer Gilău";
@@ -32,24 +36,48 @@ function ProductsPage() {
   const [cat, setCat] = useState<string>("toate");
   const list = cat === "toate" ? data : data.filter((p) => p.category === cat);
   return (
-    <main>
+    <main className="min-h-screen">
       <Header />
-      <section className="mx-auto max-w-6xl px-6 py-12">
-        <h1 className="text-4xl md:text-5xl">Produse pentru animale</h1>
-        <p className="mt-3 text-muted-foreground">Prețuri actualizate, ridicare din magazinul din Gilău sau comandă online.</p>
-        <div className="mt-8 flex flex-wrap gap-2">
+      <section className="relative isolate flex min-h-72 items-center overflow-hidden py-12 sm:min-h-80">
+        <img src={hero} alt="Hrană și accesorii pentru câini și pisici" className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
+        <div className="hero-overlay absolute inset-0 -z-10" />
+        <div className="mx-auto w-full max-w-6xl px-6 text-primary-foreground">
+          <Link to="/" className="text-sm underline-offset-4 hover:underline">PetShop Mayer · Gilău</Link>
+          <h1 className="mt-4 max-w-xl text-4xl leading-tight md:text-5xl">Produse pentru animale</h1>
+          <p className="mt-4 max-w-lg text-base leading-relaxed">Hrană, furaje și accesorii pentru cei de care ai grijă.</p>
+        </div>
+      </section>
+      <section className="mx-auto max-w-6xl px-6 py-10 sm:py-12">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-5">
+          <h2 className="text-2xl">Alege categoria</h2>
+          <span className="text-sm text-muted-foreground">{data.length > 0 ? `${list.length} produse` : "Magazinul din Str. Eroilor 1"}</span>
+        </div>
+        <div className="mt-6 flex flex-wrap gap-2" aria-label="Categorii de produse">
           {[{ id: "toate", label: "Toate" }, ...CATEGORIES].map((c) => (
-            <button
+            <Button
               key={c.id}
+              variant={cat === c.id ? "default" : "secondary"}
+              aria-pressed={cat === c.id}
               onClick={() => setCat(c.id)}
-              className={`rounded-full border px-4 py-1.5 text-sm font-semibold transition ${cat === c.id ? "border-primary bg-primary text-primary-foreground" : "hover:border-primary"}`}
+              className="h-10 px-5"
             >
               {c.label}
-            </button>
+            </Button>
           ))}
         </div>
         {list.length === 0 ? (
-          <p className="mt-16 text-center text-muted-foreground">Produsele vor apărea aici în curând.</p>
+          <div className="mt-10 grid items-center gap-8 border-t border-border pt-10 md:grid-cols-2 md:gap-12">
+            <img src={fbShop.url} alt="Rafturi cu hrană și accesorii din magazinul PetShop Mayer din Gilău" width={726} height={225} className="w-full rounded-lg object-contain" />
+            <div>
+              <PackageOpen className="size-7 text-primary" aria-hidden="true" />
+              <h3 className="mt-4 text-2xl">{data.length === 0 ? "Catalogul online se pregătește" : "Momentan nu sunt produse în această categorie"}</h3>
+              <p className="mt-3 leading-relaxed text-muted-foreground">{data.length === 0 ? "Până apar produsele și prețurile aici, ne găsești în magazinul din Gilău. Scrie-ne despre hrana sau accesoriile pe care le cauți." : "Vezi celelalte categorii sau întreabă-ne despre produsul pe care îl cauți."}</p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button asChild size="lg"><a href={whatsappLink("Bună! Aș dori informații despre produsele disponibile în magazin.")} target="_blank" rel="noopener noreferrer"><MessageCircle />Întreabă pe WhatsApp</a></Button>
+                <Button asChild variant="secondary" size="lg"><Link to="/">Pagina principală<ArrowRight /></Link></Button>
+              </div>
+            </div>
+          </div>
         ) : (
           <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             {list.map((p) => <ProductCard key={p.id} p={p} />)}
