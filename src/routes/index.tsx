@@ -39,7 +39,7 @@ export const Route = createFileRoute("/")({
             addressCountry: "RO",
           },
           areaServed: ["Gilău", "județul Cluj", "Cluj"],
-          openingHours: ["Mo-Sa 09:00-20:00", "Su 09:00-14:00"],
+          openingHours: ["Mo-Fr 09:00-19:00", "Sa 09:00-17:00"],
         }),
       },
     ],
@@ -143,7 +143,7 @@ function Index() {
           <h2 className="mt-3 text-4xl md:text-5xl">Vizitează-ne în Gilău</h2>
           <div className="mt-12 grid gap-10 md:grid-cols-3">
             <div><h3 className="text-2xl">Adresă</h3><p className="mt-2 opacity-80">Strada Eroilor 1, Gilău, județul Cluj</p></div>
-            <div><h3 className="text-2xl">Program</h3><p className="mt-2 opacity-80">Luni–Sâmbătă 09:00–20:00<br />Duminică 09:00–14:00</p></div>
+            <div><h3 className="text-2xl">Program</h3><p className="mt-2 opacity-80">Luni–Vineri 09:00–19:00<br />Sâmbătă 09:00–17:00<br />Duminică închis</p></div>
             <div><h3 className="text-2xl">Telefon</h3><a href={PHONE_HREF} className="mt-2 block opacity-80 hover:text-gold">{PHONE}</a></div>
           </div>
         </div>
