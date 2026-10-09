@@ -65,20 +65,20 @@ function Index() {
     <main>
       <Header overlay />
 
-      <section className="relative flex min-h-[92vh] items-center">
+      <section className="relative flex min-h-[88vh] items-center py-24">
         <img src={hero} alt="Interiorul pet shop-ului Mayer din Gilău cu hrană pentru câini și pisici" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
         <div className="hero-overlay absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-6 text-primary-foreground">
           <p className="eyebrow">Gilău · județul Cluj</p>
-          <h1 className="mt-5 max-w-3xl text-5xl leading-[1.05] font-medium md:text-7xl">
+          <h1 className="mt-5 max-w-3xl text-4xl leading-[1.08] font-medium sm:text-5xl md:text-7xl">
             Pet shop în Gilău — hrană și furaje pentru animale
           </h1>
-          <p className="mt-6 max-w-xl text-lg opacity-90">
+          <p className="mt-6 max-w-xl text-base opacity-90 sm:text-lg">
             Tot ce au nevoie prietenii tăi necuvântători: hrană pentru câini și pisici, semințe pentru păsări, accesorii — cu grijă de cartier.
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a href="#contact" className="rounded-md bg-accent px-7 py-3 font-semibold text-accent-foreground transition hover:opacity-90">Vino în magazin</a>
-            <a href="#produse" className="rounded-md border border-primary-foreground/40 px-7 py-3 font-semibold transition hover:bg-primary-foreground/10">Vezi produsele</a>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+            <a href="#contact" className="rounded-md bg-accent px-7 py-3 text-center font-semibold text-accent-foreground shadow-lg transition hover:-translate-y-0.5 hover:opacity-90">Vino în magazin</a>
+            <a href="#produse" className="rounded-md border border-primary-foreground/40 px-7 py-3 text-center font-semibold transition hover:bg-primary-foreground/10">Vezi produsele</a>
           </div>
         </div>
       </section>
@@ -89,12 +89,13 @@ function Index() {
           <h2 className="mt-3 text-4xl md:text-5xl">Mâncare și accesorii pentru animale</h2>
           <div className="ornament mx-auto mt-6" />
         </div>
-        <div className="mt-14 grid gap-px overflow-hidden rounded-lg border bg-border sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {categories.map((c) => (
-            <article key={c.t} className="bg-card p-8">
-              <h3 className="text-2xl">{c.t}</h3>
+            <article key={c.t} className="group rounded-xl border bg-card p-8 shadow-sm transition hover:-translate-y-1 hover:border-gold hover:shadow-xl">
+              <div className="ornament" />
+              <h3 className="mt-4 text-2xl">{c.t}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
-              {c.to && <Link to={c.to} className="mt-4 inline-block text-sm font-semibold text-primary hover:text-gold">Citește ghidul →</Link>}
+              {c.to && <Link to={c.to} className="mt-4 inline-block text-sm font-semibold text-primary transition group-hover:text-gold">Citește ghidul →</Link>}
             </article>
           ))}
         </div>
@@ -129,7 +130,10 @@ function Index() {
           <div className="mt-8 divide-y border-y">
             {faqs.map((f) => (
               <details key={f.q} className="group py-5">
-                <summary className="cursor-pointer list-none font-serif text-xl">{f.q}</summary>
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-xl">
+                  {f.q}
+                  <span className="shrink-0 text-gold transition group-open:rotate-45">+</span>
+                </summary>
                 <p className="mt-3 text-sm text-muted-foreground">{f.a}</p>
               </details>
             ))}
