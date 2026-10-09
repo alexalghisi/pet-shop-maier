@@ -11,8 +11,8 @@ import hero from "@/assets/hero.jpg";
 import fbShop from "@/assets/fb-shop.jpg.asset.json";
 
 
-const TITLE = "Produse pentru animale cu prețuri – PetShop Mayer Gilău";
-const DESC = "Hrană pentru câini și pisici, furaje, semințe și accesorii cu prețuri afișate. Comandă online de la PetShop Mayer, Gilău, județul Cluj.";
+const TITLE = "Produse pentru animale cu prețuri – PetShop Maier Gilău";
+const DESC = "Hrană pentru câini și pisici, furaje, semințe și accesorii cu prețuri afișate. Comandă online de la PetShop Maier, Gilău, județul Cluj.";
 
 export const Route = createFileRoute("/produse/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery),
@@ -42,7 +42,7 @@ function ProductsPage() {
         <img src={hero} alt="Hrană și accesorii pentru câini și pisici" className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
         <div className="hero-overlay absolute inset-0 -z-10" />
         <div className="mx-auto w-full max-w-6xl px-6 text-primary-foreground">
-          <Link to="/" className="text-sm underline-offset-4 hover:underline">PetShop Mayer · Gilău</Link>
+          <Link to="/" className="text-sm underline-offset-4 hover:underline">PetShop Maier · Gilău</Link>
           <h1 className="mt-4 max-w-xl text-4xl leading-tight md:text-5xl">Produse pentru animale</h1>
           <p className="mt-4 max-w-lg text-base leading-relaxed">Hrană, furaje și accesorii pentru cei de care ai grijă.</p>
         </div>
@@ -67,7 +67,7 @@ function ProductsPage() {
         </div>
         {list.length === 0 ? (
           <div className="mt-10 grid items-center gap-8 border-t border-border pt-10 md:grid-cols-2 md:gap-12">
-            <img src={fbShop.url} alt="Rafturi cu hrană și accesorii din magazinul PetShop Mayer din Gilău" width={726} height={225} className="w-full rounded-lg object-contain" />
+            <img src={fbShop.url} alt="Rafturi cu hrană și accesorii din magazinul PetShop Maier din Gilău" width={726} height={225} className="w-full rounded-lg object-contain" />
             <div>
               <PackageOpen className="size-7 text-primary" aria-hidden="true" />
               <h3 className="mt-4 text-2xl">{data.length === 0 ? "Catalogul online se pregătește" : "Momentan nu sunt produse în această categorie"}</h3>

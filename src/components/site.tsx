@@ -45,7 +45,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
       </div>
       <nav className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-4">
         <Link to="/" className="min-w-0 truncate font-serif text-2xl font-semibold tracking-wide">
-          PetShop <span className="text-gold">Mayer</span>
+          PetShop <span className="text-gold">Maier</span>
         </Link>
         <div className="flex items-center gap-3">
         <div className="hidden items-center gap-6 text-sm md:flex">
@@ -90,7 +90,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
 export function Footer() {
   return (
     <footer className="border-t border-border bg-muted py-10 text-center text-sm text-muted-foreground">
-      <p className="font-serif text-2xl font-semibold text-foreground">PetShop <span className="text-primary">Mayer</span></p>
+      <p className="font-serif text-2xl font-semibold text-foreground">PetShop <span className="text-primary">Maier</span></p>
       <div className="ornament mx-auto mt-4" />
       <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2">
         {links.map((l) => <Link key={l.to} to={l.to} className="transition hover:text-gold">{l.label}</Link>)}
@@ -157,7 +157,7 @@ export function GuidePage(props: {
         </section>
 
         <aside className="rounded-xl border bg-card p-8 shadow-lg">
-          <h2 className="text-2xl">Găsești totul la PetShop Mayer din Gilău</h2>
+          <h2 className="text-2xl">Găsești totul la PetShop Maier din Gilău</h2>
           <p className="mt-3 text-muted-foreground">
             Vino în magazinul nostru din <Link to="/" className="text-primary underline">Gilău, județul Cluj</Link> sau sună-ne la{" "}
             <a href={PHONE_HREF} className="text-primary underline">{PHONE}</a> și îți pregătim comanda.
