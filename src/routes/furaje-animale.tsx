@@ -6,11 +6,11 @@ const faqs = [
   { q: "Ce furaje aveți pentru păsări?", a: "Amestecuri de semințe pentru peruși, canari, papagali și porumbei, plus mei, floarea-soarelui și grit." },
   { q: "Ce mănâncă iepurii și porcușorii de Guineea?", a: "Fân de calitate la discreție, granule specifice și legume proaspete. Porcușorii de Guineea au nevoie și de vitamina C." },
   { q: "Cum păstrez furajele?", a: "În recipiente închise, la loc uscat și răcoros, ferite de umezeală și dăunători." },
-  { q: "Unde cumpăr furaje în Sector 6?", a: "La PetShop Mayer din Giulești găsești furaje și semințe pentru păsări, rozătoare și iepuri." },
+  { q: "Unde cumpăr furaje în județul Cluj?", a: "La PetShop Mayer din Gilău găsești furaje și semințe pentru păsări, rozătoare și iepuri." },
 ];
 
-const TITLE = "Furaje pentru animale și semințe păsări în Giulești | PetShop Mayer";
-const DESC = "Furaje pentru păsări, porumbei, iepuri și rozătoare: ce să alegi și cum să le păstrezi. Furaje de calitate la PetShop Mayer, Giulești, Sector 6.";
+const TITLE = "Furaje pentru animale și semințe păsări în Gilău | PetShop Mayer";
+const DESC = "Furaje pentru păsări, porumbei, iepuri și rozătoare: ce să alegi și cum să le păstrezi. Furaje de calitate la PetShop Mayer, Gilău, județul Cluj.";
 
 export const Route = createFileRoute("/furaje-animale")({
   head: () => guideHead(TITLE, DESC, "/furaje-animale", faqs),
