@@ -80,9 +80,6 @@ function Login() {
         <button className="w-full rounded-lg bg-primary py-2 font-semibold text-primary-foreground">{mode === "in" ? "Intră" : "Creează cont"}</button>
       </form>
       {msg && <p className="mt-3 text-sm">{msg}</p>}
-      <button onClick={() => setMode(mode === "in" ? "up" : "in")} className="mt-4 text-sm underline">
-        {mode === "in" ? "Nu ai cont? Creează-l (primul cont devine administrator)" : "Am deja cont"}
-      </button>
     </main>
   );
 }
