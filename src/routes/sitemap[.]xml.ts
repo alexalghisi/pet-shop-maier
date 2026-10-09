@@ -7,7 +7,7 @@ export const Route = createFileRoute("/sitemap.xml")({
     handlers: {
       GET: async () => {
         const products = await listProducts();
-        const paths = ["/", "/produse", "/hrana-caini", "/hrana-pisici", "/furaje-animale", ...products.map((p) => `/produse/${p.slug}`)];
+        const paths = ["/", "/produse", "/pet-shop-cluj", "/hrana-caini", "/hrana-pisici", "/nisip-pisici", "/furaje-animale", "/furaje-gaini", "/hrana-porumbei", "/hrana-iepuri", "/accesorii-caini", ...products.map((p) => `/produse/${p.slug}`)];
         const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${paths
           .map((p) => `<url><loc>${SITE_URL}${p}</loc></url>`)
           .join("")}</urlset>`;

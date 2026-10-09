@@ -10,11 +10,16 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AccesoriiCainiRouteImport } from './routes/accesorii-caini'
 import { Route as AdminRouteImport } from './routes/admin'
-import { Route as CosRouteImport } from './routes/cos'
 import { Route as FurajeAnimaleRouteImport } from './routes/furaje-animale'
+import { Route as FurajeGainiRouteImport } from './routes/furaje-gaini'
 import { Route as HranaCainiRouteImport } from './routes/hrana-caini'
+import { Route as HranaIepuriRouteImport } from './routes/hrana-iepuri'
 import { Route as HranaPisiciRouteImport } from './routes/hrana-pisici'
+import { Route as HranaPorumbeiRouteImport } from './routes/hrana-porumbei'
+import { Route as NisipPisiciRouteImport } from './routes/nisip-pisici'
+import { Route as PetShopClujRouteImport } from './routes/pet-shop-cluj'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as MediaSplatRouteImport } from './routes/media.$'
 import { Route as ProduseIndexRouteImport } from './routes/produse.index'
@@ -25,14 +30,14 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccesoriiCainiRoute = AccesoriiCainiRouteImport.update({
+  id: '/accesorii-caini',
+  path: '/accesorii-caini',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CosRoute = CosRouteImport.update({
-  id: '/cos',
-  path: '/cos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FurajeAnimaleRoute = FurajeAnimaleRouteImport.update({
@@ -40,14 +45,39 @@ const FurajeAnimaleRoute = FurajeAnimaleRouteImport.update({
   path: '/furaje-animale',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FurajeGainiRoute = FurajeGainiRouteImport.update({
+  id: '/furaje-gaini',
+  path: '/furaje-gaini',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HranaCainiRoute = HranaCainiRouteImport.update({
   id: '/hrana-caini',
   path: '/hrana-caini',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HranaIepuriRoute = HranaIepuriRouteImport.update({
+  id: '/hrana-iepuri',
+  path: '/hrana-iepuri',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HranaPisiciRoute = HranaPisiciRouteImport.update({
   id: '/hrana-pisici',
   path: '/hrana-pisici',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HranaPorumbeiRoute = HranaPorumbeiRouteImport.update({
+  id: '/hrana-porumbei',
+  path: '/hrana-porumbei',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NisipPisiciRoute = NisipPisiciRouteImport.update({
+  id: '/nisip-pisici',
+  path: '/nisip-pisici',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PetShopClujRoute = PetShopClujRouteImport.update({
+  id: '/pet-shop-cluj',
+  path: '/pet-shop-cluj',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -73,11 +103,16 @@ const ProduseSlugRoute = ProduseSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/accesorii-caini': typeof AccesoriiCainiRoute
   '/admin': typeof AdminRoute
-  '/cos': typeof CosRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
+  '/furaje-gaini': typeof FurajeGainiRoute
   '/hrana-caini': typeof HranaCainiRoute
+  '/hrana-iepuri': typeof HranaIepuriRoute
   '/hrana-pisici': typeof HranaPisiciRoute
+  '/hrana-porumbei': typeof HranaPorumbeiRoute
+  '/nisip-pisici': typeof NisipPisiciRoute
+  '/pet-shop-cluj': typeof PetShopClujRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/media/$': typeof MediaSplatRoute
   '/produse/$slug': typeof ProduseSlugRoute
@@ -85,11 +120,16 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/accesorii-caini': typeof AccesoriiCainiRoute
   '/admin': typeof AdminRoute
-  '/cos': typeof CosRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
+  '/furaje-gaini': typeof FurajeGainiRoute
   '/hrana-caini': typeof HranaCainiRoute
+  '/hrana-iepuri': typeof HranaIepuriRoute
   '/hrana-pisici': typeof HranaPisiciRoute
+  '/hrana-porumbei': typeof HranaPorumbeiRoute
+  '/nisip-pisici': typeof NisipPisiciRoute
+  '/pet-shop-cluj': typeof PetShopClujRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/media/$': typeof MediaSplatRoute
   '/produse/$slug': typeof ProduseSlugRoute
@@ -98,11 +138,16 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/accesorii-caini': typeof AccesoriiCainiRoute
   '/admin': typeof AdminRoute
-  '/cos': typeof CosRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
+  '/furaje-gaini': typeof FurajeGainiRoute
   '/hrana-caini': typeof HranaCainiRoute
+  '/hrana-iepuri': typeof HranaIepuriRoute
   '/hrana-pisici': typeof HranaPisiciRoute
+  '/hrana-porumbei': typeof HranaPorumbeiRoute
+  '/nisip-pisici': typeof NisipPisiciRoute
+  '/pet-shop-cluj': typeof PetShopClujRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/media/$': typeof MediaSplatRoute
   '/produse/$slug': typeof ProduseSlugRoute
@@ -112,11 +157,16 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/accesorii-caini'
     | '/admin'
-    | '/cos'
     | '/furaje-animale'
+    | '/furaje-gaini'
     | '/hrana-caini'
+    | '/hrana-iepuri'
     | '/hrana-pisici'
+    | '/hrana-porumbei'
+    | '/nisip-pisici'
+    | '/pet-shop-cluj'
     | '/sitemap.xml'
     | '/media/$'
     | '/produse/$slug'
@@ -124,11 +174,16 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/accesorii-caini'
     | '/admin'
-    | '/cos'
     | '/furaje-animale'
+    | '/furaje-gaini'
     | '/hrana-caini'
+    | '/hrana-iepuri'
     | '/hrana-pisici'
+    | '/hrana-porumbei'
+    | '/nisip-pisici'
+    | '/pet-shop-cluj'
     | '/sitemap.xml'
     | '/media/$'
     | '/produse/$slug'
@@ -136,11 +191,16 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/accesorii-caini'
     | '/admin'
-    | '/cos'
     | '/furaje-animale'
+    | '/furaje-gaini'
     | '/hrana-caini'
+    | '/hrana-iepuri'
     | '/hrana-pisici'
+    | '/hrana-porumbei'
+    | '/nisip-pisici'
+    | '/pet-shop-cluj'
     | '/sitemap.xml'
     | '/media/$'
     | '/produse/$slug'
@@ -149,11 +209,16 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccesoriiCainiRoute: typeof AccesoriiCainiRoute
   AdminRoute: typeof AdminRoute
-  CosRoute: typeof CosRoute
   FurajeAnimaleRoute: typeof FurajeAnimaleRoute
+  FurajeGainiRoute: typeof FurajeGainiRoute
   HranaCainiRoute: typeof HranaCainiRoute
+  HranaIepuriRoute: typeof HranaIepuriRoute
   HranaPisiciRoute: typeof HranaPisiciRoute
+  HranaPorumbeiRoute: typeof HranaPorumbeiRoute
+  NisipPisiciRoute: typeof NisipPisiciRoute
+  PetShopClujRoute: typeof PetShopClujRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   MediaSplatRoute: typeof MediaSplatRoute
   ProduseSlugRoute: typeof ProduseSlugRoute
@@ -169,18 +234,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/accesorii-caini': {
+      id: '/accesorii-caini'
+      path: '/accesorii-caini'
+      fullPath: '/accesorii-caini'
+      preLoaderRoute: typeof AccesoriiCainiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cos': {
-      id: '/cos'
-      path: '/cos'
-      fullPath: '/cos'
-      preLoaderRoute: typeof CosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/furaje-animale': {
@@ -190,6 +255,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FurajeAnimaleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/furaje-gaini': {
+      id: '/furaje-gaini'
+      path: '/furaje-gaini'
+      fullPath: '/furaje-gaini'
+      preLoaderRoute: typeof FurajeGainiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hrana-caini': {
       id: '/hrana-caini'
       path: '/hrana-caini'
@@ -197,11 +269,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HranaCainiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hrana-iepuri': {
+      id: '/hrana-iepuri'
+      path: '/hrana-iepuri'
+      fullPath: '/hrana-iepuri'
+      preLoaderRoute: typeof HranaIepuriRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hrana-pisici': {
       id: '/hrana-pisici'
       path: '/hrana-pisici'
       fullPath: '/hrana-pisici'
       preLoaderRoute: typeof HranaPisiciRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hrana-porumbei': {
+      id: '/hrana-porumbei'
+      path: '/hrana-porumbei'
+      fullPath: '/hrana-porumbei'
+      preLoaderRoute: typeof HranaPorumbeiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nisip-pisici': {
+      id: '/nisip-pisici'
+      path: '/nisip-pisici'
+      fullPath: '/nisip-pisici'
+      preLoaderRoute: typeof NisipPisiciRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pet-shop-cluj': {
+      id: '/pet-shop-cluj'
+      path: '/pet-shop-cluj'
+      fullPath: '/pet-shop-cluj'
+      preLoaderRoute: typeof PetShopClujRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -237,11 +337,16 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccesoriiCainiRoute: AccesoriiCainiRoute,
   AdminRoute: AdminRoute,
-  CosRoute: CosRoute,
   FurajeAnimaleRoute: FurajeAnimaleRoute,
+  FurajeGainiRoute: FurajeGainiRoute,
   HranaCainiRoute: HranaCainiRoute,
+  HranaIepuriRoute: HranaIepuriRoute,
   HranaPisiciRoute: HranaPisiciRoute,
+  HranaPorumbeiRoute: HranaPorumbeiRoute,
+  NisipPisiciRoute: NisipPisiciRoute,
+  PetShopClujRoute: PetShopClujRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   MediaSplatRoute: MediaSplatRoute,
   ProduseSlugRoute: ProduseSlugRoute,
