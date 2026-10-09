@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
-import { Route as CosRouteImport } from './routes/cos'
 import { Route as FurajeAnimaleRouteImport } from './routes/furaje-animale'
 import { Route as HranaCainiRouteImport } from './routes/hrana-caini'
 import { Route as HranaPisiciRouteImport } from './routes/hrana-pisici'
@@ -28,11 +27,6 @@ const IndexRoute = IndexRouteImport.update({
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CosRoute = CosRouteImport.update({
-  id: '/cos',
-  path: '/cos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FurajeAnimaleRoute = FurajeAnimaleRouteImport.update({
@@ -74,7 +68,6 @@ const ProduseSlugRoute = ProduseSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
-  '/cos': typeof CosRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-pisici': typeof HranaPisiciRoute
@@ -86,7 +79,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
-  '/cos': typeof CosRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-pisici': typeof HranaPisiciRoute
@@ -99,7 +91,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
-  '/cos': typeof CosRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-pisici': typeof HranaPisiciRoute
@@ -113,7 +104,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
-    | '/cos'
     | '/furaje-animale'
     | '/hrana-caini'
     | '/hrana-pisici'
@@ -125,7 +115,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/admin'
-    | '/cos'
     | '/furaje-animale'
     | '/hrana-caini'
     | '/hrana-pisici'
@@ -137,7 +126,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/admin'
-    | '/cos'
     | '/furaje-animale'
     | '/hrana-caini'
     | '/hrana-pisici'
@@ -150,7 +138,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
-  CosRoute: typeof CosRoute
   FurajeAnimaleRoute: typeof FurajeAnimaleRoute
   HranaCainiRoute: typeof HranaCainiRoute
   HranaPisiciRoute: typeof HranaPisiciRoute
@@ -174,13 +161,6 @@ declare module '@tanstack/react-router' {
       path: '/admin'
       fullPath: '/admin'
       preLoaderRoute: typeof AdminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cos': {
-      id: '/cos'
-      path: '/cos'
-      fullPath: '/cos'
-      preLoaderRoute: typeof CosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/furaje-animale': {
@@ -238,7 +218,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
-  CosRoute: CosRoute,
   FurajeAnimaleRoute: FurajeAnimaleRoute,
   HranaCainiRoute: HranaCainiRoute,
   HranaPisiciRoute: HranaPisiciRoute,
