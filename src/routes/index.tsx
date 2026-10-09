@@ -34,8 +34,8 @@ export const Route = createFileRoute("/")({
           address: {
             "@type": "PostalAddress",
             streetAddress: "Gilău",
-            addressLocality: "Cluj",
-            addressRegion: "județul Cluj",
+            addressLocality: "Gilău",
+            addressRegion: "Cluj",
             addressCountry: "RO",
           },
           areaServed: ["Gilău", "județul Cluj", "Cluj"],
