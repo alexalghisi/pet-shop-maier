@@ -10,15 +10,23 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CosRouteImport } from './routes/cos'
 import { Route as FurajeAnimaleRouteImport } from './routes/furaje-animale'
 import { Route as HranaCainiRouteImport } from './routes/hrana-caini'
 import { Route as HranaPisiciRouteImport } from './routes/hrana-pisici'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as MediaSplatRouteImport } from './routes/media.$'
+import { Route as ProduseIndexRouteImport } from './routes/produse.index'
+import { Route as ProduseSlugRouteImport } from './routes/produse.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CosRoute = CosRouteImport.update({
+  id: '/cos',
+  path: '/cos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FurajeAnimaleRoute = FurajeAnimaleRouteImport.update({
@@ -46,66 +54,97 @@ const MediaSplatRoute = MediaSplatRouteImport.update({
   path: '/media/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProduseIndexRoute = ProduseIndexRouteImport.update({
+  id: '/produse/',
+  path: '/produse/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProduseSlugRoute = ProduseSlugRouteImport.update({
+  id: '/produse/$slug',
+  path: '/produse/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cos': typeof CosRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-pisici': typeof HranaPisiciRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/media/$': typeof MediaSplatRoute
+  '/produse/$slug': typeof ProduseSlugRoute
+  '/produse/': typeof ProduseIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cos': typeof CosRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-pisici': typeof HranaPisiciRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/media/$': typeof MediaSplatRoute
+  '/produse/$slug': typeof ProduseSlugRoute
+  '/produse': typeof ProduseIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cos': typeof CosRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-pisici': typeof HranaPisiciRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/media/$': typeof MediaSplatRoute
+  '/produse/$slug': typeof ProduseSlugRoute
+  '/produse/': typeof ProduseIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/cos'
     | '/furaje-animale'
     | '/hrana-caini'
     | '/hrana-pisici'
     | '/sitemap.xml'
     | '/media/$'
+    | '/produse/$slug'
+    | '/produse/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/cos'
     | '/furaje-animale'
     | '/hrana-caini'
     | '/hrana-pisici'
     | '/sitemap.xml'
     | '/media/$'
+    | '/produse/$slug'
+    | '/produse'
   id:
     | '__root__'
     | '/'
+    | '/cos'
     | '/furaje-animale'
     | '/hrana-caini'
     | '/hrana-pisici'
     | '/sitemap.xml'
     | '/media/$'
+    | '/produse/$slug'
+    | '/produse/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CosRoute: typeof CosRoute
   FurajeAnimaleRoute: typeof FurajeAnimaleRoute
   HranaCainiRoute: typeof HranaCainiRoute
   HranaPisiciRoute: typeof HranaPisiciRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   MediaSplatRoute: typeof MediaSplatRoute
+  ProduseSlugRoute: typeof ProduseSlugRoute
+  ProduseIndexRoute: typeof ProduseIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -115,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cos': {
+      id: '/cos'
+      path: '/cos'
+      fullPath: '/cos'
+      preLoaderRoute: typeof CosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/furaje-animale': {
@@ -152,16 +198,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MediaSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/produse/': {
+      id: '/produse/'
+      path: '/produse'
+      fullPath: '/produse/'
+      preLoaderRoute: typeof ProduseIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/produse/$slug': {
+      id: '/produse/$slug'
+      path: '/produse/$slug'
+      fullPath: '/produse/$slug'
+      preLoaderRoute: typeof ProduseSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CosRoute: CosRoute,
   FurajeAnimaleRoute: FurajeAnimaleRoute,
   HranaCainiRoute: HranaCainiRoute,
   HranaPisiciRoute: HranaPisiciRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   MediaSplatRoute: MediaSplatRoute,
+  ProduseSlugRoute: ProduseSlugRoute,
+  ProduseIndexRoute: ProduseIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
