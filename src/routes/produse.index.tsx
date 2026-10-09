@@ -1,10 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { Header, Footer } from "@/components/site";
 import { ProductCard } from "@/components/ProductCard";
 import { productsQuery } from "@/lib/products.queries";
-import { CATEGORIES, whatsappLink } from "@/lib/products";
+import { whatsappLink } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle, PackageOpen } from "lucide-react";
 import hero from "@/assets/hero.jpg";
@@ -33,8 +32,7 @@ export const Route = createFileRoute("/produse/")({
 
 function ProductsPage() {
   const { data } = useSuspenseQuery(productsQuery);
-  const [cat, setCat] = useState<string>("toate");
-  const list = cat === "toate" ? data : data.filter((p) => p.category === cat);
+  const list = data;
   return (
     <main className="min-h-screen">
       <Header />
