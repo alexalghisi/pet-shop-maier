@@ -4,8 +4,9 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { ProductCard } from "@/components/ProductCard";
 import { productsQuery } from "@/lib/products.queries";
 import hero from "@/assets/hero.jpg";
-import food from "@/assets/food.jpg";
-import accessories from "@/assets/accessories.jpg";
+import fbShop from "@/assets/fb-shop.jpg.asset.json";
+import fbFuraje from "@/assets/fb-furaje.jpg.asset.json";
+import fbGalerie from "@/assets/fb-galerie.jpg.asset.json";
 
 const TITLE = "PetShop Mayer Gilău – Hrană și furaje pentru animale, județul Cluj";
 const DESC =
@@ -121,7 +122,7 @@ function Index() {
 
       <section id="despre" className="bg-secondary py-24">
         <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 md:grid-cols-2">
-          <img src={food} alt="Hrană premium pentru câini, pisici și semințe pentru păsări" loading="lazy" width={1024} height={1024} className="rounded-lg shadow-xl" />
+          <img src={fbShop.url} alt="Raft cu hrană pentru animale, adăpători și hrănitori pentru păsări în PET SHOP MAIER Gilău" loading="lazy" width={726} height={225} className="w-full rounded-lg shadow-xl" />
           <div>
             <p className="eyebrow">Despre noi</p>
             <h2 className="mt-3 text-4xl md:text-5xl">Petshop-ul de cartier în care ai încredere</h2>
@@ -138,9 +139,15 @@ function Index() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-6 pt-24">
+        <p className="eyebrow">Din magazinul nostru</p>
+        <h2 className="mt-3 text-4xl">Furaje, păsări de rasă și hrană — la PET SHOP MAIER Gilău</h2>
+        <img src={fbGalerie.url} alt="Furaje MAN, Deli Nature HippoX, porumb boabe și păsări Brahma de la PET SHOP MAIER din Gilău" loading="lazy" width={1234} height={610} className="mt-8 w-full rounded-lg shadow-xl" />
+      </section>
+
       <section className="mx-auto grid max-w-6xl items-center gap-14 px-6 py-24 md:grid-cols-2">
         <div className="md:order-2">
-          <img src={accessories} alt="Accesorii pentru animale: lese, zgărzi, jucării și perii" loading="lazy" width={1024} height={1024} className="rounded-lg shadow-xl" />
+          <img src={fbFuraje.url} alt="Furaj combinat granulat Novaticom pentru găini ouătoare, sac 20 kg, la PET SHOP MAIER Gilău" loading="lazy" width={726} height={511} className="w-full rounded-lg shadow-xl" />
         </div>
         <div>
           <p className="eyebrow">Întrebări frecvente</p>
