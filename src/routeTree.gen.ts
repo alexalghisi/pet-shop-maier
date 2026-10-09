@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FurajeAnimaleRouteImport } from './routes/furaje-animale'
+import { Route as HranaCainiRouteImport } from './routes/hrana-caini'
+import { Route as HranaPisiciRouteImport } from './routes/hrana-pisici'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FurajeAnimaleRoute = FurajeAnimaleRouteImport.update({
+  id: '/furaje-animale',
+  path: '/furaje-animale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HranaCainiRoute = HranaCainiRouteImport.update({
+  id: '/hrana-caini',
+  path: '/hrana-caini',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HranaPisiciRoute = HranaPisiciRouteImport.update({
+  id: '/hrana-pisici',
+  path: '/hrana-pisici',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/furaje-animale': typeof FurajeAnimaleRoute
+  '/hrana-caini': typeof HranaCainiRoute
+  '/hrana-pisici': typeof HranaPisiciRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/furaje-animale': typeof FurajeAnimaleRoute
+  '/hrana-caini': typeof HranaCainiRoute
+  '/hrana-pisici': typeof HranaPisiciRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/furaje-animale': typeof FurajeAnimaleRoute
+  '/hrana-caini': typeof HranaCainiRoute
+  '/hrana-pisici': typeof HranaPisiciRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/furaje-animale' | '/hrana-caini' | '/hrana-pisici'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/furaje-animale' | '/hrana-caini' | '/hrana-pisici'
+  id: '__root__' | '/' | '/furaje-animale' | '/hrana-caini' | '/hrana-pisici'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FurajeAnimaleRoute: typeof FurajeAnimaleRoute
+  HranaCainiRoute: typeof HranaCainiRoute
+  HranaPisiciRoute: typeof HranaPisiciRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/furaje-animale': {
+      id: '/furaje-animale'
+      path: '/furaje-animale'
+      fullPath: '/furaje-animale'
+      preLoaderRoute: typeof FurajeAnimaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hrana-caini': {
+      id: '/hrana-caini'
+      path: '/hrana-caini'
+      fullPath: '/hrana-caini'
+      preLoaderRoute: typeof HranaCainiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hrana-pisici': {
+      id: '/hrana-pisici'
+      path: '/hrana-pisici'
+      fullPath: '/hrana-pisici'
+      preLoaderRoute: typeof HranaPisiciRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FurajeAnimaleRoute: FurajeAnimaleRoute,
+  HranaCainiRoute: HranaCainiRoute,
+  HranaPisiciRoute: HranaPisiciRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
