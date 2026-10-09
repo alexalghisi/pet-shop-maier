@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as FurajeAnimaleRouteImport } from './routes/furaje-animale'
 import { Route as HranaCainiRouteImport } from './routes/hrana-caini'
 import { Route as HranaPisiciRouteImport } from './routes/hrana-pisici'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as MediaSplatRouteImport } from './routes/media.$'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +36,32 @@ const HranaPisiciRoute = HranaPisiciRouteImport.update({
   path: '/hrana-pisici',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaSplatRoute = MediaSplatRouteImport.update({
+  id: '/media/$',
+  path: '/media/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-pisici': typeof HranaPisiciRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/media/$': typeof MediaSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-pisici': typeof HranaPisiciRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/media/$': typeof MediaSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +69,34 @@ export interface FileRoutesById {
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-pisici': typeof HranaPisiciRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/media/$': typeof MediaSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/furaje-animale' | '/hrana-caini' | '/hrana-pisici'
+  fullPaths:
+    | '/'
+    | '/furaje-animale'
+    | '/hrana-caini'
+    | '/hrana-pisici'
+    | '/sitemap.xml'
+    | '/media/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/furaje-animale' | '/hrana-caini' | '/hrana-pisici'
-  id: '__root__' | '/' | '/furaje-animale' | '/hrana-caini' | '/hrana-pisici'
+  to:
+    | '/'
+    | '/furaje-animale'
+    | '/hrana-caini'
+    | '/hrana-pisici'
+    | '/sitemap.xml'
+    | '/media/$'
+  id:
+    | '__root__'
+    | '/'
+    | '/furaje-animale'
+    | '/hrana-caini'
+    | '/hrana-pisici'
+    | '/sitemap.xml'
+    | '/media/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +104,8 @@ export interface RootRouteChildren {
   FurajeAnimaleRoute: typeof FurajeAnimaleRoute
   HranaCainiRoute: typeof HranaCainiRoute
   HranaPisiciRoute: typeof HranaPisiciRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  MediaSplatRoute: typeof MediaSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +138,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HranaPisiciRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media/$': {
+      id: '/media/$'
+      path: '/media/$'
+      fullPath: '/media/$'
+      preLoaderRoute: typeof MediaSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +160,8 @@ const rootRouteChildren: RootRouteChildren = {
   FurajeAnimaleRoute: FurajeAnimaleRoute,
   HranaCainiRoute: HranaCainiRoute,
   HranaPisiciRoute: HranaPisiciRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  MediaSplatRoute: MediaSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
