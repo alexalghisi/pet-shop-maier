@@ -12,3 +12,4 @@ Allow: /
 
 User-agent: *
 Allow: /
+Sitemap: https://petshop-elevate-glow.lovable.app/sitemap.xml
