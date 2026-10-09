@@ -30,7 +30,7 @@ export const WHATSAPP = "40758639799";
 export const whatsappLink = (text?: string) =>
   `https://wa.me/${WHATSAPP}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
 
-export const SITE_URL = "https://petshop-elevate-glow.lovable.app";
+export const SITE_URL = "https://pethopmaier.shop";
 
 export function slugify(s: string) {
   return s
