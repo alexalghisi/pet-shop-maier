@@ -1,29 +1,57 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
+import { useCart } from "@/lib/cart";
+import { whatsappLink } from "@/lib/products";
 
 export const PHONE = "+40 758 639 799";
 export const PHONE_HREF = "tel:+40758639799";
 
 const links = [
+  { to: "/produse", label: "Produse" },
   { to: "/hrana-caini", label: "Hrană câini" },
   { to: "/hrana-pisici", label: "Hrană pisici" },
   { to: "/furaje-animale", label: "Furaje" },
 ] as const;
 
+function CartLink() {
+  const { count } = useCart();
+  return (
+    <Link to="/cos" aria-label="Coș" className="relative grid h-10 w-10 place-items-center rounded-full bg-primary-foreground/15">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6h15l-1.5 9h-12z" /><path d="M6 6 5 3H2" /><circle cx="9" cy="20" r="1.5" /><circle cx="18" cy="20" r="1.5" /></svg>
+      {count > 0 && <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-accent px-1 text-xs font-bold text-accent-foreground">{count}</span>}
+    </Link>
+  );
+}
+
+export function WhatsAppFloat() {
+  return (
+    <a href={whatsappLink("Bună! Am o întrebare.")} target="_blank" rel="noopener noreferrer" aria-label="Scrie-ne pe WhatsApp" className="fixed bottom-5 right-5 z-50 grid h-14 w-14 place-items-center rounded-full bg-whatsapp text-primary-foreground shadow-xl transition hover:scale-110">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>
+    </a>
+  );
+}
+
 export function Header({ overlay = false }: { overlay?: boolean }) {
   const [open, setOpen] = useState(false);
   return (
     <header className={overlay ? "absolute inset-x-0 top-0 z-20 text-primary-foreground" : "border-b bg-primary text-primary-foreground"}>
-      <nav className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-5">
+      <div className="hidden bg-foreground/90 text-xs text-primary-foreground sm:block">
+        <div className="mx-auto flex max-w-6xl justify-between px-6 py-1.5">
+          <span>Str. Eroilor 1, Gilău, jud. Cluj</span>
+          <span className="flex gap-4"><a href={PHONE_HREF}>📞 {PHONE}</a><a href={whatsappLink()} target="_blank" rel="noopener noreferrer">WhatsApp</a></span>
+        </div>
+      </div>
+      <nav className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-6 py-4">
         <Link to="/" className="min-w-0 truncate font-serif text-2xl font-semibold tracking-wide">
           PetShop <span className="text-gold">Mayer</span>
         </Link>
-        <div className="hidden items-center gap-7 text-sm md:flex">
+        <div className="flex items-center gap-3">
+        <div className="hidden items-center gap-6 text-sm md:flex">
           {links.map((l) => (
-            <Link key={l.to} to={l.to} className="transition hover:text-gold" activeProps={{ className: "text-gold" }}>{l.label}</Link>
+            <Link key={l.to} to={l.to} className="font-semibold transition hover:text-gold" activeProps={{ className: "text-gold" }}>{l.label}</Link>
           ))}
-          <a href={PHONE_HREF} className="rounded-full border border-gold/60 px-4 py-1.5 font-semibold text-gold transition hover:bg-gold hover:text-accent-foreground">{PHONE}</a>
         </div>
+        <CartLink />
         <button
           type="button"
           aria-label={open ? "Închide meniul" : "Deschide meniul"}
@@ -37,6 +65,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
             <span className={`absolute left-0 top-3 h-0.5 w-5 bg-current transition ${open ? "-translate-y-1.5 -rotate-45" : ""}`} />
           </span>
         </button>
+        </div>
       </nav>
       {open && (
         <div className="border-t border-primary-foreground/15 bg-primary px-6 py-4 md:hidden">
@@ -45,6 +74,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
               <Link key={l.to} to={l.to} onClick={() => setOpen(false)} className="py-1 transition hover:text-gold" activeProps={{ className: "text-gold" }}>{l.label}</Link>
             ))}
             <a href={PHONE_HREF} className="mt-1 font-semibold text-gold">{PHONE}</a>
+            <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="font-semibold text-gold">WhatsApp</a>
           </div>
         </div>
       )}
@@ -60,7 +90,7 @@ export function Footer() {
       <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2">
         {links.map((l) => <Link key={l.to} to={l.to} className="transition hover:text-gold">{l.label}</Link>)}
       </div>
-      <p className="mt-6 px-6">Pet shop Gilău · Str. Eroilor 1, județul Cluj · <a href={PHONE_HREF} className="transition hover:text-gold">{PHONE}</a></p>
+      <p className="mt-6 px-6">Pet shop Gilău · Str. Eroilor 1, județul Cluj · <a href={PHONE_HREF} className="transition hover:text-gold">{PHONE}</a> · <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="transition hover:text-gold">WhatsApp</a></p>
     </footer>
   );
 }

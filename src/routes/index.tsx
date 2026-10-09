@@ -1,5 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header, Footer, PHONE, PHONE_HREF } from "@/components/site";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { ProductCard } from "@/components/ProductCard";
+import { productsQuery } from "@/lib/products.queries";
 import hero from "@/assets/hero.jpg";
 import food from "@/assets/food.jpg";
 import accessories from "@/assets/accessories.jpg";
@@ -9,6 +12,7 @@ const DESC =
   "Pet shop în Gilău, județul Cluj: hrană pentru câini și pisici, furaje, semințe pentru păsări, accesorii și jucării. Branduri premium, prețuri corecte, consiliere prietenoasă.";
 
 export const Route = createFileRoute("/")({
+  loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery),
   head: () => ({
     meta: [
       { title: TITLE },
@@ -61,6 +65,7 @@ const faqs = [
 ];
 
 function Index() {
+  const { data: products } = useSuspenseQuery(productsQuery);
   return (
     <main>
       <Header overlay />
@@ -78,10 +83,22 @@ function Index() {
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
             <a href="#contact" className="rounded-md bg-accent px-7 py-3 text-center font-semibold text-accent-foreground shadow-lg transition hover:-translate-y-0.5 hover:opacity-90">Vino în magazin</a>
-            <a href="#produse" className="rounded-md border border-primary-foreground/40 px-7 py-3 text-center font-semibold transition hover:bg-primary-foreground/10">Vezi produsele</a>
+            <Link to="/produse" className="rounded-md border border-primary-foreground/40 px-7 py-3 text-center font-semibold transition hover:bg-primary-foreground/10">Vezi produsele și prețurile</Link>
           </div>
         </div>
       </section>
+
+      {products.length > 0 && (
+        <section className="mx-auto max-w-6xl px-6 pt-20">
+          <div className="flex items-end justify-between gap-4">
+            <h2 className="text-3xl md:text-4xl">Produse noi</h2>
+            <Link to="/produse" className="font-semibold text-primary">Toate produsele →</Link>
+          </div>
+          <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {products.slice(0, 8).map((p) => <ProductCard key={p.id} p={p} />)}
+          </div>
+        </section>
+      )}
 
       <section id="produse" className="mx-auto max-w-6xl px-6 py-24">
         <div className="text-center">
