@@ -7,9 +7,9 @@ export const Route = createFileRoute("/admin")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Administrare – PetShop Mayer" },
+      { title: "Administrare – PetShop Maier" },
       { name: "description", content: "Panou de administrare produse." },
-      { property: "og:title", content: "Administrare – PetShop Mayer" },
+      { property: "og:title", content: "Administrare – PetShop Maier" },
       { property: "og:description", content: "Panou de administrare produse." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

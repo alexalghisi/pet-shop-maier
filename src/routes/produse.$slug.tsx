@@ -17,7 +17,7 @@ export const Route = createFileRoute("/produse/$slug")({
   },
   head: ({ loaderData: p, params }) => {
     if (!p) return { meta: [{ title: "Produs negăsit" }, { name: "robots", content: "noindex" }] };
-    const title = `${p.seo_title || p.name} – ${formatPrice(p.price)} | PetShop Mayer Gilău`;
+    const title = `${p.seo_title || p.name} – ${formatPrice(p.price)} | PetShop Maier Gilău`;
     const desc = (p.description || p.name).slice(0, 155);
     const img = p.media.find((m) => m.type === "image");
     const imgUrl = img ? `${SITE_URL}${mediaUrl(img.path)}` : undefined;
@@ -43,7 +43,7 @@ export const Route = createFileRoute("/produse/$slug")({
             description: p.description,
             image: p.media.filter((m) => m.type === "image").map((m) => `${SITE_URL}${mediaUrl(m.path)}`),
             category: categoryLabel(p.category),
-            brand: { "@type": "Brand", name: "PetShop Mayer" },
+            brand: { "@type": "Brand", name: "PetShop Maier" },
             offers: {
               "@type": "Offer",
               price: p.price.toFixed(2),

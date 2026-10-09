@@ -8,7 +8,7 @@ import fbShop from "@/assets/fb-shop.jpg.asset.json";
 import fbFuraje from "@/assets/fb-furaje.jpg.asset.json";
 import fbGalerie from "@/assets/fb-galerie.jpg.asset.json";
 
-const TITLE = "PetShop Mayer Gilău – Hrană și furaje pentru animale, județul Cluj";
+const TITLE = "PetShop Maier Gilău – Hrană și furaje pentru animale, județul Cluj";
 const DESC =
   "Pet shop în Gilău, județul Cluj: hrană pentru câini și pisici, furaje, semințe pentru păsări, accesorii și jucării. Branduri premium, prețuri corecte, consiliere prietenoasă.";
 
@@ -33,7 +33,7 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "PetStore",
-          name: "PetShop Mayer",
+          name: "PetShop Maier",
           telephone: "+40758639799",
           description: DESC,
           address: {
@@ -61,7 +61,7 @@ const categories = [
 ];
 
 const faqs = [
-  { q: "Unde se află PetShop Mayer?", a: "Ne găsești pe Strada Eroilor 1, în comuna Gilău, județul Cluj." },
+  { q: "Unde se află PetShop Maier?", a: "Ne găsești pe Strada Eroilor 1, în comuna Gilău, județul Cluj." },
   { q: "Ce hrană pentru animale aveți?", a: "Hrană pentru câini și pisici de la branduri cunoscute, furaje și semințe pentru păsări, hrană pentru rozătoare și pești." },
   { q: "Pot comanda telefonic?", a: "Da, sunați-ne și vă pregătim comanda pentru ridicare din magazin." },
 ];
@@ -73,7 +73,7 @@ function Index() {
       <Header overlay />
 
       <section className="relative flex min-h-[70vh] items-center py-24">
-        <img src={hero} alt="Interiorul pet shop-ului Mayer din Gilău cu hrană pentru câini și pisici" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
+        <img src={hero} alt="Interiorul pet shop-ului Maier din Gilău cu hrană pentru câini și pisici" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
         <div className="hero-overlay absolute inset-0" />
         <div className="relative mx-auto max-w-6xl px-6 text-primary-foreground">
           <p className="eyebrow">Gilău · județul Cluj</p>
@@ -128,7 +128,7 @@ function Index() {
             <h2 className="mt-3 text-4xl md:text-5xl">Petshop-ul de cartier în care ai încredere</h2>
             <div className="ornament mt-6" />
             <p className="mt-6 leading-relaxed text-muted-foreground">
-              La PetShop Mayer din Gilău alegem cu atenție fiecare produs. Te ajutăm să găsești hrana potrivită pentru vârsta, talia și sensibilitățile animalului tău — fie că ai un câine, o pisică, un papagal sau un iepuraș.
+              La PetShop Maier din Gilău alegem cu atenție fiecare produs. Te ajutăm să găsești hrana potrivită pentru vârsta, talia și sensibilitățile animalului tău — fie că ai un câine, o pisică, un papagal sau un iepuraș.
             </p>
             <ul className="mt-8 space-y-3 text-sm">
               <li>— Branduri de hrană premium și super-premium</li>

@@ -81,7 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "google-site-verification", content: "J6PO1ANhdfpVbVYkua2TKpOOO-f6RiGRefyw0AbgxXg" },
-      { property: "og:site_name", content: "PetShop Mayer" },
+      { property: "og:site_name", content: "PetShop Maier" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
