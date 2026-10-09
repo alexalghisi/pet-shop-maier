@@ -44,6 +44,7 @@ export const Route = createFileRoute("/")({
           },
           areaServed: ["Gilău", "județul Cluj", "Cluj"],
           openingHours: ["Mo-Fr 09:00-19:00", "Sa 09:00-17:00"],
+          sameAs: ["https://www.facebook.com/p/PET-SHOP-MAIER-61574444792704/"],
         }),
       },
     ],
