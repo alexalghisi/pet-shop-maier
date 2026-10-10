@@ -36,7 +36,7 @@ export function NativeBanner({ className }: { className?: string }) {
     el.innerHTML = "";
     const s = document.createElement("script");
     s.async = true;
-    s.dataset.cfasync = "false";
+    s.dataset["cfasync"] = "false";
     s.src = `${PL}/295af5bb4bb21bdbb9a3dd1905d16419/invoke.js`;
     const box = document.createElement("div");
     box.id = "container-295af5bb4bb21bdbb9a3dd1905d16419";
