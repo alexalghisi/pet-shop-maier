@@ -6,6 +6,7 @@ import { productsQuery } from "@/lib/products.queries";
 import { whatsappLink } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle, PackageOpen } from "lucide-react";
+import { NativeBanner } from "@/components/ads";
 import hero from "@/assets/hero.jpg";
 import fbShop from "@/assets/fb-shop.jpg.asset.json";
 
@@ -69,6 +70,9 @@ function ProductsPage() {
           </div>
         )}
       </section>
+      <div className="mx-auto max-w-6xl px-6 pb-10">
+        <NativeBanner />
+      </div>
       <Footer />
     </main>
   );
