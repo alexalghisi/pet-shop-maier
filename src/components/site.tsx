@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import { whatsappLink } from "@/lib/products";
 import { Button } from "@/components/ui/button";
+import { AdBanner } from "@/components/ads";
 
 export const PHONE = "+40 758 639 799";
 export const PHONE_HREF = "tel:+40758639799";
@@ -156,6 +157,10 @@ export function GuidePage(props: {
             ))}
           </div>
         </section>
+
+        <div className="mb-12">
+          <AdBanner adKey="1852596c667e84526d84e4746f35be9f" width={300} height={250} />
+        </div>
 
         <aside className="rounded-xl border bg-card p-8 shadow-lg">
           <h2 className="text-2xl">Găsești totul la PetShop Maier din Gilău</h2>

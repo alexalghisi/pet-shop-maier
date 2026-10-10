@@ -3,6 +3,7 @@ import { Header, Footer, PHONE, PHONE_HREF } from "@/components/site";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { ProductCard } from "@/components/ProductCard";
 import { productsQuery } from "@/lib/products.queries";
+import { AdBanner } from "@/components/ads";
 import hero from "@/assets/hero.jpg";
 import fbShop from "@/assets/fb-shop.jpg.asset.json";
 import fbFuraje from "@/assets/fb-furaje.jpg.asset.json";
@@ -89,6 +90,11 @@ function Index() {
           </div>
         </div>
       </section>
+
+      <div className="mx-auto max-w-6xl px-6 pt-10">
+        <div className="hidden md:block"><AdBanner adKey="18d7b84f9360ef34bb2211d43b563b0d" width={728} height={90} /></div>
+        <div className="md:hidden"><AdBanner adKey="79ebcae2d7c54504ff46daa6f586ca08" width={320} height={50} /></div>
+      </div>
 
       {products.length > 0 && (
         <section className="mx-auto max-w-6xl px-6 pt-20">
