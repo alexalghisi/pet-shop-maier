@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
-import img from "@/assets/hero.jpg";
+import { GALLERY, byTag, photoSrc } from "@/lib/gallery";
 
 const faqs = [
   { q: "Unde este PetShop Maier?", a: "În Gilău, Str. Eroilor 1, județul Cluj, pe drumul dintre Cluj-Napoca și Huedin." },
@@ -18,8 +18,8 @@ export const Route = createFileRoute("/pet-shop-cluj")({
       eyebrow="Pet shop · Cluj"
       title="Pet shop aproape de Cluj-Napoca și Florești"
       intro="PetShop Maier din Gilău e petshop-ul de lângă casă pentru cei din Gilău, Florești, Luna de Sus, Căpușu Mare, Someșu Rece și Cluj-Napoca."
-      image={img}
-      imageAlt="Interiorul pet shop-ului PetShop Maier din Gilău, lângă Cluj"
+      image={photoSrc("hrana-premium-caini-kudo-wildfull-pet-shop-maier", true)}
+      imageAlt="Hrană premium pentru câini Kudo și Wildfull la PET SHOP MAIER, pet shop lângă Cluj"
       sections={[
         { h: "Ce găsești la noi", p: "Tot ce le trebuie animalelor tale, într-un singur loc:", list: ["Hrană uscată și umedă pentru câini și pisici", "Nisip pentru pisici", "Furaje pentru găini, porumbei și iepuri", "Accesorii, jucării și antiparazitare"] },
         { h: "Cum ajungi", p: "Suntem pe Str. Eroilor 1, în centrul comunei Gilău, pe DN1 – la aproximativ 15 minute de Florești și 20 de minute de Cluj-Napoca. Parcarea e ușoară." },
@@ -27,7 +27,8 @@ export const Route = createFileRoute("/pet-shop-cluj")({
         { h: "Întreabă înainte să vii", p: "Scrie-ne pe WhatsApp sau sună la +40 758 639 799 și îți spunem imediat dacă produsul dorit e pe stoc." },
       ]}
       faqs={faqs}
-      related={[{ to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/hrana-pisici", label: "Hrană pentru pisici" }, { to: "/furaje-animale", label: "Furaje pentru animale" }]}
+      photos={GALLERY.slice(0, 9)}
+      related={[{ to: "/pui-brahma", label: "Pui Brahma" }, { to: "/furaje-man", label: "Furaje MAN" }, { to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/hrana-pisici", label: "Hrană pentru pisici" }, { to: "/furaje-animale", label: "Furaje pentru animale" }]}
     />
   ),
 });

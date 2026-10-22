@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
-import fbFuraje from "@/assets/fb-furaje.jpg.asset.json";
-const img = fbFuraje.url;
+import { GALLERY, byTag, photoSrc } from "@/lib/gallery";
 
 const faqs = [
   { q: "Ce furaje aveți pentru păsări?", a: "Amestecuri de semințe pentru peruși, canari, papagali și porumbei, plus mei, floarea-soarelui și grit." },
@@ -20,8 +19,8 @@ export const Route = createFileRoute("/furaje-animale")({
       eyebrow="Ghid · Furaje"
       title="Furaje pentru animale: păsări, iepuri și rozătoare"
       intro="Animalele mici au nevoi foarte diferite. Un furaj potrivit speciei face diferența între un animal vioi și unul bolnăvicios."
-      image={img}
-      imageAlt="Semințe și furaje pentru păsări"
+      image={photoSrc("porumb-boabe-30kg-calitate-superioara", true)}
+      imageAlt="Porumb boabe sac 30 kg pentru păsări, porci și iepuri – PET SHOP MAIER Gilău"
       sections={[
         { h: "Furaje pentru păsări", p: "Fiecare specie are amestecul ei:", list: ["Peruși și canari: mei, semințe de iarbă, ovăz decorticat", "Papagali mari: floarea-soarelui, nuci, fructe uscate", "Porumbei: porumb, mazăre, grâu, amestecuri de zbor"] },
         { h: "Iepuri și porcușori de Guineea", p: "Baza dietei este fânul (cel puțin 80%). Granulele se dau în cantități mici, iar legumele verzi zilnic." },
@@ -29,7 +28,8 @@ export const Route = createFileRoute("/furaje-animale")({
         { h: "Păstrarea corectă", p: "Furajele vechi sau umede pot face mucegai. Cumpără cantități pe care le consumi în câteva săptămâni și ține-le în recipiente închise." },
       ]}
       faqs={faqs}
-      related={[{ to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/hrana-pisici", label: "Hrană pentru pisici" }]}
+      photos={byTag("furaje").slice(0, 9)}
+      related={[{ to: "/furaje-man", label: "Furaje MAN" }, { to: "/oferta-furaje", label: "Ofertă tărâțe" }, { to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/hrana-pisici", label: "Hrană pentru pisici" }]}
     />
   ),
 });

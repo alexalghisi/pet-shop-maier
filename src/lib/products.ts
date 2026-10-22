@@ -27,10 +27,12 @@ export const formatPrice = (n: number) =>
 export const mediaUrl = (path: string) => `/media/${path}`;
 
 export const WHATSAPP = "40758639799";
-export const whatsappLink = (text?: string) =>
-  `https://wa.me/${WHATSAPP}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
-
 export const SITE_URL = "https://pethopmaier.shop";
+
+// Orice mesaj WhatsApp pornește cu aceeași introducere, ca magazinul să știe că vine de pe site.
+export const WA_INTRO = `Bună, am văzut magazinul dvs. pe ${SITE_URL} și m-ar interesa`;
+export const whatsappLink = (interest?: string) =>
+  `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`${WA_INTRO} ${interest?.trim() ? interest.trim() : "..."}`)}`;
 
 export function slugify(s: string) {
   return s
