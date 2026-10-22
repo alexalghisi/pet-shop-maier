@@ -37,26 +37,26 @@
 :root {
   --radius: 0.75rem;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.25 0.02 250);
+  --foreground: oklch(0.24 0.04 155);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.25 0.02 250);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.25 0.02 250);
-  --primary: oklch(0.55 0.13 150);
+  --primary: oklch(0.42 0.1 152);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.97 0.01 150);
+  --secondary: oklch(0.97 0.03 95);
   --secondary-foreground: oklch(0.25 0.02 250);
-  --muted: oklch(0.96 0.005 250);
-  --muted-foreground: oklch(0.5 0.02 250);
-  --accent: oklch(0.72 0.17 50);
-  --accent-foreground: oklch(1 0 0);
-  --gold: oklch(0.68 0.17 50);
-  --whatsapp: oklch(0.72 0.17 150);
+  --muted: oklch(0.965 0.012 95);
+  --muted-foreground: oklch(0.46 0.03 150);
+  --accent: oklch(0.84 0.16 90);
+  --accent-foreground: oklch(0.24 0.04 155);
+  --gold: oklch(0.72 0.15 75);
+  --whatsapp: oklch(0.7 0.19 150);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
   --border: oklch(0.92 0.005 250);
   --input: oklch(0.92 0.005 250);
-  --ring: oklch(0.55 0.13 150);
+  --ring: oklch(0.42 0.1 152);
 }
 
 @layer base {

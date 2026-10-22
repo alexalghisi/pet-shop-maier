@@ -1,103 +1,150 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Header, Footer, PHONE, PHONE_HREF } from "@/components/site";
 import { useSuspenseQuery } from "@tanstack/react-query";
+import { Header, Footer, PHONE, PHONE_HREF, WhatsAppButton } from "@/components/site";
 import { ProductCard } from "@/components/ProductCard";
+import { Gallery } from "@/components/Gallery";
 import { productsQuery } from "@/lib/products.queries";
 import { AdBanner } from "@/components/ads";
-import hero from "@/assets/hero.jpg";
-import fbShop from "@/assets/fb-shop.jpg.asset.json";
-import fbFuraje from "@/assets/fb-furaje.jpg.asset.json";
-import fbGalerie from "@/assets/fb-galerie.jpg.asset.json";
+import { GALLERY, photoSrc } from "@/lib/gallery";
+import { BUSINESS, MAPS_URL, seoHead, localBusinessLd, faqLd } from "@/lib/seo";
+import { SITE_URL } from "@/lib/products";
 
-const TITLE = "PetShop Maier Gilău – Hrană și furaje pentru animale, județul Cluj";
+const TITLE = "Pet shop și furaje Gilău, Cluj – pui Brahma, Furaje MAN, hrană câini | PET SHOP MAIER";
 const DESC =
-  "Pet shop în Gilău, județul Cluj: hrană pentru câini și pisici, furaje, semințe pentru păsări, accesorii și jucării. Branduri premium, prețuri corecte, consiliere prietenoasă.";
+  "PET SHOP MAIER Gilău: furaje (tărâțe 40 lei/20 kg, furaj combinat 60 lei/30 kg, Furaje MAN, porumb), pui și ouă Brahma vaccinați, hrană pentru cai, câini și pisici. Deschis 7 zile din 7, la 15 minute de Cluj-Napoca.";
+
+const faqs = [
+  { q: "Unde se află PET SHOP MAIER?", a: "Pe Strada Eroilor 1, în comuna Gilău, județul Cluj – la aproximativ 15 minute de Cluj-Napoca și 10 minute de Florești." },
+  { q: "Care este programul?", a: "Luni–Vineri 09:00–19:00, Sâmbătă–Duminică 09:00–17:00. Suntem deschiși 7 zile din 7." },
+  { q: "Ce vindeți?", a: "Furaje (tărâțe, furaj combinat, porumb boabe, Furaje MAN pentru găini, pui, curcani, prepelițe, pești și vaci de lapte), hrană pentru cai Deli Nature HippoX, hrană pentru câini și pisici, accesorii, plus pui și ouă Brahma de rasă." },
+  { q: "Pot comanda pe WhatsApp?", a: "Da. Scrie-ne pe WhatsApp la 0758 639 799 ce îți trebuie și îți pregătim comanda pentru ridicare din Gilău." },
+  { q: "Aveți pui Brahma de vânzare?", a: "Da, pui Brahma Columbia galben-negru și potârniche de 2–3 luni, vaccinați complet, și ouă fertile pentru incubat." },
+];
 
 export const Route = createFileRoute("/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery),
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { name: "keywords", content: "pet shop Gilău, petshop județul Cluj, hrană câini, hrană pisici, furaje animale, mâncare animale Cluj, semințe păsări, accesorii animale" },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
-      { property: "og:type", content: "website" },
-      { property: "og:locale", content: "ro_RO" },
-      { property: "og:url", content: "/" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
+  head: () =>
+    seoHead({
+      title: TITLE,
+      description: DESC,
+      path: "/",
+      keywords: "pet shop gilau, furaje gilau, furaje cluj, pui brahma de vanzare, furaje man, tarate pret, furaj combinat, hrana caini cluj, hrana cai, petshop judetul cluj",
+      ld: [
+        localBusinessLd(),
+        {
           "@context": "https://schema.org",
-          "@type": "PetStore",
-          name: "PetShop Maier",
-          telephone: "+40758639799",
-          description: DESC,
-          address: {
-            "@type": "PostalAddress",
-            streetAddress: "Strada Eroilor 1",
-            addressLocality: "Gilău",
-            addressRegion: "Cluj",
-            addressCountry: "RO",
-          },
-          areaServed: ["Gilău", "județul Cluj", "Cluj"],
-          openingHours: ["Mo-Fr 09:00-19:00", "Sa 09:00-17:00"],
-          sameAs: ["https://www.facebook.com/p/PET-SHOP-MAIER-61574444792704/"],
-        }),
-      },
-    ],
-  }),
+          "@type": "WebSite",
+          "@id": `${SITE_URL}/#website`,
+          url: `${SITE_URL}/`,
+          name: "PET SHOP MAIER",
+          inLanguage: "ro-RO",
+          publisher: { "@id": `${SITE_URL}/#store` },
+        },
+        faqLd(faqs),
+      ],
+    }),
   component: Index,
 });
 
 const categories = [
-  { to: "/hrana-caini" as const, t: "Hrană pentru câini", d: "Hrană uscată și umedă, diete pentru pui, adulți și seniori, recompense." },
-  { to: "/hrana-pisici" as const, t: "Hrană pentru pisici", d: "Granule, conserve, plicuri, nisip de calitate și snacks-uri." },
-  { to: "/furaje-animale" as const, t: "Furaje și semințe", d: "Amestecuri pentru păsări, porumbei, rozătoare, iepuri și furaje la sac." },
-  { to: undefined, t: "Accesorii și îngrijire", d: "Lese, zgărzi, culcușuri, jucării, șampoane și produse antiparazitare." },
+  { to: "/pui-brahma" as const, t: "Pui și ouă Brahma", d: "Columbia galben-negru și potârniche, vaccinați. Campioni la expoziții.", img: "pui-brahma-2-3-luni-vaccinati" },
+  { to: "/furaje-man" as const, t: "Furaje MAN", d: "Găini ouătoare, pui, curcani, prepelițe, pești – saci de 5 și 10 kg.", img: "furaje-man-10kg-gaini-ouatoare" },
+  { to: "/oferta-furaje" as const, t: "Tărâțe și furaj combinat", d: "Tărâțe 40 lei/20 kg, furaj combinat 60 lei/30 kg.", img: "porumb-boabe-30kg-calitate-superioara" },
+  { to: "/furaje-vaci-de-lapte" as const, t: "Furaje vaci de lapte", d: "Furaj granulat cu 22% proteină pentru mai mult lapte.", img: "furaje-man-vaci-de-lapte" },
+  { to: "/hrana-cai" as const, t: "Hrană pentru cai", d: "Deli Nature HippoX pentru cai de agrement și de muncă.", img: "deli-nature-hippox-hrana-cai" },
+  { to: "/hrana-caini" as const, t: "Hrană câini și pisici", d: "Kudo, Wildfull și alte branduri premium.", img: "hrana-premium-caini-kudo-wildfull-pet-shop-maier" },
 ];
 
-const faqs = [
-  { q: "Unde se află PetShop Maier?", a: "Ne găsești pe Strada Eroilor 1, în comuna Gilău, județul Cluj." },
-  { q: "Ce hrană pentru animale aveți?", a: "Hrană pentru câini și pisici de la branduri cunoscute, furaje și semințe pentru păsări, hrană pentru rozătoare și pești." },
-  { q: "Pot comanda telefonic?", a: "Da, sunați-ne și vă pregătim comanda pentru ridicare din magazin." },
-];
+const featured = GALLERY.filter((p) => !p.slug.startsWith("oferta")).slice(0, 12);
 
 function Index() {
   const { data: products } = useSuspenseQuery(productsQuery);
   return (
     <main>
-      <Header overlay />
+      <Header />
 
-      <section className="relative flex min-h-[70vh] items-center py-24">
-        <img src={hero} alt="Interiorul pet shop-ului Maier din Gilău cu hrană pentru câini și pisici" width={1600} height={1008} className="absolute inset-0 h-full w-full object-cover" />
-        <div className="hero-overlay absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-6 text-primary-foreground">
-          <p className="eyebrow">Gilău · județul Cluj</p>
-          <h1 className="mt-5 max-w-3xl text-4xl leading-[1.08] font-medium sm:text-5xl md:text-7xl">
-            Pet shop în Gilău — hrană și furaje pentru animale
-          </h1>
-          <p className="mt-6 max-w-xl text-base opacity-90 sm:text-lg">
-            Tot ce au nevoie prietenii tăi necuvântători: hrană pentru câini și pisici, semințe pentru păsări, accesorii — cu grijă de cartier.
-          </p>
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-            <a href="#contact" className="rounded-md bg-accent px-7 py-3 text-center font-semibold text-accent-foreground shadow-lg transition hover:-translate-y-0.5 hover:opacity-90">Vino în magazin</a>
-            <Link to="/produse" className="rounded-md border border-primary-foreground/40 px-7 py-3 text-center font-semibold transition hover:bg-primary-foreground/10">Vezi produsele și prețurile</Link>
+      {/* HERO */}
+      <section className="relative overflow-hidden bg-primary text-primary-foreground">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-accent/20 blur-3xl" />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-6 py-14 md:grid-cols-[1.15fr_1fr] md:py-20">
+          <div>
+            <p className="inline-flex rounded-full bg-white/10 px-4 py-1 text-sm font-bold">📍 Gilău · județul Cluj · deschis 7 zile din 7</p>
+            <h1 className="mt-5 text-4xl leading-[1.05] sm:text-5xl md:text-6xl">
+              Pet shop și <span className="text-accent">furaje</span> în Gilău
+            </h1>
+            <p className="mt-6 max-w-xl text-lg opacity-90">
+              Furaje la sac pentru toată curtea, pui Brahma de rasă vaccinați și hrană pentru câini, pisici și cai — la 15 minute de Cluj-Napoca.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <WhatsAppButton className="text-lg">Comandă pe WhatsApp</WhatsAppButton>
+              <Link to="/calculator-furaje" className="rounded-full bg-accent px-6 py-3 text-center text-lg font-bold text-accent-foreground shadow-lg transition hover:-translate-y-0.5">🧮 Calculează furajele</Link>
+            </div>
+            <ul className="mt-8 grid max-w-lg grid-cols-2 gap-3 text-sm font-semibold">
+              <li className="rounded-xl bg-white/10 px-3 py-2">✔ Tărâțe 2 lei/kg</li>
+              <li className="rounded-xl bg-white/10 px-3 py-2">✔ Furaje MAN</li>
+              <li className="rounded-xl bg-white/10 px-3 py-2">✔ Pui Brahma premiați</li>
+              <li className="rounded-xl bg-white/10 px-3 py-2">✔ Comenzi pe WhatsApp</li>
+            </ul>
+          </div>
+          <div className="relative mx-auto w-full max-w-md">
+            <img src={photoSrc("pui-si-oua-brahma-columbia-galben-negru-de-vanzare", true)} alt="Pui și ouă Brahma de vânzare la PET SHOP MAIER Gilău" width={640} height={960} fetchPriority="high" className="w-full rounded-3xl shadow-2xl ring-4 ring-white/20" />
+            <img src={photoSrc("furaje-man-10kg-gaini-ouatoare", true)} alt="Furaje MAN 10 kg pentru găini ouătoare" width={640} height={853} loading="lazy" className="absolute -bottom-6 -left-8 hidden w-40 rotate-[-6deg] rounded-2xl shadow-2xl ring-4 ring-white sm:block" />
           </div>
         </div>
       </section>
 
-      <div className="mx-auto max-w-6xl px-6 pt-10">
+      {/* OFERTA */}
+      <section className="mx-auto max-w-6xl px-6 pt-16">
+        <div className="grid items-center gap-6 rounded-3xl bg-secondary p-6 md:grid-cols-[1fr_auto_auto] md:p-8">
+          <div>
+            <p className="eyebrow">Ofertă la furaje</p>
+            <h2 className="mt-2 text-3xl">Prețuri bune, la sac</h2>
+            <p className="mt-2 text-muted-foreground">Tărâțe și furaj combinat măcinat universal pentru găini, curcani, rațe, porci și iepuri.</p>
+          </div>
+          <PriceCard t="Tărâțe" p="40 lei" u="sac 20 kg" />
+          <PriceCard t="Furaj combinat" p="60 lei" u="sac 30 kg" />
+        </div>
+        <p className="mt-3 text-right"><Link to="/oferta-furaje" className="font-bold text-primary">Detalii ofertă →</Link></p>
+      </section>
+
+      <div className="mx-auto max-w-6xl px-6 pt-8">
         <div className="hidden md:block"><AdBanner adKey="18d7b84f9360ef34bb2211d43b563b0d" width={728} height={90} /></div>
         <div className="md:hidden"><AdBanner adKey="79ebcae2d7c54504ff46daa6f586ca08" width={320} height={50} /></div>
       </div>
 
+      {/* CATEGORII */}
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <p className="eyebrow">Ce găsești la noi</p>
+        <h2 className="mt-2 text-4xl md:text-5xl">Furaje, păsări de rasă și hrană</h2>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {categories.map((c) => (
+            <Link key={c.to} to={c.to} className="group flex gap-4 rounded-2xl border bg-card p-4 shadow-sm transition hover:-translate-y-1 hover:border-gold hover:shadow-xl">
+              <div className="grid h-28 w-24 shrink-0 place-items-center overflow-hidden rounded-xl bg-muted">
+                <img src={photoSrc(c.img, true)} alt={c.t} loading="lazy" className="max-h-full max-w-full object-contain" />
+              </div>
+              <div>
+                <h3 className="text-xl">{c.t}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{c.d}</p>
+                <span className="mt-2 inline-block text-sm font-bold text-primary group-hover:text-gold">Vezi →</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* CALCULATOR */}
+      <section className="bg-accent text-accent-foreground">
+        <div className="mx-auto grid max-w-6xl items-center gap-6 px-6 py-12 md:grid-cols-[1fr_auto]">
+          <div>
+            <h2 className="text-3xl md:text-4xl">Cât mănâncă o găină pe zi? Câți saci îți trebuie?</h2>
+            <p className="mt-3 text-lg">Folosește calculatorul nostru gratuit: alegi animalul și numărul, afli kilogramele, sacii și costul — și comanzi direct pe WhatsApp.</p>
+          </div>
+          <Link to="/calculator-furaje" className="rounded-full bg-primary px-8 py-4 text-center text-lg font-bold text-primary-foreground shadow-lg transition hover:-translate-y-0.5">Deschide calculatorul</Link>
+        </div>
+      </section>
+
       {products.length > 0 && (
-        <section className="mx-auto max-w-6xl px-6 pt-20">
+        <section className="mx-auto max-w-6xl px-6 pt-16">
           <div className="flex items-end justify-between gap-4">
             <h2 className="text-3xl md:text-4xl">Produse noi</h2>
             <Link to="/produse" className="font-semibold text-primary">Toate produsele →</Link>
@@ -108,83 +155,85 @@ function Index() {
         </section>
       )}
 
-      <section id="produse" className="mx-auto max-w-6xl px-6 py-24">
-        <div className="text-center">
-          <p className="eyebrow">Ce găsești la noi</p>
-          <h2 className="mt-3 text-4xl md:text-5xl">Mâncare și accesorii pentru animale</h2>
-          <div className="ornament mx-auto mt-6" />
-        </div>
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {categories.map((c) => (
-            <article key={c.t} className="group rounded-xl border bg-card p-8 shadow-sm transition hover:-translate-y-1 hover:border-gold hover:shadow-xl">
-              <div className="ornament" />
-              <h3 className="mt-4 text-2xl">{c.t}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.d}</p>
-              {c.to && <Link to={c.to} className="mt-4 inline-block text-sm font-semibold text-primary transition group-hover:text-gold">Citește ghidul →</Link>}
-            </article>
-          ))}
-        </div>
+      {/* GALERIE */}
+      <section className="mx-auto max-w-6xl px-6 py-16">
+        <p className="eyebrow">Din magazinul nostru</p>
+        <h2 className="mt-2 text-4xl">Furaje, păsări de rasă și hrană — la PET SHOP MAIER Gilău</h2>
+        <div className="mt-8"><Gallery photos={featured} /></div>
+        <p className="mt-6 text-center"><Link to="/galerie" className="inline-block rounded-full border-2 border-primary px-6 py-3 font-bold text-primary transition hover:bg-primary hover:text-primary-foreground">Vezi toate pozele ({GALLERY.length})</Link></p>
       </section>
 
-      <section id="despre" className="bg-secondary py-24">
-        <div className="mx-auto grid max-w-6xl items-center gap-14 px-6 md:grid-cols-2">
-          <img src={fbShop.url} alt="Raft cu hrană pentru animale, adăpători și hrănitori pentru păsări în PET SHOP MAIER Gilău" loading="lazy" width={726} height={225} className="w-full rounded-lg shadow-xl" />
+      {/* DESPRE + FAQ */}
+      <section className="bg-secondary py-16">
+        <div className="mx-auto grid max-w-6xl gap-12 px-6 md:grid-cols-2">
           <div>
             <p className="eyebrow">Despre noi</p>
-            <h2 className="mt-3 text-4xl md:text-5xl">Petshop-ul de cartier în care ai încredere</h2>
-            <div className="ornament mt-6" />
+            <h2 className="mt-2 text-4xl">Magazinul de cartier pentru gospodari și iubitori de animale</h2>
             <p className="mt-6 leading-relaxed text-muted-foreground">
-              La PetShop Maier din Gilău alegem cu atenție fiecare produs. Te ajutăm să găsești hrana potrivită pentru vârsta, talia și sensibilitățile animalului tău — fie că ai un câine, o pisică, un papagal sau un iepuraș.
+              La PET SHOP MAIER din Gilău găsești hrană de calitate pentru animalele de companie și de fermă. Creștem noi înșine găini Brahma premiate la expoziții, așa că știm din experiență ce furaj merge și ce nu. Îți dăm un sfat sincer, fără grabă.
             </p>
-            <ul className="mt-8 space-y-3 text-sm">
-              <li>— Branduri de hrană premium și super-premium</li>
-              <li>— Furaje și semințe vândute și la kilogram</li>
-              <li>— Consiliere sinceră, fără grabă</li>
+            <ul className="mt-6 space-y-2 font-semibold">
+              <li>✔ Furaje la sac și la saci mici</li>
+              <li>✔ Hrană premium pentru câini și pisici</li>
+              <li>✔ Pui Brahma vaccinați și ouă de incubat</li>
+              <li>✔ Comenzi rapide pe WhatsApp</li>
             </ul>
           </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-6 pt-24">
-        <p className="eyebrow">Din magazinul nostru</p>
-        <h2 className="mt-3 text-4xl">Furaje, păsări de rasă și hrană — la PET SHOP MAIER Gilău</h2>
-        <img src={fbGalerie.url} alt="Furaje MAN, Deli Nature HippoX, porumb boabe și păsări Brahma de la PET SHOP MAIER din Gilău" loading="lazy" width={1234} height={610} className="mt-8 w-full rounded-lg shadow-xl" />
-      </section>
-
-      <section className="mx-auto grid max-w-6xl items-center gap-14 px-6 py-24 md:grid-cols-2">
-        <div className="md:order-2">
-          <img src={fbFuraje.url} alt="Furaj combinat granulat Novaticom pentru găini ouătoare, sac 20 kg, la PET SHOP MAIER Gilău" loading="lazy" width={726} height={511} className="w-full rounded-lg shadow-xl" />
-        </div>
-        <div>
-          <p className="eyebrow">Întrebări frecvente</p>
-          <h2 className="mt-3 text-4xl">Ce ne întreabă clienții</h2>
-          <div className="mt-8 divide-y border-y">
-            {faqs.map((f) => (
-              <details key={f.q} className="group py-5">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-xl">
-                  {f.q}
-                  <span className="shrink-0 text-gold transition group-open:rotate-45">+</span>
-                </summary>
-                <p className="mt-3 text-sm text-muted-foreground">{f.a}</p>
-              </details>
-            ))}
+          <div>
+            <p className="eyebrow">Întrebări frecvente</p>
+            <h2 className="mt-2 text-4xl">Ce ne întreabă clienții</h2>
+            <div className="mt-6 divide-y border-y">
+              {faqs.map((f) => (
+                <details key={f.q} className="group py-5">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-xl font-bold">
+                    {f.q}
+                    <span className="shrink-0 text-gold transition group-open:rotate-45">+</span>
+                  </summary>
+                  <p className="mt-3 text-muted-foreground">{f.a}</p>
+                </details>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="bg-primary py-24 text-primary-foreground">
-        <div className="mx-auto max-w-6xl px-6 text-center">
-          <p className="eyebrow">Te așteptăm</p>
-          <h2 className="mt-3 text-4xl md:text-5xl">Vizitează-ne în Gilău</h2>
-          <div className="mt-12 grid gap-10 md:grid-cols-3">
-            <div><h3 className="text-2xl">Adresă</h3><p className="mt-2 opacity-80">Strada Eroilor 1, Gilău, județul Cluj</p></div>
-            <div><h3 className="text-2xl">Program</h3><p className="mt-2 opacity-80">Luni–Vineri 09:00–19:00<br />Sâmbătă 09:00–17:00<br />Duminică închis</p></div>
-            <div><h3 className="text-2xl">Telefon</h3><a href={PHONE_HREF} className="mt-2 block opacity-80 hover:text-gold">{PHONE}</a></div>
+      {/* CONTACT */}
+      <section id="contact" className="bg-primary py-16 text-primary-foreground">
+        <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-2">
+          <div>
+            <p className="eyebrow">Te așteptăm</p>
+            <h2 className="mt-2 text-4xl md:text-5xl">Vizitează-ne în Gilău</h2>
+            <dl className="mt-8 space-y-5 text-lg">
+              <div><dt className="font-bold">Adresă</dt><dd className="opacity-90">{BUSINESS.street}, {BUSINESS.city} {BUSINESS.postal}, județul Cluj</dd></div>
+              <div><dt className="font-bold">Program</dt><dd className="opacity-90">{BUSINESS.hoursText[0]}<br />{BUSINESS.hoursText[1]}</dd></div>
+              <div><dt className="font-bold">Telefon</dt><dd><a href={PHONE_HREF} className="opacity-90 hover:text-accent">{PHONE}</a></dd></div>
+            </dl>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <WhatsAppButton>Scrie-ne pe WhatsApp</WhatsAppButton>
+              <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="rounded-full bg-white px-6 py-3 font-bold text-primary">Traseu Google Maps</a>
+            </div>
           </div>
+          <iframe
+            title="Harta PET SHOP MAIER Gilău"
+            src="https://www.google.com/maps?q=Strada%20Eroilor%201%2C%20Gil%C4%83u%2C%20Cluj&output=embed"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="h-80 w-full rounded-3xl border-0 shadow-2xl md:h-full md:min-h-80"
+          />
         </div>
       </section>
 
       <Footer />
     </main>
+  );
+}
+
+function PriceCard({ t, p, u }: { t: string; p: string; u: string }) {
+  return (
+    <div className="rounded-2xl bg-card px-6 py-4 text-center shadow ring-1 ring-border">
+      <p className="text-sm font-semibold text-muted-foreground">{t}</p>
+      <p className="font-serif text-3xl font-extrabold text-primary">{p}</p>
+      <p className="text-xs text-muted-foreground">{u}</p>
+    </div>
   );
 }

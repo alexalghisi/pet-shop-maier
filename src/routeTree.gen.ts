@@ -12,14 +12,22 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccesoriiCainiRouteImport } from './routes/accesorii-caini'
 import { Route as AdminRouteImport } from './routes/admin'
+import { Route as CalculatorFurajeRouteImport } from './routes/calculator-furaje'
 import { Route as FurajeAnimaleRouteImport } from './routes/furaje-animale'
 import { Route as FurajeGainiRouteImport } from './routes/furaje-gaini'
+import { Route as FurajeManRouteImport } from './routes/furaje-man'
+import { Route as FurajeVaciDeLapteRouteImport } from './routes/furaje-vaci-de-lapte'
+import { Route as GalerieRouteImport } from './routes/galerie'
+import { Route as HranaCaiRouteImport } from './routes/hrana-cai'
 import { Route as HranaCainiRouteImport } from './routes/hrana-caini'
 import { Route as HranaIepuriRouteImport } from './routes/hrana-iepuri'
 import { Route as HranaPisiciRouteImport } from './routes/hrana-pisici'
 import { Route as HranaPorumbeiRouteImport } from './routes/hrana-porumbei'
+import { Route as HranaPrepeliteRouteImport } from './routes/hrana-prepelite'
 import { Route as NisipPisiciRouteImport } from './routes/nisip-pisici'
+import { Route as OfertaFurajeRouteImport } from './routes/oferta-furaje'
 import { Route as PetShopClujRouteImport } from './routes/pet-shop-cluj'
+import { Route as PuiBrahmaRouteImport } from './routes/pui-brahma'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as MediaSplatRouteImport } from './routes/media.$'
 import { Route as ProduseIndexRouteImport } from './routes/produse.index'
@@ -40,6 +48,11 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CalculatorFurajeRoute = CalculatorFurajeRouteImport.update({
+  id: '/calculator-furaje',
+  path: '/calculator-furaje',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FurajeAnimaleRoute = FurajeAnimaleRouteImport.update({
   id: '/furaje-animale',
   path: '/furaje-animale',
@@ -48,6 +61,26 @@ const FurajeAnimaleRoute = FurajeAnimaleRouteImport.update({
 const FurajeGainiRoute = FurajeGainiRouteImport.update({
   id: '/furaje-gaini',
   path: '/furaje-gaini',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FurajeManRoute = FurajeManRouteImport.update({
+  id: '/furaje-man',
+  path: '/furaje-man',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FurajeVaciDeLapteRoute = FurajeVaciDeLapteRouteImport.update({
+  id: '/furaje-vaci-de-lapte',
+  path: '/furaje-vaci-de-lapte',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalerieRoute = GalerieRouteImport.update({
+  id: '/galerie',
+  path: '/galerie',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HranaCaiRoute = HranaCaiRouteImport.update({
+  id: '/hrana-cai',
+  path: '/hrana-cai',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HranaCainiRoute = HranaCainiRouteImport.update({
@@ -70,14 +103,29 @@ const HranaPorumbeiRoute = HranaPorumbeiRouteImport.update({
   path: '/hrana-porumbei',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HranaPrepeliteRoute = HranaPrepeliteRouteImport.update({
+  id: '/hrana-prepelite',
+  path: '/hrana-prepelite',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NisipPisiciRoute = NisipPisiciRouteImport.update({
   id: '/nisip-pisici',
   path: '/nisip-pisici',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OfertaFurajeRoute = OfertaFurajeRouteImport.update({
+  id: '/oferta-furaje',
+  path: '/oferta-furaje',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PetShopClujRoute = PetShopClujRouteImport.update({
   id: '/pet-shop-cluj',
   path: '/pet-shop-cluj',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PuiBrahmaRoute = PuiBrahmaRouteImport.update({
+  id: '/pui-brahma',
+  path: '/pui-brahma',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -105,14 +153,22 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/accesorii-caini': typeof AccesoriiCainiRoute
   '/admin': typeof AdminRoute
+  '/calculator-furaje': typeof CalculatorFurajeRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/furaje-gaini': typeof FurajeGainiRoute
+  '/furaje-man': typeof FurajeManRoute
+  '/furaje-vaci-de-lapte': typeof FurajeVaciDeLapteRoute
+  '/galerie': typeof GalerieRoute
+  '/hrana-cai': typeof HranaCaiRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-iepuri': typeof HranaIepuriRoute
   '/hrana-pisici': typeof HranaPisiciRoute
   '/hrana-porumbei': typeof HranaPorumbeiRoute
+  '/hrana-prepelite': typeof HranaPrepeliteRoute
   '/nisip-pisici': typeof NisipPisiciRoute
+  '/oferta-furaje': typeof OfertaFurajeRoute
   '/pet-shop-cluj': typeof PetShopClujRoute
+  '/pui-brahma': typeof PuiBrahmaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/media/$': typeof MediaSplatRoute
   '/produse/$slug': typeof ProduseSlugRoute
@@ -122,14 +178,22 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/accesorii-caini': typeof AccesoriiCainiRoute
   '/admin': typeof AdminRoute
+  '/calculator-furaje': typeof CalculatorFurajeRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/furaje-gaini': typeof FurajeGainiRoute
+  '/furaje-man': typeof FurajeManRoute
+  '/furaje-vaci-de-lapte': typeof FurajeVaciDeLapteRoute
+  '/galerie': typeof GalerieRoute
+  '/hrana-cai': typeof HranaCaiRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-iepuri': typeof HranaIepuriRoute
   '/hrana-pisici': typeof HranaPisiciRoute
   '/hrana-porumbei': typeof HranaPorumbeiRoute
+  '/hrana-prepelite': typeof HranaPrepeliteRoute
   '/nisip-pisici': typeof NisipPisiciRoute
+  '/oferta-furaje': typeof OfertaFurajeRoute
   '/pet-shop-cluj': typeof PetShopClujRoute
+  '/pui-brahma': typeof PuiBrahmaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/media/$': typeof MediaSplatRoute
   '/produse/$slug': typeof ProduseSlugRoute
@@ -140,14 +204,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/accesorii-caini': typeof AccesoriiCainiRoute
   '/admin': typeof AdminRoute
+  '/calculator-furaje': typeof CalculatorFurajeRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/furaje-gaini': typeof FurajeGainiRoute
+  '/furaje-man': typeof FurajeManRoute
+  '/furaje-vaci-de-lapte': typeof FurajeVaciDeLapteRoute
+  '/galerie': typeof GalerieRoute
+  '/hrana-cai': typeof HranaCaiRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-iepuri': typeof HranaIepuriRoute
   '/hrana-pisici': typeof HranaPisiciRoute
   '/hrana-porumbei': typeof HranaPorumbeiRoute
+  '/hrana-prepelite': typeof HranaPrepeliteRoute
   '/nisip-pisici': typeof NisipPisiciRoute
+  '/oferta-furaje': typeof OfertaFurajeRoute
   '/pet-shop-cluj': typeof PetShopClujRoute
+  '/pui-brahma': typeof PuiBrahmaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/media/$': typeof MediaSplatRoute
   '/produse/$slug': typeof ProduseSlugRoute
@@ -159,14 +231,22 @@ export interface FileRouteTypes {
     | '/'
     | '/accesorii-caini'
     | '/admin'
+    | '/calculator-furaje'
     | '/furaje-animale'
     | '/furaje-gaini'
+    | '/furaje-man'
+    | '/furaje-vaci-de-lapte'
+    | '/galerie'
+    | '/hrana-cai'
     | '/hrana-caini'
     | '/hrana-iepuri'
     | '/hrana-pisici'
     | '/hrana-porumbei'
+    | '/hrana-prepelite'
     | '/nisip-pisici'
+    | '/oferta-furaje'
     | '/pet-shop-cluj'
+    | '/pui-brahma'
     | '/sitemap.xml'
     | '/media/$'
     | '/produse/$slug'
@@ -176,14 +256,22 @@ export interface FileRouteTypes {
     | '/'
     | '/accesorii-caini'
     | '/admin'
+    | '/calculator-furaje'
     | '/furaje-animale'
     | '/furaje-gaini'
+    | '/furaje-man'
+    | '/furaje-vaci-de-lapte'
+    | '/galerie'
+    | '/hrana-cai'
     | '/hrana-caini'
     | '/hrana-iepuri'
     | '/hrana-pisici'
     | '/hrana-porumbei'
+    | '/hrana-prepelite'
     | '/nisip-pisici'
+    | '/oferta-furaje'
     | '/pet-shop-cluj'
+    | '/pui-brahma'
     | '/sitemap.xml'
     | '/media/$'
     | '/produse/$slug'
@@ -193,14 +281,22 @@ export interface FileRouteTypes {
     | '/'
     | '/accesorii-caini'
     | '/admin'
+    | '/calculator-furaje'
     | '/furaje-animale'
     | '/furaje-gaini'
+    | '/furaje-man'
+    | '/furaje-vaci-de-lapte'
+    | '/galerie'
+    | '/hrana-cai'
     | '/hrana-caini'
     | '/hrana-iepuri'
     | '/hrana-pisici'
     | '/hrana-porumbei'
+    | '/hrana-prepelite'
     | '/nisip-pisici'
+    | '/oferta-furaje'
     | '/pet-shop-cluj'
+    | '/pui-brahma'
     | '/sitemap.xml'
     | '/media/$'
     | '/produse/$slug'
@@ -211,14 +307,22 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AccesoriiCainiRoute: typeof AccesoriiCainiRoute
   AdminRoute: typeof AdminRoute
+  CalculatorFurajeRoute: typeof CalculatorFurajeRoute
   FurajeAnimaleRoute: typeof FurajeAnimaleRoute
   FurajeGainiRoute: typeof FurajeGainiRoute
+  FurajeManRoute: typeof FurajeManRoute
+  FurajeVaciDeLapteRoute: typeof FurajeVaciDeLapteRoute
+  GalerieRoute: typeof GalerieRoute
+  HranaCaiRoute: typeof HranaCaiRoute
   HranaCainiRoute: typeof HranaCainiRoute
   HranaIepuriRoute: typeof HranaIepuriRoute
   HranaPisiciRoute: typeof HranaPisiciRoute
   HranaPorumbeiRoute: typeof HranaPorumbeiRoute
+  HranaPrepeliteRoute: typeof HranaPrepeliteRoute
   NisipPisiciRoute: typeof NisipPisiciRoute
+  OfertaFurajeRoute: typeof OfertaFurajeRoute
   PetShopClujRoute: typeof PetShopClujRoute
+  PuiBrahmaRoute: typeof PuiBrahmaRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   MediaSplatRoute: typeof MediaSplatRoute
   ProduseSlugRoute: typeof ProduseSlugRoute
@@ -248,6 +352,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/calculator-furaje': {
+      id: '/calculator-furaje'
+      path: '/calculator-furaje'
+      fullPath: '/calculator-furaje'
+      preLoaderRoute: typeof CalculatorFurajeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/furaje-animale': {
       id: '/furaje-animale'
       path: '/furaje-animale'
@@ -260,6 +371,34 @@ declare module '@tanstack/react-router' {
       path: '/furaje-gaini'
       fullPath: '/furaje-gaini'
       preLoaderRoute: typeof FurajeGainiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/furaje-man': {
+      id: '/furaje-man'
+      path: '/furaje-man'
+      fullPath: '/furaje-man'
+      preLoaderRoute: typeof FurajeManRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/furaje-vaci-de-lapte': {
+      id: '/furaje-vaci-de-lapte'
+      path: '/furaje-vaci-de-lapte'
+      fullPath: '/furaje-vaci-de-lapte'
+      preLoaderRoute: typeof FurajeVaciDeLapteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galerie': {
+      id: '/galerie'
+      path: '/galerie'
+      fullPath: '/galerie'
+      preLoaderRoute: typeof GalerieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hrana-cai': {
+      id: '/hrana-cai'
+      path: '/hrana-cai'
+      fullPath: '/hrana-cai'
+      preLoaderRoute: typeof HranaCaiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hrana-caini': {
@@ -290,6 +429,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HranaPorumbeiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hrana-prepelite': {
+      id: '/hrana-prepelite'
+      path: '/hrana-prepelite'
+      fullPath: '/hrana-prepelite'
+      preLoaderRoute: typeof HranaPrepeliteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/nisip-pisici': {
       id: '/nisip-pisici'
       path: '/nisip-pisici'
@@ -297,11 +443,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NisipPisiciRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/oferta-furaje': {
+      id: '/oferta-furaje'
+      path: '/oferta-furaje'
+      fullPath: '/oferta-furaje'
+      preLoaderRoute: typeof OfertaFurajeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pet-shop-cluj': {
       id: '/pet-shop-cluj'
       path: '/pet-shop-cluj'
       fullPath: '/pet-shop-cluj'
       preLoaderRoute: typeof PetShopClujRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pui-brahma': {
+      id: '/pui-brahma'
+      path: '/pui-brahma'
+      fullPath: '/pui-brahma'
+      preLoaderRoute: typeof PuiBrahmaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -339,14 +499,22 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AccesoriiCainiRoute: AccesoriiCainiRoute,
   AdminRoute: AdminRoute,
+  CalculatorFurajeRoute: CalculatorFurajeRoute,
   FurajeAnimaleRoute: FurajeAnimaleRoute,
   FurajeGainiRoute: FurajeGainiRoute,
+  FurajeManRoute: FurajeManRoute,
+  FurajeVaciDeLapteRoute: FurajeVaciDeLapteRoute,
+  GalerieRoute: GalerieRoute,
+  HranaCaiRoute: HranaCaiRoute,
   HranaCainiRoute: HranaCainiRoute,
   HranaIepuriRoute: HranaIepuriRoute,
   HranaPisiciRoute: HranaPisiciRoute,
   HranaPorumbeiRoute: HranaPorumbeiRoute,
+  HranaPrepeliteRoute: HranaPrepeliteRoute,
   NisipPisiciRoute: NisipPisiciRoute,
+  OfertaFurajeRoute: OfertaFurajeRoute,
   PetShopClujRoute: PetShopClujRoute,
+  PuiBrahmaRoute: PuiBrahmaRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   MediaSplatRoute: MediaSplatRoute,
   ProduseSlugRoute: ProduseSlugRoute,
