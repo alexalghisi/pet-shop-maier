@@ -1,6 +1,18 @@
-# Pet Shop Maier
+# PET SHOP MAIER – pet shop și furaje în Gilău, Cluj
 
-Fă-i un site profesional la PetShop Mayer din Giulești și îi iei pozele de pe pagina de Facebook. Găsești super simplu, sunt 100% sigur. Site-ul să fie SEO friendly. Imaginile să le găsești la ei pe site și fă-l cât mai frumos, clasic, elegant, atractiv. Să fie printre primele locuri la căutările relevante. Nu știu ce se caută legat de furaje pentru animale, mâncare animale, habar n-am. Caută tu pe Google Trends și optimizează SEO pentru acest lucru.
+**Site live:** https://pethopmaier.shop
+
+![Pagina principală](docs/preview-home.jpg)
+
+![Calculator furaje](docs/preview-calculator.jpg)
+
+## Ce conține
+
+- **Calculator furaje** (`/calculator-furaje`) – consum zilnic, kg, saci și cost estimat, cu comandă directă pe WhatsApp.
+- **Galerie reală** (`/galerie`) – pozele de pe pagina de Facebook, afișate întregi (fără crop), cu lightbox.
+- **Pagini SEO** pe căutările din nișă: pui Brahma de vânzare, Furaje MAN, ofertă tărâțe/furaj combinat, furaje vaci de lapte, hrană cai, hrană prepelițe + ghidurile existente.
+- **SEO tehnic**: canonical și og:url absolute, og:image pe fiecare pagină, JSON-LD (PetStore/LocalBusiness cu program, geo și oferte, FAQPage, BreadcrumbList, Product, ImageGallery, WebApplication), sitemap cu imagini.
+- **WhatsApp**: orice mesaj pornește cu „Bună, am văzut magazinul dvs. pe https://pethopmaier.shop și m-ar interesa …”.
 
 This project was built with [Lovable](https://lovable.dev).
 

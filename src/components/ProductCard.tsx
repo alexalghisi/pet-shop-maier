@@ -18,7 +18,7 @@ export function ProductCard({ p }: { p: Product }) {
         <div className="mt-auto flex items-center justify-between gap-2 pt-4">
           <span className="text-xl font-bold text-primary">{formatPrice(p.price)}</span>
           <a
-            href={whatsappLink(`Bună! Sunt interesat de: ${p.name}`)}
+            href={whatsappLink(`produsul ${p.name}.`)}
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-lg bg-accent px-3 py-2 text-sm font-semibold text-accent-foreground transition hover:opacity-90"
