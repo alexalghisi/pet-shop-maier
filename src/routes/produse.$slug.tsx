@@ -3,6 +3,7 @@ import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Header, Footer } from "@/components/site";
 import { getProduct } from "@/lib/products.functions";
+import { seoHead, breadcrumbLd } from "@/lib/seo";
 import { formatPrice, mediaUrl, categoryLabel, whatsappLink, SITE_URL } from "@/lib/products";
 
 const productQuery = (slug: string) =>
@@ -15,45 +16,39 @@ export const Route = createFileRoute("/produse/$slug")({
     return p;
   },
   head: ({ loaderData: p, params }) => {
-    if (!p) return { meta: [{ title: "Produs negăsit" }, { name: "robots", content: "noindex" }] };
-    const title = `${p.seo_title || p.name} – ${formatPrice(p.price)} | PetShop Maier Gilău`;
-    const desc = (p.description || p.name).slice(0, 155);
-    const img = p.media.find((m) => m.type === "image");
-    const imgUrl = img ? `${SITE_URL}${mediaUrl(img.path)}` : undefined;
-    return {
-      meta: [
-        { title },
-        { name: "description", content: desc },
-        { property: "og:title", content: title },
-        { property: "og:description", content: desc },
-        { property: "og:type", content: "product" },
-        { property: "og:url", content: `/produse/${params.slug}` },
-        { name: "twitter:card", content: "summary_large_image" },
-        ...(imgUrl ? [{ property: "og:image", content: imgUrl }, { name: "twitter:image", content: imgUrl }] : []),
-      ],
-      links: [{ rel: "canonical", href: `/produse/${params.slug}` }],
-      scripts: [
+    if (!p) return seoHead({ title: "Produs negăsit | PET SHOP MAIER", description: "Produsul nu a fost găsit.", path: `/produse/${params.slug}`, noindex: true });
+    const title = `${p.seo_title || p.name} – ${formatPrice(p.price)} | PET SHOP MAIER Gilău`;
+    const desc = `${(p.description || p.name).replace(/\s+/g, " ").slice(0, 140)} Preț ${formatPrice(p.price)}, Gilău, jud. Cluj.`;
+    const imgs = p.media.filter((m) => m.type === "image").map((m) => `${SITE_URL}${mediaUrl(m.path)}`);
+    const path = `/produse/${params.slug}`;
+    return seoHead({
+      title,
+      description: desc,
+      path,
+      type: "product",
+      image: imgs[0],
+      ld: [
         {
-          type: "application/ld+json",
-          children: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            name: p.name,
-            description: p.description,
-            image: p.media.filter((m) => m.type === "image").map((m) => `${SITE_URL}${mediaUrl(m.path)}`),
-            category: categoryLabel(p.category),
-            brand: { "@type": "Brand", name: "PetShop Maier" },
-            offers: {
-              "@type": "Offer",
-              price: p.price.toFixed(2),
-              priceCurrency: "RON",
-              availability: p.in_stock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
-              url: `${SITE_URL}/produse/${params.slug}`,
-            },
-          }),
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: p.name,
+          description: p.description,
+          image: imgs,
+          sku: p.id,
+          category: categoryLabel(p.category),
+          offers: {
+            "@type": "Offer",
+            price: p.price.toFixed(2),
+            priceCurrency: "RON",
+            availability: p.in_stock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+            itemCondition: "https://schema.org/NewCondition",
+            url: `${SITE_URL}${path}`,
+            seller: { "@id": `${SITE_URL}/#store` },
+          },
         },
+        breadcrumbLd([{ name: "Produse", path: "/produse" }, { name: p.name, path }]),
       ],
-    };
+    });
   },
   notFoundComponent: ProductNotFound,
   component: ProductPage,
@@ -108,7 +103,7 @@ function ProductPage() {
           <h1 className="mt-2 text-3xl md:text-4xl">{p.name}</h1>
           <p className="mt-4 text-3xl font-bold text-primary">{formatPrice(p.price)}</p>
           <p className={`mt-2 text-sm font-semibold ${p.in_stock ? "text-primary" : "text-destructive"}`}>{p.in_stock ? "✓ În stoc" : "Stoc epuizat"}</p>
-          <a href={whatsappLink(`Bună! Sunt interesat de: ${p.name}`)} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-lg bg-whatsapp px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">
+          <a href={whatsappLink(`produsul ${p.name}.`)} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-lg bg-whatsapp px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">
             Întreabă pe WhatsApp despre acest produs
           </a>
           <p className="mt-3 text-sm text-muted-foreground">Vino în magazin la Str. Eroilor 1, Gilău, sau sună-ne pentru disponibilitate.</p>

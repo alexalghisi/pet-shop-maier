@@ -6,28 +6,18 @@ import { productsQuery } from "@/lib/products.queries";
 import { whatsappLink } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle, PackageOpen } from "lucide-react";
+import { seoHead, breadcrumbLd } from "@/lib/seo";
 import { NativeBanner } from "@/components/ads";
 import hero from "@/assets/hero.jpg";
 import fbShop from "@/assets/fb-shop.jpg.asset.json";
 
 
-const TITLE = "Produse pentru animale cu prețuri – PetShop Maier Gilău";
+const TITLE = "Produse pentru animale cu prețuri – furaje, hrană câini și pisici | PET SHOP MAIER Gilău";
 const DESC = "Hrană pentru câini și pisici, furaje, semințe și accesorii cu prețuri afișate. Comandă online de la PetShop Maier, Gilău, județul Cluj.";
 
 export const Route = createFileRoute("/produse/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery),
-  head: () => ({
-    meta: [
-      { title: TITLE },
-      { name: "description", content: DESC },
-      { property: "og:title", content: TITLE },
-      { property: "og:description", content: DESC },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "/produse" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-    links: [{ rel: "canonical", href: "/produse" }],
-  }),
+  head: () => seoHead({ title: TITLE, description: DESC, path: "/produse", ld: [breadcrumbLd([{ name: "Produse", path: "/produse" }])] }),
   component: ProductsPage,
 });
 
@@ -59,7 +49,7 @@ function ProductsPage() {
               <h3 className="mt-4 text-2xl">{data.length === 0 ? "Catalogul online se pregătește" : "Momentan nu sunt produse în această categorie"}</h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">{data.length === 0 ? "Până apar produsele și prețurile aici, ne găsești în magazinul din Gilău. Scrie-ne despre hrana sau accesoriile pe care le cauți." : "Vezi celelalte categorii sau întreabă-ne despre produsul pe care îl cauți."}</p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Button asChild size="lg"><a href={whatsappLink("Bună! Aș dori informații despre produsele disponibile în magazin.")} target="_blank" rel="noopener noreferrer"><MessageCircle />Întreabă pe WhatsApp</a></Button>
+                <Button asChild size="lg"><a href={whatsappLink("produsele disponibile în magazin.")} target="_blank" rel="noopener noreferrer"><MessageCircle />Întreabă pe WhatsApp</a></Button>
                 <Button asChild variant="secondary" size="lg"><Link to="/">Pagina principală<ArrowRight /></Link></Button>
               </div>
             </div>

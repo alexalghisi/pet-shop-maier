@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
-import img from "@/assets/food.jpg";
+import { GALLERY, byTag, photoSrc } from "@/lib/gallery";
 
 const faqs = [
   { q: "Ce furaj e cel mai bun pentru găini ouătoare?", a: "Un nutreț combinat pentru ouătoare, cu 16–17% proteină și calciu adăugat. În magazin avem furaje de la producători cunoscuți." },
@@ -18,8 +18,8 @@ export const Route = createFileRoute("/furaje-gaini")({
       eyebrow="Ghid · Furaje găini"
       title="Furaje pentru găini ouătoare și pui"
       intro="Găinile hrănite corect fac mai multe ouă, cu coaja tare. Iată ce furaje să alegi pentru fiecare etapă."
-      image={img}
-      imageAlt="Saci cu furaje pentru găini ouătoare la PetShop Maier Gilău"
+      image={photoSrc("furaje-man-10kg-gaini-ouatoare", true)}
+      imageAlt="Saci Furaje MAN de 10 kg pentru găini ouătoare la PET SHOP MAIER Gilău"
       sections={[
         { h: "Furaje pe etape", p: "Fiecare vârstă are nevoile ei.", list: ["Pui (0–8 săptămâni): starter cu multă proteină", "Tineret (8–18 săptămâni): furaj de creștere", "Găini ouătoare: nutreț combinat cu calciu și vitamine"] },
         { h: "Nutreț combinat sau porumb?", p: "Porumbul singur îngrașă și dă puține ouă. Nutrețul combinat pentru ouătoare are proteinele, calciul și vitaminele necesare; porumbul și grâul pot completa rația." },
@@ -27,7 +27,8 @@ export const Route = createFileRoute("/furaje-gaini")({
         { h: "Pentru coajă tare", p: "Adaugă scoici măcinate sau grit calcaros la discreție, separat de furaj." },
       ]}
       faqs={faqs}
-      related={[{ to: "/furaje-animale", label: "Furaje pentru animale" }, { to: "/hrana-porumbei", label: "Hrană pentru porumbei" }]}
+      photos={GALLERY.filter((p) => ["furaje-man-10kg-gaini-ouatoare", "furaje-man-10kg-pui", "porumb-boabe-30kg-calitate-superioara", "oferta-tarate-furaj-combinat-gilau", "closca-brahma-cu-pui", "pui-brahma-2-3-luni-vaccinati"].includes(p.slug))}
+      related={[{ to: "/pui-brahma", label: "Pui Brahma de vânzare" }, { to: "/calculator-furaje", label: "Calculator furaje" }, { to: "/furaje-animale", label: "Furaje pentru animale" }, { to: "/hrana-porumbei", label: "Hrană pentru porumbei" }]}
     />
   ),
 });
