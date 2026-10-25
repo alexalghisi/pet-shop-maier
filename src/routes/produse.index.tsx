@@ -7,7 +7,7 @@ import { whatsappLink } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle, PackageOpen } from "lucide-react";
 import { seoHead, breadcrumbLd } from "@/lib/seo";
-import { NativeBanner } from "@/components/ads";
+import { AdsterraSlot } from "@/components/ads";
 import hero from "@/assets/hero.jpg";
 import fbShop from "@/assets/fb-shop.jpg.asset.json";
 
@@ -41,6 +41,7 @@ function ProductsPage() {
           <h2 className="text-2xl">Toate produsele</h2>
           <span className="text-sm text-muted-foreground">{data.length > 0 ? `${list.length} produse` : "Magazinul din Str. Eroilor 1"}</span>
         </div>
+        <AdsterraSlot kind="native" />
         {list.length === 0 ? (
           <div className="mt-10 grid items-center gap-8 border-t border-border pt-10 md:grid-cols-2 md:gap-12">
             <img src={fbShop.url} alt="Rafturi cu hrană și accesorii din magazinul PetShop Maier din Gilău" width={726} height={225} className="w-full rounded-lg object-contain" />
@@ -60,9 +61,6 @@ function ProductsPage() {
           </div>
         )}
       </section>
-      <div className="mx-auto max-w-6xl px-6 pb-10">
-        <NativeBanner />
-      </div>
       <Footer />
     </main>
   );
