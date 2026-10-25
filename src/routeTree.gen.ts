@@ -14,6 +14,7 @@ import { Route as AccesoriiCainiRouteImport } from './routes/accesorii-caini'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as CalculatorFurajeRouteImport } from './routes/calculator-furaje'
 import { Route as FurajeAnimaleRouteImport } from './routes/furaje-animale'
+import { Route as FurajeFlorestiRouteImport } from './routes/furaje-floresti'
 import { Route as FurajeGainiRouteImport } from './routes/furaje-gaini'
 import { Route as FurajeManRouteImport } from './routes/furaje-man'
 import { Route as FurajeVaciDeLapteRouteImport } from './routes/furaje-vaci-de-lapte'
@@ -56,6 +57,11 @@ const CalculatorFurajeRoute = CalculatorFurajeRouteImport.update({
 const FurajeAnimaleRoute = FurajeAnimaleRouteImport.update({
   id: '/furaje-animale',
   path: '/furaje-animale',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FurajeFlorestiRoute = FurajeFlorestiRouteImport.update({
+  id: '/furaje-floresti',
+  path: '/furaje-floresti',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FurajeGainiRoute = FurajeGainiRouteImport.update({
@@ -155,6 +161,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/calculator-furaje': typeof CalculatorFurajeRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
+  '/furaje-floresti': typeof FurajeFlorestiRoute
   '/furaje-gaini': typeof FurajeGainiRoute
   '/furaje-man': typeof FurajeManRoute
   '/furaje-vaci-de-lapte': typeof FurajeVaciDeLapteRoute
@@ -180,6 +187,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/calculator-furaje': typeof CalculatorFurajeRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
+  '/furaje-floresti': typeof FurajeFlorestiRoute
   '/furaje-gaini': typeof FurajeGainiRoute
   '/furaje-man': typeof FurajeManRoute
   '/furaje-vaci-de-lapte': typeof FurajeVaciDeLapteRoute
@@ -206,6 +214,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/calculator-furaje': typeof CalculatorFurajeRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
+  '/furaje-floresti': typeof FurajeFlorestiRoute
   '/furaje-gaini': typeof FurajeGainiRoute
   '/furaje-man': typeof FurajeManRoute
   '/furaje-vaci-de-lapte': typeof FurajeVaciDeLapteRoute
@@ -233,6 +242,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/calculator-furaje'
     | '/furaje-animale'
+    | '/furaje-floresti'
     | '/furaje-gaini'
     | '/furaje-man'
     | '/furaje-vaci-de-lapte'
@@ -258,6 +268,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/calculator-furaje'
     | '/furaje-animale'
+    | '/furaje-floresti'
     | '/furaje-gaini'
     | '/furaje-man'
     | '/furaje-vaci-de-lapte'
@@ -283,6 +294,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/calculator-furaje'
     | '/furaje-animale'
+    | '/furaje-floresti'
     | '/furaje-gaini'
     | '/furaje-man'
     | '/furaje-vaci-de-lapte'
@@ -309,6 +321,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   CalculatorFurajeRoute: typeof CalculatorFurajeRoute
   FurajeAnimaleRoute: typeof FurajeAnimaleRoute
+  FurajeFlorestiRoute: typeof FurajeFlorestiRoute
   FurajeGainiRoute: typeof FurajeGainiRoute
   FurajeManRoute: typeof FurajeManRoute
   FurajeVaciDeLapteRoute: typeof FurajeVaciDeLapteRoute
@@ -364,6 +377,13 @@ declare module '@tanstack/react-router' {
       path: '/furaje-animale'
       fullPath: '/furaje-animale'
       preLoaderRoute: typeof FurajeAnimaleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/furaje-floresti': {
+      id: '/furaje-floresti'
+      path: '/furaje-floresti'
+      fullPath: '/furaje-floresti'
+      preLoaderRoute: typeof FurajeFlorestiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/furaje-gaini': {
@@ -501,6 +521,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   CalculatorFurajeRoute: CalculatorFurajeRoute,
   FurajeAnimaleRoute: FurajeAnimaleRoute,
+  FurajeFlorestiRoute: FurajeFlorestiRoute,
   FurajeGainiRoute: FurajeGainiRoute,
   FurajeManRoute: FurajeManRoute,
   FurajeVaciDeLapteRoute: FurajeVaciDeLapteRoute,
