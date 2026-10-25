@@ -28,6 +28,7 @@ export const GUIDES = [
   { to: "/furaje-vaci-de-lapte", label: "Furaje vaci de lapte" },
   { to: "/hrana-prepelite", label: "Hrană prepelițe" },
   { to: "/furaje-gaini", label: "Furaje găini" },
+  { to: "/hrana-animale", label: "Hrană animale" },
   { to: "/furaje-animale", label: "Furaje animale" },
   { to: "/hrana-porumbei", label: "Hrană porumbei" },
   { to: "/hrana-iepuri", label: "Hrană iepuri" },
@@ -116,7 +117,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-3">
         <div>
           <p className="font-serif text-2xl font-extrabold text-white">🐾 PET SHOP <span className="text-gold">MAIER</span></p>
-          <p className="mt-3 leading-relaxed">Pet shop și magazin de furaje în Gilău, județul Cluj: hrană pentru câini și pisici, Furaje MAN, porumb, tărâțe, hrană pentru cai, pui și ouă Brahma de rasă.</p>
+          <p className="mt-3 leading-relaxed">Pet shop și magazin de hrană pentru animale în Gilău, județul Cluj: mâncare pentru câini și pisici, Furaje MAN, porumb, tărâțe, hrană pentru cai, pui și ouă Brahma de rasă.</p>
         </div>
         <address className="not-italic leading-relaxed">
           <p className="font-bold text-white">Contact</p>
@@ -132,7 +133,7 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <p className="mx-auto mt-10 max-w-6xl border-t border-white/10 px-6 pt-6 text-xs">© {new Date().getFullYear()} PET SHOP MAIER · Pet shop Gilău · Furaje Gilău · Livrăm în Gilău, Florești, Cluj-Napoca și împrejurimi</p>
+      <p className="mx-auto mt-10 max-w-6xl border-t border-white/10 px-6 pt-6 text-xs">© {new Date().getFullYear()} PET SHOP MAIER · Pet shop Gilău · Hrană animale Cluj · Furaje Gilău · Livrăm în Gilău, Florești, Cluj-Napoca și împrejurimi</p>
     </footer>
     </>
   );
@@ -166,6 +167,7 @@ export function GuidePage(props: {
   waInterest?: string;
   photos?: GalleryPhoto[];
   priceBox?: { label: string; price: string; unit: string }[];
+  searches?: string[];
 }) {
   return (
     <main>
@@ -220,6 +222,16 @@ export function GuidePage(props: {
           <section className="mb-12">
             <h2 className="text-3xl">Poze reale din magazin</h2>
             <div className="mt-6"><Gallery photos={props.photos} columns="columns-2 sm:columns-3" /></div>
+          </section>
+        )}
+
+        {props.searches && props.searches.length > 0 && (
+          <section className="mb-12">
+            <h2 className="text-3xl">Căutări frecvente</h2>
+            <p className="mt-4 text-muted-foreground">Clienții ne găsesc căutând:</p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {props.searches.map((k) => <li key={k} className="rounded-full bg-secondary px-3 py-1 text-sm font-semibold">{k}</li>)}
+            </ul>
           </section>
         )}
 

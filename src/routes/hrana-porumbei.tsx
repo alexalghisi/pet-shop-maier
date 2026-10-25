@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
+import { KW } from "@/lib/keywords";
 import img from "@/assets/food.webp";
 
 const faqs = [
@@ -12,7 +13,7 @@ const TITLE = "Hrană pentru porumbei în Gilău, Cluj – amestecuri de seminț
 const DESC = "Ce mănâncă porumbeii: amestecuri de semințe pentru porumbei voiajori și de rasă, vitamine și grit. Hrană porumbei la PetShop Maier, Gilău.";
 
 export const Route = createFileRoute("/hrana-porumbei")({
-  head: () => guideHead(TITLE, DESC, "/hrana-porumbei", faqs),
+  head: () => guideHead(TITLE, DESC, "/hrana-porumbei", faqs, { keywords: KW["/hrana-porumbei"] }),
   component: () => (
     <GuidePage
       eyebrow="Ghid · Hrană porumbei"
@@ -26,7 +27,7 @@ export const Route = createFileRoute("/hrana-porumbei")({
         { h: "Grit și minerale", p: "Porumbeii au nevoie mereu de grit și minerale pentru digestie și oase puternice." },
       ]}
       faqs={faqs}
-      related={[{ to: "/furaje-gaini", label: "Furaje pentru găini" }, { to: "/furaje-animale", label: "Furaje pentru animale" }]}
+      related={[{ to: "/hrana-animale", label: "Hrană animale" }, { to: "/furaje-gaini", label: "Furaje pentru găini" }, { to: "/furaje-animale", label: "Furaje pentru animale" }]}
     />
   ),
 });

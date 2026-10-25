@@ -6,6 +6,7 @@ import { whatsappLink } from "@/lib/products";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle, PackageOpen } from "lucide-react";
 import { seoHead, breadcrumbLd } from "@/lib/seo";
+import { KW } from "@/lib/keywords";
 import { AdsterraSlot } from "@/components/ads";
 import hero from "@/assets/hero.webp";
 import fbShop from "@/assets/fb-shop.jpg.asset.json";
@@ -16,7 +17,7 @@ const DESC = "Hrană pentru câini și pisici, furaje, semințe și accesorii cu
 
 export const Route = createFileRoute("/produse/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery),
-  head: () => seoHead({ title: TITLE, description: DESC, path: "/produse", ld: [breadcrumbLd([{ name: "Produse", path: "/produse" }])] }),
+  head: () => seoHead({ title: TITLE, description: DESC, path: "/produse", keywords: KW["/produse"], ld: [breadcrumbLd([{ name: "Produse", path: "/produse" }])] }),
   component: ProductsPage,
 });
 

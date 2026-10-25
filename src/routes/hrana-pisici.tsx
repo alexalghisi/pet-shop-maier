@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
+import { KW } from "@/lib/keywords";
 import img from "@/assets/food.webp";
 
 const faqs = [
@@ -13,7 +14,7 @@ const TITLE = "Hrană pentru pisici în Gilău, județul Cluj – ghid complet |
 const DESC = "Hrană uscată sau umedă pentru pisici, pisici sterilizate, pui și seniori. Sfaturi practice și hrană pentru pisici la PetShop Maier din Gilău, Cluj.";
 
 export const Route = createFileRoute("/hrana-pisici")({
-  head: () => guideHead(TITLE, DESC, "/hrana-pisici", faqs),
+  head: () => guideHead(TITLE, DESC, "/hrana-pisici", faqs, { keywords: KW["/hrana-pisici"] }),
   component: () => (
     <GuidePage
       eyebrow="Ghid · Hrană pisici"
@@ -28,7 +29,7 @@ export const Route = createFileRoute("/hrana-pisici")({
         { h: "Nu le da pisicilor", p: "Lapte de vacă, ceapă, usturoi, ciocolată, struguri sau hrană pentru câini pe termen lung." },
       ]}
       faqs={faqs}
-      related={[{ to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/furaje-animale", label: "Furaje pentru animale" }]}
+      related={[{ to: "/hrana-animale", label: "Hrană animale" }, { to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/furaje-animale", label: "Furaje pentru animale" }]}
     />
   ),
 });

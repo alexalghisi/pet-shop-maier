@@ -8,10 +8,11 @@ import { productsQuery } from "@/lib/products.queries";
 import { GALLERY, photoSrc, photoThumb } from "@/lib/gallery";
 import { BUSINESS, MAPS_URL, seoHead, localBusinessLd, faqLd } from "@/lib/seo";
 import { SITE_URL } from "@/lib/products";
+import { KW } from "@/lib/keywords";
 
-const TITLE = "Pet shop și furaje Gilău, Cluj – pui Brahma, Furaje MAN, hrană câini | PET SHOP MAIER";
+const TITLE = "Pet shop Gilău, Cluj – hrană animale, furaje, pui Brahma | PET SHOP MAIER";
 const DESC =
-  "PET SHOP MAIER Gilău: furaje (tărâțe 40 lei/20 kg, furaj combinat 60 lei/30 kg, Furaje MAN, porumb), pui și ouă Brahma vaccinați, hrană pentru cai, câini și pisici. Deschis 7 zile din 7, la 15 minute de Cluj-Napoca.";
+  "PET SHOP MAIER Gilău – hrană și mâncare pentru animale: furaje (tărâțe 40 lei/20 kg, furaj combinat 60 lei/30 kg, Furaje MAN, porumb), pui și ouă Brahma vaccinați, hrană pentru cai, câini și pisici. Deschis 7 zile din 7, la 15 minute de Cluj-Napoca.";
 
 const faqs = [
   { q: "Unde se află PET SHOP MAIER?", a: "Pe Strada Eroilor 1, în comuna Gilău, județul Cluj – la aproximativ 15 minute de Cluj-Napoca și 10 minute de Florești." },
@@ -28,7 +29,7 @@ export const Route = createFileRoute("/")({
       title: TITLE,
       description: DESC,
       path: "/",
-      keywords: "pet shop gilau, furaje gilau, furaje cluj, pui brahma de vanzare, furaje man, tarate pret, furaj combinat, hrana caini cluj, hrana cai, petshop judetul cluj",
+      keywords: KW["/"],
       ld: [
         localBusinessLd(),
         {
@@ -54,6 +55,7 @@ const categories = [
   { to: "/furaje-vaci-de-lapte" as const, t: "Furaje vaci de lapte", d: "Furaj granulat cu 22% proteină pentru mai mult lapte.", img: "furaje-man-vaci-de-lapte" },
   { to: "/hrana-cai" as const, t: "Hrană pentru cai", d: "Deli Nature HippoX pentru cai de agrement și de muncă.", img: "deli-nature-hippox-hrana-cai" },
   { to: "/hrana-caini" as const, t: "Hrană câini și pisici", d: "Kudo, Wildfull și alte branduri premium.", img: "hrana-premium-caini-kudo-wildfull-pet-shop-maier" },
+  { to: "/hrana-animale" as const, t: "Hrană pentru animale", d: "Mâncare pentru animale de companie și de fermă – tot ce îți trebuie, într-un singur loc.", img: "porumb-boabe-30kg-calitate-superioara" },
 ];
 
 const featured = GALLERY.filter((p) => !p.slug.startsWith("oferta")).slice(0, 12);
@@ -74,7 +76,7 @@ function Index() {
               Pet shop și <span className="text-accent">furaje</span> în Gilău
             </h1>
             <p className="mt-6 max-w-xl text-lg opacity-90">
-              Furaje la sac pentru toată curtea, pui Brahma de rasă vaccinați și hrană pentru câini, pisici și cai — la 15 minute de Cluj-Napoca.
+              Hrană pentru animale de companie și de fermă: furaje la sac pentru toată curtea, pui Brahma de rasă vaccinați și mâncare pentru câini, pisici și cai — la 15 minute de Cluj-Napoca.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <WhatsAppButton className="text-lg">Comandă pe WhatsApp</WhatsAppButton>
@@ -115,7 +117,7 @@ function Index() {
       {/* CATEGORII */}
       <section className="mx-auto max-w-6xl px-6 py-16">
         <p className="eyebrow">Ce găsești la noi</p>
-        <h2 className="mt-2 text-4xl md:text-5xl">Furaje, păsări de rasă și hrană</h2>
+        <h2 className="mt-2 text-4xl md:text-5xl">Hrană pentru animale, furaje și păsări de rasă</h2>
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map((c) => (
             <Link key={c.to} to={c.to} className="group flex gap-4 rounded-2xl border bg-card p-4 shadow-sm transition hover:-translate-y-1 hover:border-gold hover:shadow-xl">

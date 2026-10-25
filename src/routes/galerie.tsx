@@ -4,6 +4,7 @@ import { Header, Footer, Breadcrumbs, WhatsAppButton } from "@/components/site";
 import { Gallery } from "@/components/Gallery";
 import { GALLERY, photoAbs, type GalleryTag } from "@/lib/gallery";
 import { seoHead, breadcrumbLd, localBusinessLd } from "@/lib/seo";
+import { KW } from "@/lib/keywords";
 import { SITE_URL } from "@/lib/products";
 
 const TITLE = "Galerie foto PET SHOP MAIER Gilău – pui Brahma, Furaje MAN, hrană cai";
@@ -16,6 +17,7 @@ export const Route = createFileRoute("/galerie")({
       title: TITLE,
       description: DESC,
       path: "/galerie",
+      keywords: KW["/galerie"],
       ld: [
         {
           "@context": "https://schema.org",
