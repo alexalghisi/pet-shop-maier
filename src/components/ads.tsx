@@ -62,7 +62,7 @@ export function SocialBar() {
     if (!document.getElementById("adsterra-social-bar")) {
       const script = document.createElement("script");
       script.id = "adsterra-social-bar";
-      script.dataset.cfasync = "false";
+      script.dataset["cfasync"] = "false";
       script.src = SOCIAL_BAR_URL;
       document.body.appendChild(script);
     }
