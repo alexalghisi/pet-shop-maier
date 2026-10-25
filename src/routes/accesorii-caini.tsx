@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
+import { KW } from "@/lib/keywords";
 import img from "@/assets/accessories.webp";
 
 const faqs = [
@@ -12,7 +13,7 @@ const TITLE = "Accesorii pentru câini în Gilău, Cluj – lese, zgărzi, bolur
 const DESC = "Accesorii pentru câini: lese, zgărzi, hamuri, boluri, jucării și produse de îngrijire. Le găsești la PetShop Maier, Str. Eroilor 1, Gilău.";
 
 export const Route = createFileRoute("/accesorii-caini")({
-  head: () => guideHead(TITLE, DESC, "/accesorii-caini", faqs),
+  head: () => guideHead(TITLE, DESC, "/accesorii-caini", faqs, { keywords: KW["/accesorii-caini"] }),
   component: () => (
     <GuidePage
       eyebrow="Ghid · Accesorii câini"
@@ -26,7 +27,7 @@ export const Route = createFileRoute("/accesorii-caini")({
         { h: "Antiparazitare", p: "Zgărzile și pipetele antiparazitare protejează de purici și căpușe, mai ales primăvara și vara." },
       ]}
       faqs={faqs}
-      related={[{ to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/pet-shop-cluj", label: "Pet shop lângă Cluj" }]}
+      related={[{ to: "/hrana-animale", label: "Hrană animale" }, { to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/pet-shop-cluj", label: "Pet shop lângă Cluj" }]}
     />
   ),
 });

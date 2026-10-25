@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
+import { KW } from "@/lib/keywords";
 import { GALLERY, byTag, photoSrc } from "@/lib/gallery";
 
 const faqs = [
@@ -12,7 +13,7 @@ const TITLE = "Pet shop lângă Cluj-Napoca și Florești – PetShop Maier Gil�
 const DESC = "Pet shop în Gilău, la 15 minute de Cluj-Napoca și Florești: hrană câini și pisici, nisip, furaje, accesorii. Str. Eroilor 1. Tel/WhatsApp +40 758 639 799.";
 
 export const Route = createFileRoute("/pet-shop-cluj")({
-  head: () => guideHead(TITLE, DESC, "/pet-shop-cluj", faqs),
+  head: () => guideHead(TITLE, DESC, "/pet-shop-cluj", faqs, { keywords: KW["/pet-shop-cluj"] }),
   component: () => (
     <GuidePage
       eyebrow="Pet shop · Cluj"
@@ -28,7 +29,7 @@ export const Route = createFileRoute("/pet-shop-cluj")({
       ]}
       faqs={faqs}
       photos={GALLERY.slice(0, 9)}
-      related={[{ to: "/pui-brahma", label: "Pui Brahma" }, { to: "/furaje-man", label: "Furaje MAN" }, { to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/hrana-pisici", label: "Hrană pentru pisici" }, { to: "/furaje-animale", label: "Furaje pentru animale" }]}
+      related={[{ to: "/hrana-animale", label: "Hrană animale" }, { to: "/pui-brahma", label: "Pui Brahma" }, { to: "/furaje-man", label: "Furaje MAN" }, { to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/hrana-pisici", label: "Hrană pentru pisici" }, { to: "/furaje-animale", label: "Furaje pentru animale" }]}
     />
   ),
 });

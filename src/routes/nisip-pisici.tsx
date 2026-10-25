@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
+import { KW } from "@/lib/keywords";
 import img from "@/assets/accessories.webp";
 
 const faqs = [
@@ -12,7 +13,7 @@ const TITLE = "Nisip pentru pisici în Gilău, Cluj – bentonită, silicat sau 
 const DESC = "Ce nisip pentru pisici alegi: bentonită aglomerantă, silicat, tofu sau lemn. Sfaturi și nisip pentru pisici la PetShop Maier, Str. Eroilor 1, Gilău.";
 
 export const Route = createFileRoute("/nisip-pisici")({
-  head: () => guideHead(TITLE, DESC, "/nisip-pisici", faqs),
+  head: () => guideHead(TITLE, DESC, "/nisip-pisici", faqs, { keywords: KW["/nisip-pisici"] }),
   component: () => (
     <GuidePage
       eyebrow="Ghid · Nisip pisici"
@@ -27,7 +28,7 @@ export const Route = createFileRoute("/nisip-pisici")({
         { h: "Cât nisip și cât de des schimbi", p: "Pune un strat de 5–7 cm, scoate bulgării zilnic și schimbă tot nisipul o dată la 1–2 săptămâni. Regula: o litieră pentru fiecare pisică, plus una." },
       ]}
       faqs={faqs}
-      related={[{ to: "/hrana-pisici", label: "Hrană pentru pisici" }, { to: "/pet-shop-cluj", label: "Pet shop lângă Cluj" }]}
+      related={[{ to: "/hrana-animale", label: "Hrană animale" }, { to: "/hrana-pisici", label: "Hrană pentru pisici" }, { to: "/pet-shop-cluj", label: "Pet shop lângă Cluj" }]}
     />
   ),
 });

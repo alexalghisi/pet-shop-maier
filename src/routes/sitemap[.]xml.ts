@@ -33,6 +33,7 @@ const STATIC: Entry[] = [
   { path: "/hrana-cai", priority: "0.8", freq: "monthly", images: img(byTag("cai")) },
   { path: "/hrana-prepelite", priority: "0.8", freq: "monthly" },
   { path: "/furaje-gaini", priority: "0.8", freq: "monthly" },
+  { path: "/hrana-animale", priority: "0.9", freq: "weekly", images: img(byTag("furaje")) },
   { path: "/furaje-animale", priority: "0.7", freq: "monthly" },
   { path: "/pet-shop-cluj", priority: "0.7", freq: "monthly" },
   { path: "/furaje-floresti", priority: "0.8", freq: "monthly" },

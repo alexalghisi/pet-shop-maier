@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
+import { KW } from "@/lib/keywords";
 import { GALLERY, byTag, photoSrc } from "@/lib/gallery";
 
 const faqs = [
@@ -13,7 +14,7 @@ const TITLE = "Furaje pentru animale și semințe păsări în Gilău | PetShop 
 const DESC = "Furaje pentru păsări, porumbei, iepuri și rozătoare: ce să alegi și cum să le păstrezi. Furaje de calitate la PetShop Maier, Gilău, județul Cluj.";
 
 export const Route = createFileRoute("/furaje-animale")({
-  head: () => guideHead(TITLE, DESC, "/furaje-animale", faqs),
+  head: () => guideHead(TITLE, DESC, "/furaje-animale", faqs, { keywords: KW["/furaje-animale"] }),
   component: () => (
     <GuidePage
       eyebrow="Ghid · Furaje"
@@ -29,7 +30,7 @@ export const Route = createFileRoute("/furaje-animale")({
       ]}
       faqs={faqs}
       photos={byTag("furaje").slice(0, 9)}
-      related={[{ to: "/furaje-man", label: "Furaje MAN" }, { to: "/oferta-furaje", label: "Ofertă tărâțe" }, { to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/hrana-pisici", label: "Hrană pentru pisici" }]}
+      related={[{ to: "/hrana-animale", label: "Hrană animale" }, { to: "/furaje-man", label: "Furaje MAN" }, { to: "/oferta-furaje", label: "Ofertă tărâțe" }, { to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/hrana-pisici", label: "Hrană pentru pisici" }]}
     />
   ),
 });

@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
+import { KW } from "@/lib/keywords";
 import img from "@/assets/food.webp";
 
 const faqs = [
@@ -12,7 +13,7 @@ const TITLE = "Hrană pentru iepuri în Gilău, Cluj – fân, granule și legum
 const DESC = "Ce mănâncă iepurii de casă și de crescătorie: fân, granule, legume, ce e interzis. Hrană pentru iepuri la PetShop Maier, Gilău, județul Cluj.";
 
 export const Route = createFileRoute("/hrana-iepuri")({
-  head: () => guideHead(TITLE, DESC, "/hrana-iepuri", faqs),
+  head: () => guideHead(TITLE, DESC, "/hrana-iepuri", faqs, { keywords: KW["/hrana-iepuri"] }),
   component: () => (
     <GuidePage
       eyebrow="Ghid · Hrană iepuri"
@@ -26,7 +27,7 @@ export const Route = createFileRoute("/hrana-iepuri")({
         { h: "Ce NU dai iepurilor", p: "Ciocolată, pâine, dulciuri, ceapă, avocado, cartofi cruzi sau salată iceberg în cantitate mare." },
       ]}
       faqs={faqs}
-      related={[{ to: "/furaje-animale", label: "Furaje pentru animale" }, { to: "/pet-shop-cluj", label: "Pet shop lângă Cluj" }]}
+      related={[{ to: "/hrana-animale", label: "Hrană animale" }, { to: "/furaje-animale", label: "Furaje pentru animale" }, { to: "/pet-shop-cluj", label: "Pet shop lângă Cluj" }]}
     />
   ),
 });
