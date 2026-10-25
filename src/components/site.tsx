@@ -36,6 +36,7 @@ export const GUIDES = [
   { to: "/nisip-pisici", label: "Nisip pisici" },
   { to: "/accesorii-caini", label: "Accesorii câini" },
   { to: "/pet-shop-cluj", label: "Pet shop Cluj" },
+  { to: "/furaje-floresti", label: "Furaje Florești" },
   { to: "/galerie", label: "Galerie foto" },
 ] as const;
 export type GuidePath = (typeof GUIDES)[number]["to"];
