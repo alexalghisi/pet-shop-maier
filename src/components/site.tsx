@@ -3,7 +3,7 @@ import { useState, type ReactNode } from "react";
 import { whatsappLink } from "@/lib/products";
 import { BUSINESS, MAPS_URL, seoHead, breadcrumbLd, faqLd, localBusinessLd } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
-import { AdBanner } from "@/components/ads";
+import { AdsterraSlot } from "@/components/ads";
 import { Gallery } from "@/components/Gallery";
 import type { GalleryPhoto } from "@/lib/gallery";
 
@@ -109,6 +109,8 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
 
 export function Footer() {
   return (
+    <>
+    <AdsterraSlot />
     <footer className="bg-foreground pt-14 pb-24 text-sm text-white/75">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-3">
         <div>
@@ -131,6 +133,7 @@ export function Footer() {
       </div>
       <p className="mx-auto mt-10 max-w-6xl border-t border-white/10 px-6 pt-6 text-xs">© {new Date().getFullYear()} PET SHOP MAIER · Pet shop Gilău · Furaje Gilău · Livrăm în Gilău, Florești, Cluj-Napoca și împrejurimi</p>
     </footer>
+    </>
   );
 }
 
@@ -197,7 +200,8 @@ export function GuidePage(props: {
       )}
 
       <article className="mx-auto max-w-3xl px-6 py-14 md:py-16">
-        {props.sections.map((s) => (
+        {props.sections.map((s, index) => (
+          <div key={s.h}>
           <section key={s.h} className="mb-12">
             <h2 className="text-3xl">{s.h}</h2>
             <p className="mt-4 leading-relaxed text-muted-foreground">{s.p}</p>
@@ -207,6 +211,8 @@ export function GuidePage(props: {
               </ul>
             )}
           </section>
+          {index === Math.max(0, Math.floor(props.sections.length / 2) - 1) && <AdsterraSlot kind="native" />}
+          </div>
         ))}
 
         {props.photos && props.photos.length > 0 && (
@@ -230,10 +236,6 @@ export function GuidePage(props: {
             ))}
           </div>
         </section>
-
-        <div className="mb-12">
-          <AdBanner adKey="1852596c667e84526d84e4746f35be9f" width={300} height={250} />
-        </div>
 
         <aside className="rounded-2xl bg-primary p-8 text-primary-foreground shadow-lg">
           <h2 className="text-2xl">Găsești totul la PET SHOP MAIER din Gilău</h2>
