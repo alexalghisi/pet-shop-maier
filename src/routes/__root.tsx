@@ -86,7 +86,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "theme-color", content: "#1f5f3a" },
       { name: "format-detection", content: "telephone=yes" },
     ],
-    scripts: [{ async: true, src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4079300108937036", crossOrigin: "anonymous" }],
+    scripts: [
+      { children: "window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.pauseAdRequests = 1;" },
+      { async: true, src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4079300108937036", crossOrigin: "anonymous" },
+    ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
@@ -120,6 +123,10 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  useEffect(() => {
+    const ads = (window as Window & { adsbygoogle?: { pauseAdRequests: number } }).adsbygoogle;
+    if (ads) ads.pauseAdRequests = 0;
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
