@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { listProducts } from "@/lib/products.functions";
 import { SITE_URL, mediaUrl } from "@/lib/products";
 import { GALLERY, byTag, photoAbs } from "@/lib/gallery";
+import { PROMO_VIDEO } from "@/components/PromoVideo";
 
 const esc = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -11,13 +12,17 @@ type Entry = {
   priority: string;
   freq: string;
   images?: { loc: string; caption: string }[];
+  video?: boolean;
 };
+
+const videoTag = () =>
+  `<video:video><video:thumbnail_loc>${SITE_URL}${PROMO_VIDEO.poster}</video:thumbnail_loc><video:title>${esc(PROMO_VIDEO.name)}</video:title><video:description>${esc(PROMO_VIDEO.description)}</video:description><video:content_loc>${SITE_URL}${PROMO_VIDEO.src}</video:content_loc><video:duration>60</video:duration><video:publication_date>${PROMO_VIDEO.uploadDate}</video:publication_date><video:family_friendly>yes</video:family_friendly></video:video>`;
 
 const img = (slugs: { slug: string; alt: string }[]) =>
   slugs.map((p) => ({ loc: photoAbs(p.slug), caption: p.alt }));
 
 const STATIC: Entry[] = [
-  { path: "/", priority: "1.0", freq: "daily", images: img(GALLERY.slice(0, 12)) },
+  { path: "/", priority: "1.0", freq: "daily", images: img(GALLERY.slice(0, 12)), video: true },
   { path: "/pui-brahma", priority: "0.9", freq: "weekly", images: img(byTag("brahma")) },
   { path: "/furaje-man", priority: "0.9", freq: "weekly", images: img(byTag("furaje")) },
   { path: "/oferta-furaje", priority: "0.9", freq: "weekly" },
@@ -30,6 +35,7 @@ const STATIC: Entry[] = [
   { path: "/furaje-gaini", priority: "0.8", freq: "monthly" },
   { path: "/furaje-animale", priority: "0.7", freq: "monthly" },
   { path: "/pet-shop-cluj", priority: "0.7", freq: "monthly" },
+  { path: "/furaje-floresti", priority: "0.8", freq: "monthly" },
   { path: "/hrana-caini", priority: "0.7", freq: "monthly" },
   { path: "/hrana-pisici", priority: "0.7", freq: "monthly" },
   { path: "/nisip-pisici", priority: "0.6", freq: "monthly" },
@@ -65,10 +71,10 @@ export const Route = createFileRoute("/sitemap.xml")({
                   (i) =>
                     `<image:image><image:loc>${esc(i.loc)}</image:loc><image:caption>${esc(i.caption)}</image:caption></image:image>`,
                 )
-                .join("")}</url>`,
+                .join("")}${e.video ? videoTag() : ""}</url>`,
           )
           .join("");
-        const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${body}</urlset>`;
+        const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">${body}</urlset>`;
         return new Response(xml, {
           headers: {
             "Content-Type": "application/xml; charset=utf-8",

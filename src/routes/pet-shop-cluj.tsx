@@ -4,7 +4,7 @@ import { GALLERY, byTag, photoSrc } from "@/lib/gallery";
 
 const faqs = [
   { q: "Unde este PetShop Maier?", a: "În Gilău, Str. Eroilor 1, județul Cluj, pe drumul dintre Cluj-Napoca și Huedin." },
-  { q: "Care e programul pet shop-ului?", a: "L–V 09:00–19:00, Sâmbătă 09:00–17:00, Duminică închis." },
+  { q: "Care e programul pet shop-ului?", a: "Luni–Vineri 09:00–19:00, Sâmbătă–Duminică 09:00–17:00 – deschis 7 zile din 7." },
   { q: "Aveți furaje pentru animale de curte?", a: "Da – furaje pentru găini, porumbei, iepuri, plus porumb boabe și cereale." },
 ];
 
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/pet-shop-cluj")({
       sections={[
         { h: "Ce găsești la noi", p: "Tot ce le trebuie animalelor tale, într-un singur loc:", list: ["Hrană uscată și umedă pentru câini și pisici", "Nisip pentru pisici", "Furaje pentru găini, porumbei și iepuri", "Accesorii, jucării și antiparazitare"] },
         { h: "Cum ajungi", p: "Suntem pe Str. Eroilor 1, în centrul comunei Gilău, pe DN1 – la aproximativ 15 minute de Florești și 20 de minute de Cluj-Napoca. Parcarea e ușoară." },
-        { h: "Program", p: "Luni–Vineri 09:00–19:00, Sâmbătă 09:00–17:00, Duminică închis." },
+        { h: "Program", p: "Luni–Vineri 09:00–19:00, Sâmbătă–Duminică 09:00–17:00 – deschis 7 zile din 7." },
         { h: "Întreabă înainte să vii", p: "Scrie-ne pe WhatsApp sau sună la +40 758 639 799 și îți spunem imediat dacă produsul dorit e pe stoc." },
       ]}
       faqs={faqs}
