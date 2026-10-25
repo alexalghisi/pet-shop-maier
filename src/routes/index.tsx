@@ -1,12 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useSuspenseQuery } from "@tanstack/react-query";
 import { Header, Footer, PHONE, PHONE_HREF, WhatsAppButton } from "@/components/site";
 import { ProductCard } from "@/components/ProductCard";
 import { Gallery } from "@/components/Gallery";
-import { productsQuery } from "@/lib/products.queries";
 import { AdsterraSlot } from "@/components/ads";
 import { PromoVideo, promoVideoLd } from "@/components/PromoVideo";
-import { GALLERY, photoSrc } from "@/lib/gallery";
+import { productsQuery } from "@/lib/products.queries";
+import { GALLERY, photoSrc, photoThumb } from "@/lib/gallery";
 import { BUSINESS, MAPS_URL, seoHead, localBusinessLd, faqLd } from "@/lib/seo";
 import { SITE_URL } from "@/lib/products";
 
@@ -60,7 +59,7 @@ const categories = [
 const featured = GALLERY.filter((p) => !p.slug.startsWith("oferta")).slice(0, 12);
 
 function Index() {
-  const { data: products } = useSuspenseQuery(productsQuery);
+  const products = Route.useLoaderData();
   return (
     <main>
       <Header />
@@ -90,7 +89,7 @@ function Index() {
           </div>
           <div className="relative mx-auto w-full max-w-md">
             <img src={photoSrc("pui-si-oua-brahma-columbia-galben-negru-de-vanzare", true)} alt="Pui și ouă Brahma de vânzare la PET SHOP MAIER Gilău" width={640} height={960} fetchPriority="high" className="w-full rounded-3xl shadow-2xl ring-4 ring-white/20" />
-            <img src={photoSrc("furaje-man-10kg-gaini-ouatoare", true)} alt="Furaje MAN 10 kg pentru găini ouătoare" width={640} height={853} loading="lazy" className="absolute -bottom-6 -left-8 hidden w-40 rotate-[-6deg] rounded-2xl shadow-2xl ring-4 ring-white sm:block" />
+            <img src={photoSrc("furaje-man-10kg-gaini-ouatoare", true)} alt="Furaje MAN 10 kg pentru găini ouătoare" width={640} height={853} loading="lazy" decoding="async" className="absolute -bottom-6 -left-8 hidden w-40 rotate-[-6deg] rounded-2xl shadow-2xl ring-4 ring-white sm:block" />
           </div>
         </div>
       </section>
@@ -121,7 +120,7 @@ function Index() {
           {categories.map((c) => (
             <Link key={c.to} to={c.to} className="group flex gap-4 rounded-2xl border bg-card p-4 shadow-sm transition hover:-translate-y-1 hover:border-gold hover:shadow-xl">
               <div className="grid h-28 w-24 shrink-0 place-items-center overflow-hidden rounded-xl bg-muted">
-                <img src={photoSrc(c.img, true)} alt={c.t} loading="lazy" className="max-h-full max-w-full object-contain" />
+                <img src={photoThumb(c.img)} alt={c.t} loading="lazy" decoding="async" className="max-h-full max-w-full object-contain" />
               </div>
               <div>
                 <h3 className="text-xl">{c.t}</h3>

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { afterLoadIdle } from "@/lib/idle";
 import { ADSTERRA_SANDBOX, SOCIAL_BAR_URL, bannerConfig, slotDocument } from "@/lib/adsterra";
 
 export function AdsterraSlot({ kind = "banner" }: { kind?: "banner" | "native" }) {
@@ -18,8 +19,9 @@ export function AdsterraSlot({ kind = "banner" }: { kind?: "banner" | "native" }
     const observer = new IntersectionObserver(([entry]) => {
       if (entry?.isIntersecting) { setNearby(true); observer.disconnect(); }
     }, { rootMargin: "200px" });
-    if (element) observer.observe(element);
-    return () => { window.removeEventListener("resize", resize); observer.disconnect(); };
+    // Start watching only once the page is interactive, so ads never delay first paint.
+    const cancelIdle = afterLoadIdle(() => { if (element) observer.observe(element); });
+    return () => { cancelIdle(); window.removeEventListener("resize", resize); observer.disconnect(); };
   }, []);
 
   const small = viewport !== null && viewport < 400;
@@ -59,13 +61,15 @@ export function AdsterraSlot({ kind = "banner" }: { kind?: "banner" | "native" }
 
 export function SocialBar() {
   useEffect(() => {
-    if (!document.getElementById("adsterra-social-bar")) {
+    // Inject the social bar only after the page is interactive (load + idle).
+    const cancelScript = afterLoadIdle(() => {
+      if (document.getElementById("adsterra-social-bar")) return;
       const script = document.createElement("script");
       script.id = "adsterra-social-bar";
       script.dataset["cfasync"] = "false";
       script.src = SOCIAL_BAR_URL;
       document.body.appendChild(script);
-    }
+    });
     // Keep WhatsApp clear of fixed overlays inserted by the advertising network.
     let scheduled = 0;
     const avoidOverlap = () => {
@@ -94,7 +98,7 @@ export function SocialBar() {
     window.addEventListener("resize", schedule);
     window.addEventListener("scroll", schedule, { passive: true });
     schedule();
-    return () => { observer.disconnect(); cancelAnimationFrame(scheduled); window.removeEventListener("resize", schedule); window.removeEventListener("scroll", schedule); };
+    return () => { cancelScript(); observer.disconnect(); cancelAnimationFrame(scheduled); window.removeEventListener("resize", schedule); window.removeEventListener("scroll", schedule); };
   }, []);
   return null;
 }

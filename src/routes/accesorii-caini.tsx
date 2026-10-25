@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
-import img from "@/assets/accessories.jpg";
+import img from "@/assets/accessories.webp";
 
 const faqs = [
   { q: "Ce mărime de ham aleg?", a: "Măsoară circumferința pieptului, în spatele picioarelor din față, și adaugă 2–3 cm." },

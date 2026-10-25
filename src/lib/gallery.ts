@@ -191,6 +191,10 @@ export const GALLERY: GalleryPhoto[] = [
 
 export const photoSrc = (slug: string, small = false) =>
   `/galerie/${slug}${small ? "-640" : ""}.webp`;
+/** Variantă de 320px lățime (miniaturi), aceeași poză întreagă, fără crop. */
+export const photoThumb = (slug: string) => `/galerie/${slug}-320.webp`;
+export const photoSrcSet = (slug: string) =>
+  `${photoThumb(slug)} 320w, ${photoSrc(slug, true)} 640w`;
 export const photoAbs = (slug: string) => `${SITE_URL}${photoSrc(slug)}`;
 export const byTag = (t: GalleryTag) => GALLERY.filter((p) => p.tags.includes(t));
 export const OG_IMAGE = `${SITE_URL}/og-pet-shop-maier.jpg`;

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
-import img from "@/assets/food.jpg";
+import img from "@/assets/food.webp";
 
 const faqs = [
   { q: "Cât mănâncă un porumbel pe zi?", a: "Aproximativ 30–40 g de amestec pe zi, în funcție de rasă și activitate." },

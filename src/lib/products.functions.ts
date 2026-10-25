@@ -20,13 +20,39 @@ function publicClient() {
 
 const COLS = "id, slug, name, seo_title, description, price, category, in_stock, media";
 
-export const listProducts = createServerFn({ method: "GET" }).handler(async () => {
+// Short in-memory cache per server instance: public pages render without waiting on
+// the database for every request. Admin edits show up within PRODUCTS_TTL_MS.
+const PRODUCTS_TTL_MS = 60_000;
+const STALE_WAIT_MS = 1_500;
+let productsCache: { at: number; data: Product[] } | null = null;
+let productsInflight: Promise<Product[] | null> | null = null;
+
+async function fetchProducts(): Promise<Product[] | null> {
   const { data, error } = await publicClient().from("products").select(COLS).order("created_at", { ascending: false });
   if (error) {
     console.error(error);
-    return [] as Product[];
+    return null;
   }
-  return (data ?? []).map((p) => ({ ...p, price: Number(p.price) })) as unknown as Product[];
+  const list = (data ?? []).map((p) => ({ ...p, price: Number(p.price) })) as unknown as Product[];
+  productsCache = { at: Date.now(), data: list };
+  return list;
+}
+
+function refreshProducts() {
+  productsInflight ??= fetchProducts().finally(() => {
+    productsInflight = null;
+  });
+  return productsInflight;
+}
+
+export const listProducts = createServerFn({ method: "GET" }).handler(async () => {
+  const cached = productsCache;
+  if (cached && Date.now() - cached.at < PRODUCTS_TTL_MS) return cached.data;
+  const fresh = refreshProducts();
+  if (!cached) return (await fresh) ?? ([] as Product[]);
+  // A stale copy exists: never block the page for long on a slow database.
+  const timeout = new Promise<null>((r) => setTimeout(() => r(null), STALE_WAIT_MS));
+  return (await Promise.race([fresh, timeout])) ?? cached.data;
 });
 
 export const getProduct = createServerFn({ method: "GET" })

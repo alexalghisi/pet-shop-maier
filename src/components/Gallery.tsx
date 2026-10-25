@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { photoSrc, type GalleryPhoto } from "@/lib/gallery";
+import { photoSrc, photoSrcSet, type GalleryPhoto } from "@/lib/gallery";
 
 /** Galerie masonry: fiecare poză apare întreagă (fără crop), cu lightbox la click. */
 export function Gallery({
@@ -46,6 +46,8 @@ export function Gallery({
             >
               <img
                 src={photoSrc(p.slug, true)}
+                srcSet={photoSrcSet(p.slug)}
+                sizes="(min-width: 1024px) 270px, (min-width: 640px) 33vw, 50vw"
                 alt={p.alt}
                 width={p.w}
                 height={p.h}

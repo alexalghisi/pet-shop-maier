@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
-import img from "@/assets/food.jpg";
+import img from "@/assets/food.webp";
 
 const faqs = [
   { q: "Cât de des hrănesc un câine adult?", a: "De regulă de două ori pe zi. Cantitatea depinde de greutate și activitate – urmează tabelul de pe ambalaj și ajustează după condiția corporală." },

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
-import img from "@/assets/food.jpg";
+import img from "@/assets/food.webp";
 
 const faqs = [
   { q: "Ce mănâncă un iepure de casă?", a: "În principal fân, plus legume verzi și puține granule. Fânul ajută și la tocirea dinților." },
