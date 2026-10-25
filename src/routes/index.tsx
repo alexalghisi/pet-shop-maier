@@ -5,6 +5,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { Gallery } from "@/components/Gallery";
 import { productsQuery } from "@/lib/products.queries";
 import { AdsterraSlot } from "@/components/ads";
+import { PromoVideo, promoVideoLd } from "@/components/PromoVideo";
 import { GALLERY, photoSrc } from "@/lib/gallery";
 import { BUSINESS, MAPS_URL, seoHead, localBusinessLd, faqLd } from "@/lib/seo";
 import { SITE_URL } from "@/lib/products";
@@ -41,18 +42,7 @@ export const Route = createFileRoute("/")({
           publisher: { "@id": `${SITE_URL}/#store` },
         },
         faqLd(faqs),
-        {
-          "@context": "https://schema.org",
-          "@type": "VideoObject",
-          name: "PET SHOP MAIER Gilău – prezentare",
-          description: "Descoperă PET SHOP MAIER din Gilău: furaje de calitate, hrană premium pentru animale și pui de rasă Brahma. Vizitează-ne sau comandă pe WhatsApp.",
-          thumbnailUrl: `${SITE_URL}/video/pet-shop-maier-prezentare.jpg`,
-          contentUrl: `${SITE_URL}/video/pet-shop-maier-prezentare.mp4`,
-          uploadDate: "2026-10-25",
-          duration: "PT59S",
-          inLanguage: "ro-RO",
-          publisher: { "@id": `${SITE_URL}/#store` },
-        },
+        promoVideoLd(),
       ],
     }),
   component: Index,
@@ -105,22 +95,7 @@ function Index() {
         </div>
       </section>
 
-      {/* VIDEO */}
-      <section className="mx-auto max-w-4xl px-6 pt-16">
-        <p className="eyebrow text-center">Video de prezentare</p>
-        <h2 className="mt-2 text-center text-3xl md:text-4xl">Cunoaște PET SHOP MAIER în 1 minut</h2>
-        <video
-          src="/video/pet-shop-maier-prezentare.mp4"
-          poster="/video/pet-shop-maier-prezentare.jpg"
-          controls
-          playsInline
-          preload="none"
-          width={1280}
-          height={720}
-          className="mt-8 aspect-video w-full rounded-3xl bg-black shadow-2xl"
-          aria-label="Video de prezentare PET SHOP MAIER Gilău"
-        />
-      </section>
+      <PromoVideo />
 
       <AdsterraSlot />
 
