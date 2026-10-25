@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
-import img from "@/assets/food.jpg";
+import img from "@/assets/food.webp";
 
 const faqs = [
   { q: "De câte ori pe zi mănâncă o pisică?", a: "Pisicile adulte preferă mai multe mese mici pe zi, de 2–4 ori. Puii au nevoie de mese și mai dese." },

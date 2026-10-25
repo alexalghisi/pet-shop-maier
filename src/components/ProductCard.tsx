@@ -7,7 +7,7 @@ export function ProductCard({ p }: { p: Product }) {
     <article className="group flex flex-col overflow-hidden rounded-xl border bg-card shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
       <Link to="/produse/$slug" params={{ slug: p.slug }} className="block aspect-square overflow-hidden bg-muted">
         {img ? (
-          <img src={mediaUrl(img.path)} alt={p.name} loading="lazy" className="h-full w-full object-cover transition group-hover:scale-105" />
+          <img src={mediaUrl(img.path)} alt={p.name} width={400} height={400} loading="lazy" decoding="async" className="h-full w-full object-cover transition group-hover:scale-105" />
         ) : (
           <div className="grid h-full place-items-center text-sm text-muted-foreground">Fără poză</div>
         )}

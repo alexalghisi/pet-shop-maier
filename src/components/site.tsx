@@ -182,7 +182,7 @@ export function GuidePage(props: {
               <a href={PHONE_HREF} className="inline-flex items-center rounded-full border-2 border-primary px-6 py-3 font-bold text-primary transition hover:bg-primary hover:text-primary-foreground">Sună: {PHONE}</a>
             </div>
           </div>
-          <img src={props.image} alt={props.imageAlt} className="mx-auto max-h-[520px] w-auto rounded-2xl object-contain shadow-2xl ring-1 ring-border" />
+          <img src={props.image} alt={props.imageAlt} fetchPriority="high" className="mx-auto max-h-[520px] w-auto rounded-2xl object-contain shadow-2xl ring-1 ring-border" />
         </div>
       </section>
 

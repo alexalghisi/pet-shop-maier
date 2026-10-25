@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
+import { queryOptions } from "@tanstack/react-query";
 import { useState } from "react";
 import { AdsterraSlot } from "@/components/ads";
 import { Header, Footer } from "@/components/site";
@@ -68,8 +68,7 @@ function ProductNotFound() {
 }
 
 function ProductPage() {
-  const { slug } = Route.useParams();
-  const { data: p } = useSuspenseQuery(productQuery(slug));
+  const p = Route.useLoaderData();
   const [active, setActive] = useState(0);
   if (!p) return <ProductNotFound />;
   const m = p.media[active];
@@ -81,9 +80,9 @@ function ProductPage() {
           <div className="aspect-square overflow-hidden rounded-xl border bg-muted">
             {m ? (
               m.type === "video" ? (
-                <video src={mediaUrl(m.path)} controls className="h-full w-full object-contain" />
+                <video src={mediaUrl(m.path)} controls preload="metadata" className="h-full w-full object-contain" />
               ) : (
-                <img src={mediaUrl(m.path)} alt={p.name} className="h-full w-full object-cover" />
+                <img src={mediaUrl(m.path)} alt={p.name} fetchPriority="high" className="h-full w-full object-cover" />
               )
             ) : (
               <div className="grid h-full place-items-center text-muted-foreground">Fără poză</div>
@@ -93,7 +92,7 @@ function ProductPage() {
             <div className="mt-3 grid grid-cols-5 gap-2">
               {p.media.map((x, i) => (
                 <button key={x.path} onClick={() => setActive(i)} className={`aspect-square overflow-hidden rounded-lg border-2 ${i === active ? "border-primary" : "border-transparent"}`}>
-                  {x.type === "video" ? <div className="grid h-full place-items-center bg-muted text-xs">▶ Video</div> : <img src={mediaUrl(x.path)} alt="" className="h-full w-full object-cover" />}
+                  {x.type === "video" ? <div className="grid h-full place-items-center bg-muted text-xs">▶ Video</div> : <img src={mediaUrl(x.path)} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />}
                 </button>
               ))}
             </div>

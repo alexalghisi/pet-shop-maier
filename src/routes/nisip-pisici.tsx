@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { GuidePage, guideHead } from "@/components/site";
-import img from "@/assets/accessories.jpg";
+import img from "@/assets/accessories.webp";
 
 const faqs = [
   { q: "Care e cel mai bun nisip pentru pisici?", a: "Depinde de tine și de pisică: bentonita e cea mai economică, silicatul ține cel mai mult mirosul, iar nisipul din tofu e cel mai prietenos cu mediul." },

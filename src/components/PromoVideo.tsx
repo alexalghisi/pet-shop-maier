@@ -31,20 +31,47 @@ export const promoVideoLd = () => ({
 export function PromoVideo() {
   const ref = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
+  // Nimic din video (nici poster, nici fișierul mp4) nu se descarcă până nu se apropie de ecran.
+  const [near, setNear] = useState(false);
 
   useEffect(() => {
     const v = ref.current;
-    if (!v || typeof IntersectionObserver === "undefined") return;
-    const io = new IntersectionObserver(
+    if (!v) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setNear(true);
+      return;
+    }
+    const nearIo = new IntersectionObserver(
+      ([e]) => {
+        if (e?.isIntersecting) {
+          setNear(true);
+          nearIo.disconnect();
+        }
+      },
+      { rootMargin: "300px 0px" },
+    );
+    const playIo = new IntersectionObserver(
       ([e]) => {
         if (e?.isIntersecting) v.play().catch(() => {});
         else v.pause();
       },
       { threshold: 0.5 },
     );
-    io.observe(v);
-    return () => io.disconnect();
+    nearIo.observe(v);
+    playIo.observe(v);
+    return () => {
+      nearIo.disconnect();
+      playIo.disconnect();
+    };
   }, []);
+
+  useEffect(() => {
+    const v = ref.current;
+    if (!near || !v) return;
+    // Sursa a fost tocmai atașată: dacă video-ul e deja vizibil, pornește-l.
+    const r = v.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) v.play().catch(() => {});
+  }, [near]);
 
   const toggleSound = () => {
     const v = ref.current;
@@ -63,12 +90,14 @@ export function PromoVideo() {
       <div className="relative mt-6 overflow-hidden rounded-3xl bg-black shadow-xl ring-1 ring-border">
         <video
           ref={ref}
-          src={PROMO_VIDEO.src}
-          poster={PROMO_VIDEO.poster}
+          src={near ? PROMO_VIDEO.src : undefined}
+          poster={near ? PROMO_VIDEO.poster : undefined}
+          width={960}
+          height={540}
           muted
           playsInline
           loop
-          preload="metadata"
+          preload={near ? "metadata" : "none"}
           controls
           className="aspect-video w-full"
           aria-label={PROMO_VIDEO.name}

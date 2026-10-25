@@ -13,6 +13,10 @@ import { useEffect, type ReactNode } from "react";
 import { WhatsAppFloat } from "@/components/site";
 import { SocialBar } from "@/components/ads";
 import appCss from "../styles.css?url";
+import { afterLoadIdle, loadScriptOnce } from "@/lib/idle";
+
+const FONTS_HREF = "https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Karla:wght@400;600&display=swap";
+const ADSENSE_SRC = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4079300108937036";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
@@ -87,13 +91,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "format-detection", content: "telephone=yes" },
     ],
     scripts: [
+      { children: `(function(){var l=document.createElement("link");l.rel="stylesheet";l.href=${JSON.stringify(FONTS_HREF)};document.head.appendChild(l);})();` },
       { children: "window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.pauseAdRequests = 1; window.petshopAdHydrationGuard = new MutationObserver(function(records) { records.forEach(function(record) { record.addedNodes.forEach(function(node) { if (node.nodeType === 1 && node.matches('ins.adsbygoogle-noablate')) node.remove(); }); }); }); window.petshopAdHydrationGuard.observe(document.documentElement, {childList:true, subtree:true});" },
-      { async: true, src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4079300108937036", crossOrigin: "anonymous" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Karla:wght@400;600&display=swap" },
+      // Fonts are fetched early but applied without blocking the first paint (display=swap).
+      { rel: "preload", as: "style", href: FONTS_HREF },
       {
         rel: "stylesheet",
         href: appCss,
@@ -129,7 +134,12 @@ function RootComponent() {
       adWindow.petshopAdHydrationGuard?.disconnect();
       if (adWindow.adsbygoogle) adWindow.adsbygoogle.pauseAdRequests = 0;
     }, 1000);
-    return () => window.clearTimeout(timer);
+    // AdSense is loaded only after the page is interactive (window load + idle).
+    const cancelAds = afterLoadIdle(() => loadScriptOnce("adsbygoogle-js", ADSENSE_SRC, { crossorigin: "anonymous" }));
+    return () => {
+      window.clearTimeout(timer);
+      cancelAds();
+    };
   }, []);
 
   return (

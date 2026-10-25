@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useSuspenseQuery } from "@tanstack/react-query";
 import { Header, Footer } from "@/components/site";
 import { ProductCard } from "@/components/ProductCard";
 import { productsQuery } from "@/lib/products.queries";
@@ -8,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle, PackageOpen } from "lucide-react";
 import { seoHead, breadcrumbLd } from "@/lib/seo";
 import { AdsterraSlot } from "@/components/ads";
-import hero from "@/assets/hero.jpg";
+import hero from "@/assets/hero.webp";
 import fbShop from "@/assets/fb-shop.jpg.asset.json";
 
 
@@ -22,13 +21,13 @@ export const Route = createFileRoute("/produse/")({
 });
 
 function ProductsPage() {
-  const { data } = useSuspenseQuery(productsQuery);
+  const data = Route.useLoaderData();
   const list = data;
   return (
     <main className="min-h-screen">
       <Header />
       <section className="relative isolate flex min-h-72 items-center overflow-hidden py-12 sm:min-h-80">
-        <img src={hero} alt="Hrană și accesorii pentru câini și pisici" className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
+        <img src={hero} alt="Hrană și accesorii pentru câini și pisici" width={1200} height={756} fetchPriority="high" className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
         <div className="hero-overlay absolute inset-0 -z-10" />
         <div className="mx-auto w-full max-w-6xl px-6 text-primary-foreground">
           <Link to="/" className="text-sm underline-offset-4 hover:underline">PetShop Maier · Gilău</Link>
@@ -44,7 +43,7 @@ function ProductsPage() {
         <AdsterraSlot kind="native" />
         {list.length === 0 ? (
           <div className="mt-10 grid items-center gap-8 border-t border-border pt-10 md:grid-cols-2 md:gap-12">
-            <img src={fbShop.url} alt="Rafturi cu hrană și accesorii din magazinul PetShop Maier din Gilău" width={726} height={225} className="w-full rounded-lg object-contain" />
+            <img src={fbShop.url} alt="Rafturi cu hrană și accesorii din magazinul PetShop Maier din Gilău" width={726} height={225} loading="lazy" decoding="async" className="w-full rounded-lg object-contain" />
             <div>
               <PackageOpen className="size-7 text-primary" aria-hidden="true" />
               <h3 className="mt-4 text-2xl">{data.length === 0 ? "Catalogul online se pregătește" : "Momentan nu sunt produse în această categorie"}</h3>
