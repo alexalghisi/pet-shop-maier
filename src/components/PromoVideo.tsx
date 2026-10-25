@@ -139,11 +139,11 @@ export function PromoVideo() {
           ref={ref}
           src={near ? PROMO_VIDEO.src : undefined}
           poster={near ? PROMO_VIDEO.poster : undefined}
-          width={960}
-          height={540}
+          width={1920}
+          height={1080}
           playsInline
           loop
-          preload={near ? "metadata" : "none"}
+          preload={near ? "auto" : "none"}
           controls
           className="aspect-video w-full"
           aria-label={PROMO_VIDEO.name}
