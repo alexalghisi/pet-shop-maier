@@ -82,9 +82,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "google-site-verification", content: "J6PO1ANhdfpVbVYkua2TKpOOO-f6RiGRefyw0AbgxXg" },
       { property: "og:site_name", content: "PET SHOP MAIER" },
+      { name: "google-adsense-account", content: "ca-pub-4079300108937036" },
       { name: "theme-color", content: "#1f5f3a" },
       { name: "format-detection", content: "telephone=yes" },
     ],
+    scripts: [{ async: true, src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4079300108937036", crossOrigin: "anonymous" }],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },

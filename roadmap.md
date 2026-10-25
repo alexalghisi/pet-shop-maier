@@ -1,0 +1,3 @@
+- [ ] Add server-rendered AdSense account tags and plain-text ads.txt.
+- [ ] Replace Adsterra with lazy iframe slots and a single collision-aware Social Bar.
+- [ ] Verify placements, no-fill collapse, mobile sizes, and server-rendered tags.

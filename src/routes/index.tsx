@@ -4,7 +4,7 @@ import { Header, Footer, PHONE, PHONE_HREF, WhatsAppButton } from "@/components/
 import { ProductCard } from "@/components/ProductCard";
 import { Gallery } from "@/components/Gallery";
 import { productsQuery } from "@/lib/products.queries";
-import { AdBanner } from "@/components/ads";
+import { AdsterraSlot } from "@/components/ads";
 import { GALLERY, photoSrc } from "@/lib/gallery";
 import { BUSINESS, MAPS_URL, seoHead, localBusinessLd, faqLd } from "@/lib/seo";
 import { SITE_URL } from "@/lib/products";
@@ -93,6 +93,8 @@ function Index() {
         </div>
       </section>
 
+      <AdsterraSlot />
+
       {/* OFERTA */}
       <section className="mx-auto max-w-6xl px-6 pt-16">
         <div className="grid items-center gap-6 rounded-3xl bg-secondary p-6 md:grid-cols-[1fr_auto_auto] md:p-8">
@@ -106,11 +108,6 @@ function Index() {
         </div>
         <p className="mt-3 text-right"><Link to="/oferta-furaje" className="font-bold text-primary">Detalii ofertă →</Link></p>
       </section>
-
-      <div className="mx-auto max-w-6xl px-6 pt-8">
-        <div className="hidden md:block"><AdBanner adKey="18d7b84f9360ef34bb2211d43b563b0d" width={728} height={90} /></div>
-        <div className="md:hidden"><AdBanner adKey="79ebcae2d7c54504ff46daa6f586ca08" width={320} height={50} /></div>
-      </div>
 
       {/* CATEGORII */}
       <section className="mx-auto max-w-6xl px-6 py-16">
