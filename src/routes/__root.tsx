@@ -87,7 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "format-detection", content: "telephone=yes" },
     ],
     scripts: [
-      { children: "window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.pauseAdRequests = 1;" },
+      { children: "window.adsbygoogle = window.adsbygoogle || []; window.adsbygoogle.pauseAdRequests = 1; window.petshopAdHydrationGuard = new MutationObserver(function(records) { records.forEach(function(record) { record.addedNodes.forEach(function(node) { if (node.nodeType === 1 && node.matches('ins.adsbygoogle-noablate')) node.remove(); }); }); }); window.petshopAdHydrationGuard.observe(document.documentElement, {childList:true, subtree:true});" },
       { async: true, src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4079300108937036", crossOrigin: "anonymous" },
     ],
     links: [
@@ -124,8 +124,12 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   useEffect(() => {
-    const ads = (window as Window & { adsbygoogle?: { pauseAdRequests: number } }).adsbygoogle;
-    if (ads) ads.pauseAdRequests = 0;
+    const adWindow = window as Window & { adsbygoogle?: { pauseAdRequests: number }; petshopAdHydrationGuard?: MutationObserver };
+    const timer = window.setTimeout(() => {
+      adWindow.petshopAdHydrationGuard?.disconnect();
+      if (adWindow.adsbygoogle) adWindow.adsbygoogle.pauseAdRequests = 0;
+    }, 1000);
+    return () => window.clearTimeout(timer);
   }, []);
 
   return (
