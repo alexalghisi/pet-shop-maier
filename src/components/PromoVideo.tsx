@@ -8,7 +8,7 @@ export const PROMO_VIDEO = {
   description:
     "Prezentarea PET SHOP MAIER din Gilău, jud. Cluj: hrană de calitate pentru câini, pisici, păsări și rozătoare, furaje pentru animale de fermă și porumbei, animale de rasă. Comenzi pe WhatsApp la 0758 639 799.",
   duration: "PT38S",
-  uploadDate: "2026-10-30",
+  uploadDate: "2026-10-31",
 };
 
 export const promoVideoLd = () => ({
