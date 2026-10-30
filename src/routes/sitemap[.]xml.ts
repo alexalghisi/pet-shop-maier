@@ -16,7 +16,7 @@ type Entry = {
 };
 
 const videoTag = () =>
-  `<video:video><video:thumbnail_loc>${SITE_URL}${PROMO_VIDEO.poster}</video:thumbnail_loc><video:title>${esc(PROMO_VIDEO.name)}</video:title><video:description>${esc(PROMO_VIDEO.description)}</video:description><video:content_loc>${SITE_URL}${PROMO_VIDEO.src}</video:content_loc><video:duration>60</video:duration><video:publication_date>${PROMO_VIDEO.uploadDate}</video:publication_date><video:family_friendly>yes</video:family_friendly></video:video>`;
+  `<video:video><video:thumbnail_loc>${SITE_URL}${PROMO_VIDEO.poster}</video:thumbnail_loc><video:title>${esc(PROMO_VIDEO.name)}</video:title><video:description>${esc(PROMO_VIDEO.description)}</video:description><video:content_loc>${SITE_URL}${PROMO_VIDEO.src}</video:content_loc><video:duration>38</video:duration><video:publication_date>${PROMO_VIDEO.uploadDate}</video:publication_date><video:family_friendly>yes</video:family_friendly></video:video>`;
 
 const img = (slugs: { slug: string; alt: string }[]) =>
   slugs.map((p) => ({ loc: photoAbs(p.slug), caption: p.alt }));

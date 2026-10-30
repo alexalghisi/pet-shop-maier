@@ -6,9 +6,9 @@ export const PROMO_VIDEO = {
   poster: "/video/pet-shop-maier-prezentare.jpg",
   name: "PET SHOP MAIER Gilău – prezentarea magazinului de furaje și pet shop",
   description:
-    "Prezentarea PET SHOP MAIER din Gilău, jud. Cluj: furaje la sac (tărâțe 40 lei/20 kg, furaj combinat 60 lei/30 kg), Furaje MAN, hrană pentru câini, pisici și cai, pui și ouă Brahma de rasă, calculator de furaje și comenzi pe WhatsApp.",
-  duration: "PT60S",
-  uploadDate: "2026-10-25",
+    "Prezentarea PET SHOP MAIER din Gilău, jud. Cluj: hrană de calitate pentru câini, pisici, păsări și rozătoare, furaje pentru animale de fermă și porumbei, animale de rasă. Comenzi pe WhatsApp la 0758 639 799.",
+  duration: "PT38S",
+  uploadDate: "2026-10-30",
 };
 
 export const promoVideoLd = () => ({
@@ -132,20 +132,20 @@ export function PromoVideo() {
     <section className="mx-auto max-w-6xl px-6 pt-16" aria-labelledby="prezentare-video">
       <p className="eyebrow">Prezentare video</p>
       <h2 id="prezentare-video" className="mt-2 text-3xl md:text-4xl">
-        Cunoaște PET SHOP MAIER în 60 de secunde
+        Cunoaște PET SHOP MAIER în mai puțin de un minut
       </h2>
-      <div data-promo-video className="relative mt-6 overflow-hidden rounded-3xl bg-black shadow-xl ring-1 ring-border">
+      <div data-promo-video className="relative mx-auto mt-6 w-full max-w-sm overflow-hidden rounded-3xl bg-black shadow-xl ring-1 ring-border">
         <video
           ref={ref}
           src={near ? PROMO_VIDEO.src : undefined}
           poster={near ? PROMO_VIDEO.poster : undefined}
-          width={1920}
-          height={1080}
+          width={1080}
+          height={1920}
           playsInline
           loop
           preload={near ? "auto" : "none"}
           controls
-          className="aspect-video w-full"
+          className="aspect-[9/16] w-full"
           aria-label={PROMO_VIDEO.name}
         />
         <button
@@ -156,7 +156,7 @@ export function PromoVideo() {
           {muted ? "🔊 Pornește sunetul" : "🔇 Oprește sunetul"}
         </button>
       </div>
-      <p className="mt-3 text-sm text-muted-foreground">{PROMO_VIDEO.description}</p>
+      <p className="mx-auto mt-3 max-w-xl text-center text-sm text-muted-foreground">{PROMO_VIDEO.description}</p>
     </section>
   );
 }
