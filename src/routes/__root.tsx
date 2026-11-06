@@ -14,6 +14,7 @@ import { WhatsAppFloat } from "@/components/site";
 import { SocialBar } from "@/components/ads";
 import appCss from "../styles.css?url";
 import { afterLoadIdle, loadScriptOnce } from "@/lib/idle";
+import { isAdProductionHost } from "@/lib/ad-host";
 
 const FONTS_HREF = "https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Karla:wght@400;600&display=swap";
 const ADSENSE_SRC = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4079300108937036";
@@ -135,7 +136,9 @@ function RootComponent() {
       if (adWindow.adsbygoogle) adWindow.adsbygoogle.pauseAdRequests = 0;
     }, 1000);
     // AdSense is loaded only after the page is interactive (window load + idle).
-    const cancelAds = afterLoadIdle(() => loadScriptOnce("adsbygoogle-js", ADSENSE_SRC, { crossorigin: "anonymous" }));
+    const cancelAds = afterLoadIdle(() => {
+      if (isAdProductionHost()) loadScriptOnce("adsbygoogle-js", ADSENSE_SRC, { crossorigin: "anonymous" });
+    });
     return () => {
       window.clearTimeout(timer);
       cancelAds();
