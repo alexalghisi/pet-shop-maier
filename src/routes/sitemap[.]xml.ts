@@ -43,6 +43,7 @@ const STATIC: Entry[] = [
   { path: "/hrana-porumbei", priority: "0.6", freq: "monthly" },
   { path: "/hrana-iepuri", priority: "0.6", freq: "monthly" },
   { path: "/accesorii-caini", priority: "0.6", freq: "monthly" },
+  { path: "/confidentialitate", priority: "0.3", freq: "yearly" },
 ];
 
 export const Route = createFileRoute("/sitemap.xml")({
