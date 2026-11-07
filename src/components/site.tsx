@@ -133,7 +133,7 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <p className="mx-auto mt-10 max-w-6xl border-t border-white/10 px-6 pt-6 text-xs">© {new Date().getFullYear()} PET SHOP MAIER · Pet shop Gilău · Hrană animale Cluj · Furaje Gilău · Livrăm în Gilău, Florești, Cluj-Napoca și împrejurimi</p>
+      <p className="mx-auto mt-10 max-w-6xl border-t border-white/10 px-6 pt-6 text-xs">© {new Date().getFullYear()} PET SHOP MAIER · Pet shop Gilău · Hrană animale Cluj · Furaje Gilău · Livrăm în Gilău, Florești, Cluj-Napoca și împrejurimi · <Link to="/confidentialitate" className="font-semibold underline hover:text-gold">Politica de confidențialitate</Link></p>
     </footer>
     </>
   );

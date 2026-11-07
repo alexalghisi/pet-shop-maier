@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccesoriiCainiRouteImport } from './routes/accesorii-caini'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as CalculatorFurajeRouteImport } from './routes/calculator-furaje'
+import { Route as ConfidentialitateRouteImport } from './routes/confidentialitate'
 import { Route as FurajeAnimaleRouteImport } from './routes/furaje-animale'
 import { Route as FurajeFlorestiRouteImport } from './routes/furaje-floresti'
 import { Route as FurajeGainiRouteImport } from './routes/furaje-gaini'
@@ -54,6 +55,11 @@ const AdminRoute = AdminRouteImport.update({
 const CalculatorFurajeRoute = CalculatorFurajeRouteImport.update({
   id: '/calculator-furaje',
   path: '/calculator-furaje',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfidentialitateRoute = ConfidentialitateRouteImport.update({
+  id: '/confidentialitate',
+  path: '/confidentialitate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FurajeAnimaleRoute = FurajeAnimaleRouteImport.update({
@@ -172,6 +178,7 @@ export interface FileRoutesByFullPath {
   '/accesorii-caini': typeof AccesoriiCainiRoute
   '/admin': typeof AdminRoute
   '/calculator-furaje': typeof CalculatorFurajeRoute
+  '/confidentialitate': typeof ConfidentialitateRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/furaje-floresti': typeof FurajeFlorestiRoute
   '/furaje-gaini': typeof FurajeGainiRoute
@@ -200,6 +207,7 @@ export interface FileRoutesByTo {
   '/accesorii-caini': typeof AccesoriiCainiRoute
   '/admin': typeof AdminRoute
   '/calculator-furaje': typeof CalculatorFurajeRoute
+  '/confidentialitate': typeof ConfidentialitateRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/furaje-floresti': typeof FurajeFlorestiRoute
   '/furaje-gaini': typeof FurajeGainiRoute
@@ -229,6 +237,7 @@ export interface FileRoutesById {
   '/accesorii-caini': typeof AccesoriiCainiRoute
   '/admin': typeof AdminRoute
   '/calculator-furaje': typeof CalculatorFurajeRoute
+  '/confidentialitate': typeof ConfidentialitateRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/furaje-floresti': typeof FurajeFlorestiRoute
   '/furaje-gaini': typeof FurajeGainiRoute
@@ -259,6 +268,7 @@ export interface FileRouteTypes {
     | '/accesorii-caini'
     | '/admin'
     | '/calculator-furaje'
+    | '/confidentialitate'
     | '/furaje-animale'
     | '/furaje-floresti'
     | '/furaje-gaini'
@@ -287,6 +297,7 @@ export interface FileRouteTypes {
     | '/accesorii-caini'
     | '/admin'
     | '/calculator-furaje'
+    | '/confidentialitate'
     | '/furaje-animale'
     | '/furaje-floresti'
     | '/furaje-gaini'
@@ -315,6 +326,7 @@ export interface FileRouteTypes {
     | '/accesorii-caini'
     | '/admin'
     | '/calculator-furaje'
+    | '/confidentialitate'
     | '/furaje-animale'
     | '/furaje-floresti'
     | '/furaje-gaini'
@@ -344,6 +356,7 @@ export interface RootRouteChildren {
   AccesoriiCainiRoute: typeof AccesoriiCainiRoute
   AdminRoute: typeof AdminRoute
   CalculatorFurajeRoute: typeof CalculatorFurajeRoute
+  ConfidentialitateRoute: typeof ConfidentialitateRoute
   FurajeAnimaleRoute: typeof FurajeAnimaleRoute
   FurajeFlorestiRoute: typeof FurajeFlorestiRoute
   FurajeGainiRoute: typeof FurajeGainiRoute
@@ -396,6 +409,13 @@ declare module '@tanstack/react-router' {
       path: '/calculator-furaje'
       fullPath: '/calculator-furaje'
       preLoaderRoute: typeof CalculatorFurajeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/confidentialitate': {
+      id: '/confidentialitate'
+      path: '/confidentialitate'
+      fullPath: '/confidentialitate'
+      preLoaderRoute: typeof ConfidentialitateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/furaje-animale': {
@@ -560,6 +580,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccesoriiCainiRoute: AccesoriiCainiRoute,
   AdminRoute: AdminRoute,
   CalculatorFurajeRoute: CalculatorFurajeRoute,
+  ConfidentialitateRoute: ConfidentialitateRoute,
   FurajeAnimaleRoute: FurajeAnimaleRoute,
   FurajeFlorestiRoute: FurajeFlorestiRoute,
   FurajeGainiRoute: FurajeGainiRoute,

@@ -14,4 +14,12 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+
+  it("serves the privacy policy at /confidentialitate", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+
+    const matches = router.matchRoutes("/confidentialitate");
+
+    expect(matches.at(-1)?.routeId).toBe("/confidentialitate");
+  });
 });
