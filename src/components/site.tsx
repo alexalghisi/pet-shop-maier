@@ -21,6 +21,7 @@ const links = [
 
 export const GUIDES = [
   { to: "/pui-brahma", label: "Pui și ouă Brahma" },
+  { to: "/oua-brahma-incubat", label: "Ouă Brahma de incubat" },
   { to: "/furaje-man", label: "Furaje MAN" },
   { to: "/oferta-furaje", label: "Ofertă tărâțe și furaj combinat" },
   { to: "/calculator-furaje", label: "Calculator furaje" },
@@ -28,6 +29,10 @@ export const GUIDES = [
   { to: "/furaje-vaci-de-lapte", label: "Furaje vaci de lapte" },
   { to: "/hrana-prepelite", label: "Hrană prepelițe" },
   { to: "/furaje-gaini", label: "Furaje găini" },
+  { to: "/furaje-pui", label: "Furaje pui" },
+  { to: "/furaje-curcani", label: "Furaje curcani" },
+  { to: "/porumb-boabe", label: "Porumb boabe" },
+  { to: "/hrana-pesti", label: "Hrană pești" },
   { to: "/hrana-animale", label: "Hrană animale" },
   { to: "/furaje-animale", label: "Furaje animale" },
   { to: "/hrana-porumbei", label: "Hrană porumbei" },

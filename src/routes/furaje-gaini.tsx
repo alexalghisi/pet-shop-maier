@@ -9,7 +9,7 @@ const faqs = [
   { q: "Vindeți furaje la sac în Gilău?", a: "Da, la PetShop Maier găsești furaje la sac și porumb boabe. Sună la +40 758 639 799 pentru stoc." },
 ];
 
-const TITLE = "Furaje pentru găini ouătoare în Gilău, Cluj – nutreț combinat și porumb | PetShop Maier";
+const TITLE = "Furaje pentru găini ouătoare | Gilău, Cluj | PET SHOP MAIER";
 const DESC = "Ce furaje dai găinilor ouătoare și puilor: nutreț combinat, porumb, grâu, calciu. Furaje pentru găini la PetShop Maier, Gilău, județul Cluj.";
 
 export const Route = createFileRoute("/furaje-gaini")({
@@ -29,7 +29,7 @@ export const Route = createFileRoute("/furaje-gaini")({
       ]}
       faqs={faqs}
       photos={GALLERY.filter((p) => ["furaje-man-10kg-gaini-ouatoare", "furaje-man-10kg-pui", "porumb-boabe-30kg-calitate-superioara", "oferta-tarate-furaj-combinat-gilau", "closca-brahma-cu-pui", "pui-brahma-2-3-luni-vaccinati"].includes(p.slug))}
-      related={[{ to: "/hrana-animale", label: "Hrană animale" }, { to: "/pui-brahma", label: "Pui Brahma de vânzare" }, { to: "/calculator-furaje", label: "Calculator furaje" }, { to: "/furaje-animale", label: "Furaje pentru animale" }, { to: "/hrana-porumbei", label: "Hrană pentru porumbei" }]}
+      related={[{ to: "/hrana-animale", label: "Hrană animale" }, { to: "/pui-brahma", label: "Pui Brahma de vânzare" }, { to: "/furaje-pui", label: "Furaje pentru pui" }, { to: "/porumb-boabe", label: "Porumb boabe" }, { to: "/calculator-furaje", label: "Calculator furaje" }, { to: "/furaje-animale", label: "Furaje pentru animale" }, { to: "/hrana-porumbei", label: "Hrană pentru porumbei" }]}
     />
   ),
 });

@@ -13,3 +13,4 @@
 - Products are read via public server functions (publishable client) in route loaders, so product pages render fully for search engines.
 - The first account created at /admin automatically gets the admin role (database trigger) — the shop has a single owner.
 - Advertising uses root head metadata for AdSense and shared client-only AdsterraSlot iframes with source-validated size messages; Footer owns the page-end slot to avoid duplicate placements.
+- SEO pages: one page per product or search intent (e.g. /furaje-pui, /furaje-curcani, /porumb-boabe, /oua-brahma-incubat); titles stay under ~60 characters with the keyword first, and only state prices and stock the shop has confirmed (porumb boabe stays "Întreabă").

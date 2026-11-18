@@ -9,7 +9,7 @@ const faqs = [
   { q: "Unde cumpăr accesorii pentru câini lângă Cluj-Napoca?", a: "La PetShop Maier din Gilău, aproape de Cluj-Napoca și Florești." },
 ];
 
-const TITLE = "Accesorii pentru câini în Gilău, Cluj – lese, zgărzi, boluri, jucării | PetShop Maier";
+const TITLE = "Accesorii pentru câini: lese, zgărzi, boluri | Gilău, Cluj";
 const DESC = "Accesorii pentru câini: lese, zgărzi, hamuri, boluri, jucării și produse de îngrijire. Le găsești la PetShop Maier, Str. Eroilor 1, Gilău.";
 
 export const Route = createFileRoute("/accesorii-caini")({

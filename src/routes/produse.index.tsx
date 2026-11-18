@@ -12,7 +12,7 @@ import hero from "@/assets/hero.webp";
 import fbShop from "@/assets/fb-shop.jpg.asset.json";
 
 
-const TITLE = "Produse pentru animale cu prețuri – furaje, hrană câini și pisici | PET SHOP MAIER Gilău";
+const TITLE = "Produse și prețuri: furaje, hrană câini, pisici | Gilău";
 const DESC = "Hrană pentru câini și pisici, furaje, semințe și accesorii cu prețuri afișate. Comandă online de la PetShop Maier, Gilău, județul Cluj.";
 
 export const Route = createFileRoute("/produse/")({

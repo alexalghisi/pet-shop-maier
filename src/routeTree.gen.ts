@@ -15,22 +15,27 @@ import { Route as AdminRouteImport } from './routes/admin'
 import { Route as CalculatorFurajeRouteImport } from './routes/calculator-furaje'
 import { Route as ConfidentialitateRouteImport } from './routes/confidentialitate'
 import { Route as FurajeAnimaleRouteImport } from './routes/furaje-animale'
+import { Route as FurajeCurcaniRouteImport } from './routes/furaje-curcani'
 import { Route as FurajeFlorestiRouteImport } from './routes/furaje-floresti'
 import { Route as FurajeGainiRouteImport } from './routes/furaje-gaini'
 import { Route as FurajeManRouteImport } from './routes/furaje-man'
+import { Route as FurajePuiRouteImport } from './routes/furaje-pui'
 import { Route as FurajeVaciDeLapteRouteImport } from './routes/furaje-vaci-de-lapte'
 import { Route as GalerieRouteImport } from './routes/galerie'
 import { Route as HranaAnimaleRouteImport } from './routes/hrana-animale'
 import { Route as HranaCaiRouteImport } from './routes/hrana-cai'
 import { Route as HranaCainiRouteImport } from './routes/hrana-caini'
 import { Route as HranaIepuriRouteImport } from './routes/hrana-iepuri'
+import { Route as HranaPestiRouteImport } from './routes/hrana-pesti'
 import { Route as HranaPisiciRouteImport } from './routes/hrana-pisici'
 import { Route as HranaPorumbeiRouteImport } from './routes/hrana-porumbei'
 import { Route as HranaPrepeliteRouteImport } from './routes/hrana-prepelite'
 import { Route as MancareAnimaleRouteImport } from './routes/mancare-animale'
 import { Route as NisipPisiciRouteImport } from './routes/nisip-pisici'
 import { Route as OfertaFurajeRouteImport } from './routes/oferta-furaje'
+import { Route as OuaBrahmaIncubatRouteImport } from './routes/oua-brahma-incubat'
 import { Route as PetShopClujRouteImport } from './routes/pet-shop-cluj'
+import { Route as PorumbBoabeRouteImport } from './routes/porumb-boabe'
 import { Route as PuiBrahmaRouteImport } from './routes/pui-brahma'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as MediaSplatRouteImport } from './routes/media.$'
@@ -67,6 +72,11 @@ const FurajeAnimaleRoute = FurajeAnimaleRouteImport.update({
   path: '/furaje-animale',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FurajeCurcaniRoute = FurajeCurcaniRouteImport.update({
+  id: '/furaje-curcani',
+  path: '/furaje-curcani',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FurajeFlorestiRoute = FurajeFlorestiRouteImport.update({
   id: '/furaje-floresti',
   path: '/furaje-floresti',
@@ -80,6 +90,11 @@ const FurajeGainiRoute = FurajeGainiRouteImport.update({
 const FurajeManRoute = FurajeManRouteImport.update({
   id: '/furaje-man',
   path: '/furaje-man',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FurajePuiRoute = FurajePuiRouteImport.update({
+  id: '/furaje-pui',
+  path: '/furaje-pui',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FurajeVaciDeLapteRoute = FurajeVaciDeLapteRouteImport.update({
@@ -112,6 +127,11 @@ const HranaIepuriRoute = HranaIepuriRouteImport.update({
   path: '/hrana-iepuri',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HranaPestiRoute = HranaPestiRouteImport.update({
+  id: '/hrana-pesti',
+  path: '/hrana-pesti',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HranaPisiciRoute = HranaPisiciRouteImport.update({
   id: '/hrana-pisici',
   path: '/hrana-pisici',
@@ -142,9 +162,19 @@ const OfertaFurajeRoute = OfertaFurajeRouteImport.update({
   path: '/oferta-furaje',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OuaBrahmaIncubatRoute = OuaBrahmaIncubatRouteImport.update({
+  id: '/oua-brahma-incubat',
+  path: '/oua-brahma-incubat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PetShopClujRoute = PetShopClujRouteImport.update({
   id: '/pet-shop-cluj',
   path: '/pet-shop-cluj',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PorumbBoabeRoute = PorumbBoabeRouteImport.update({
+  id: '/porumb-boabe',
+  path: '/porumb-boabe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PuiBrahmaRoute = PuiBrahmaRouteImport.update({
@@ -180,22 +210,27 @@ export interface FileRoutesByFullPath {
   '/calculator-furaje': typeof CalculatorFurajeRoute
   '/confidentialitate': typeof ConfidentialitateRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
+  '/furaje-curcani': typeof FurajeCurcaniRoute
   '/furaje-floresti': typeof FurajeFlorestiRoute
   '/furaje-gaini': typeof FurajeGainiRoute
   '/furaje-man': typeof FurajeManRoute
+  '/furaje-pui': typeof FurajePuiRoute
   '/furaje-vaci-de-lapte': typeof FurajeVaciDeLapteRoute
   '/galerie': typeof GalerieRoute
   '/hrana-animale': typeof HranaAnimaleRoute
   '/hrana-cai': typeof HranaCaiRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-iepuri': typeof HranaIepuriRoute
+  '/hrana-pesti': typeof HranaPestiRoute
   '/hrana-pisici': typeof HranaPisiciRoute
   '/hrana-porumbei': typeof HranaPorumbeiRoute
   '/hrana-prepelite': typeof HranaPrepeliteRoute
   '/mancare-animale': typeof MancareAnimaleRoute
   '/nisip-pisici': typeof NisipPisiciRoute
   '/oferta-furaje': typeof OfertaFurajeRoute
+  '/oua-brahma-incubat': typeof OuaBrahmaIncubatRoute
   '/pet-shop-cluj': typeof PetShopClujRoute
+  '/porumb-boabe': typeof PorumbBoabeRoute
   '/pui-brahma': typeof PuiBrahmaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/media/$': typeof MediaSplatRoute
@@ -209,22 +244,27 @@ export interface FileRoutesByTo {
   '/calculator-furaje': typeof CalculatorFurajeRoute
   '/confidentialitate': typeof ConfidentialitateRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
+  '/furaje-curcani': typeof FurajeCurcaniRoute
   '/furaje-floresti': typeof FurajeFlorestiRoute
   '/furaje-gaini': typeof FurajeGainiRoute
   '/furaje-man': typeof FurajeManRoute
+  '/furaje-pui': typeof FurajePuiRoute
   '/furaje-vaci-de-lapte': typeof FurajeVaciDeLapteRoute
   '/galerie': typeof GalerieRoute
   '/hrana-animale': typeof HranaAnimaleRoute
   '/hrana-cai': typeof HranaCaiRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-iepuri': typeof HranaIepuriRoute
+  '/hrana-pesti': typeof HranaPestiRoute
   '/hrana-pisici': typeof HranaPisiciRoute
   '/hrana-porumbei': typeof HranaPorumbeiRoute
   '/hrana-prepelite': typeof HranaPrepeliteRoute
   '/mancare-animale': typeof MancareAnimaleRoute
   '/nisip-pisici': typeof NisipPisiciRoute
   '/oferta-furaje': typeof OfertaFurajeRoute
+  '/oua-brahma-incubat': typeof OuaBrahmaIncubatRoute
   '/pet-shop-cluj': typeof PetShopClujRoute
+  '/porumb-boabe': typeof PorumbBoabeRoute
   '/pui-brahma': typeof PuiBrahmaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/media/$': typeof MediaSplatRoute
@@ -239,22 +279,27 @@ export interface FileRoutesById {
   '/calculator-furaje': typeof CalculatorFurajeRoute
   '/confidentialitate': typeof ConfidentialitateRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
+  '/furaje-curcani': typeof FurajeCurcaniRoute
   '/furaje-floresti': typeof FurajeFlorestiRoute
   '/furaje-gaini': typeof FurajeGainiRoute
   '/furaje-man': typeof FurajeManRoute
+  '/furaje-pui': typeof FurajePuiRoute
   '/furaje-vaci-de-lapte': typeof FurajeVaciDeLapteRoute
   '/galerie': typeof GalerieRoute
   '/hrana-animale': typeof HranaAnimaleRoute
   '/hrana-cai': typeof HranaCaiRoute
   '/hrana-caini': typeof HranaCainiRoute
   '/hrana-iepuri': typeof HranaIepuriRoute
+  '/hrana-pesti': typeof HranaPestiRoute
   '/hrana-pisici': typeof HranaPisiciRoute
   '/hrana-porumbei': typeof HranaPorumbeiRoute
   '/hrana-prepelite': typeof HranaPrepeliteRoute
   '/mancare-animale': typeof MancareAnimaleRoute
   '/nisip-pisici': typeof NisipPisiciRoute
   '/oferta-furaje': typeof OfertaFurajeRoute
+  '/oua-brahma-incubat': typeof OuaBrahmaIncubatRoute
   '/pet-shop-cluj': typeof PetShopClujRoute
+  '/porumb-boabe': typeof PorumbBoabeRoute
   '/pui-brahma': typeof PuiBrahmaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/media/$': typeof MediaSplatRoute
@@ -270,22 +315,27 @@ export interface FileRouteTypes {
     | '/calculator-furaje'
     | '/confidentialitate'
     | '/furaje-animale'
+    | '/furaje-curcani'
     | '/furaje-floresti'
     | '/furaje-gaini'
     | '/furaje-man'
+    | '/furaje-pui'
     | '/furaje-vaci-de-lapte'
     | '/galerie'
     | '/hrana-animale'
     | '/hrana-cai'
     | '/hrana-caini'
     | '/hrana-iepuri'
+    | '/hrana-pesti'
     | '/hrana-pisici'
     | '/hrana-porumbei'
     | '/hrana-prepelite'
     | '/mancare-animale'
     | '/nisip-pisici'
     | '/oferta-furaje'
+    | '/oua-brahma-incubat'
     | '/pet-shop-cluj'
+    | '/porumb-boabe'
     | '/pui-brahma'
     | '/sitemap.xml'
     | '/media/$'
@@ -299,22 +349,27 @@ export interface FileRouteTypes {
     | '/calculator-furaje'
     | '/confidentialitate'
     | '/furaje-animale'
+    | '/furaje-curcani'
     | '/furaje-floresti'
     | '/furaje-gaini'
     | '/furaje-man'
+    | '/furaje-pui'
     | '/furaje-vaci-de-lapte'
     | '/galerie'
     | '/hrana-animale'
     | '/hrana-cai'
     | '/hrana-caini'
     | '/hrana-iepuri'
+    | '/hrana-pesti'
     | '/hrana-pisici'
     | '/hrana-porumbei'
     | '/hrana-prepelite'
     | '/mancare-animale'
     | '/nisip-pisici'
     | '/oferta-furaje'
+    | '/oua-brahma-incubat'
     | '/pet-shop-cluj'
+    | '/porumb-boabe'
     | '/pui-brahma'
     | '/sitemap.xml'
     | '/media/$'
@@ -328,22 +383,27 @@ export interface FileRouteTypes {
     | '/calculator-furaje'
     | '/confidentialitate'
     | '/furaje-animale'
+    | '/furaje-curcani'
     | '/furaje-floresti'
     | '/furaje-gaini'
     | '/furaje-man'
+    | '/furaje-pui'
     | '/furaje-vaci-de-lapte'
     | '/galerie'
     | '/hrana-animale'
     | '/hrana-cai'
     | '/hrana-caini'
     | '/hrana-iepuri'
+    | '/hrana-pesti'
     | '/hrana-pisici'
     | '/hrana-porumbei'
     | '/hrana-prepelite'
     | '/mancare-animale'
     | '/nisip-pisici'
     | '/oferta-furaje'
+    | '/oua-brahma-incubat'
     | '/pet-shop-cluj'
+    | '/porumb-boabe'
     | '/pui-brahma'
     | '/sitemap.xml'
     | '/media/$'
@@ -358,22 +418,27 @@ export interface RootRouteChildren {
   CalculatorFurajeRoute: typeof CalculatorFurajeRoute
   ConfidentialitateRoute: typeof ConfidentialitateRoute
   FurajeAnimaleRoute: typeof FurajeAnimaleRoute
+  FurajeCurcaniRoute: typeof FurajeCurcaniRoute
   FurajeFlorestiRoute: typeof FurajeFlorestiRoute
   FurajeGainiRoute: typeof FurajeGainiRoute
   FurajeManRoute: typeof FurajeManRoute
+  FurajePuiRoute: typeof FurajePuiRoute
   FurajeVaciDeLapteRoute: typeof FurajeVaciDeLapteRoute
   GalerieRoute: typeof GalerieRoute
   HranaAnimaleRoute: typeof HranaAnimaleRoute
   HranaCaiRoute: typeof HranaCaiRoute
   HranaCainiRoute: typeof HranaCainiRoute
   HranaIepuriRoute: typeof HranaIepuriRoute
+  HranaPestiRoute: typeof HranaPestiRoute
   HranaPisiciRoute: typeof HranaPisiciRoute
   HranaPorumbeiRoute: typeof HranaPorumbeiRoute
   HranaPrepeliteRoute: typeof HranaPrepeliteRoute
   MancareAnimaleRoute: typeof MancareAnimaleRoute
   NisipPisiciRoute: typeof NisipPisiciRoute
   OfertaFurajeRoute: typeof OfertaFurajeRoute
+  OuaBrahmaIncubatRoute: typeof OuaBrahmaIncubatRoute
   PetShopClujRoute: typeof PetShopClujRoute
+  PorumbBoabeRoute: typeof PorumbBoabeRoute
   PuiBrahmaRoute: typeof PuiBrahmaRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   MediaSplatRoute: typeof MediaSplatRoute
@@ -425,6 +490,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FurajeAnimaleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/furaje-curcani': {
+      id: '/furaje-curcani'
+      path: '/furaje-curcani'
+      fullPath: '/furaje-curcani'
+      preLoaderRoute: typeof FurajeCurcaniRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/furaje-floresti': {
       id: '/furaje-floresti'
       path: '/furaje-floresti'
@@ -444,6 +516,13 @@ declare module '@tanstack/react-router' {
       path: '/furaje-man'
       fullPath: '/furaje-man'
       preLoaderRoute: typeof FurajeManRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/furaje-pui': {
+      id: '/furaje-pui'
+      path: '/furaje-pui'
+      fullPath: '/furaje-pui'
+      preLoaderRoute: typeof FurajePuiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/furaje-vaci-de-lapte': {
@@ -488,6 +567,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HranaIepuriRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hrana-pesti': {
+      id: '/hrana-pesti'
+      path: '/hrana-pesti'
+      fullPath: '/hrana-pesti'
+      preLoaderRoute: typeof HranaPestiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hrana-pisici': {
       id: '/hrana-pisici'
       path: '/hrana-pisici'
@@ -530,11 +616,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OfertaFurajeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/oua-brahma-incubat': {
+      id: '/oua-brahma-incubat'
+      path: '/oua-brahma-incubat'
+      fullPath: '/oua-brahma-incubat'
+      preLoaderRoute: typeof OuaBrahmaIncubatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pet-shop-cluj': {
       id: '/pet-shop-cluj'
       path: '/pet-shop-cluj'
       fullPath: '/pet-shop-cluj'
       preLoaderRoute: typeof PetShopClujRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/porumb-boabe': {
+      id: '/porumb-boabe'
+      path: '/porumb-boabe'
+      fullPath: '/porumb-boabe'
+      preLoaderRoute: typeof PorumbBoabeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pui-brahma': {
@@ -582,22 +682,27 @@ const rootRouteChildren: RootRouteChildren = {
   CalculatorFurajeRoute: CalculatorFurajeRoute,
   ConfidentialitateRoute: ConfidentialitateRoute,
   FurajeAnimaleRoute: FurajeAnimaleRoute,
+  FurajeCurcaniRoute: FurajeCurcaniRoute,
   FurajeFlorestiRoute: FurajeFlorestiRoute,
   FurajeGainiRoute: FurajeGainiRoute,
   FurajeManRoute: FurajeManRoute,
+  FurajePuiRoute: FurajePuiRoute,
   FurajeVaciDeLapteRoute: FurajeVaciDeLapteRoute,
   GalerieRoute: GalerieRoute,
   HranaAnimaleRoute: HranaAnimaleRoute,
   HranaCaiRoute: HranaCaiRoute,
   HranaCainiRoute: HranaCainiRoute,
   HranaIepuriRoute: HranaIepuriRoute,
+  HranaPestiRoute: HranaPestiRoute,
   HranaPisiciRoute: HranaPisiciRoute,
   HranaPorumbeiRoute: HranaPorumbeiRoute,
   HranaPrepeliteRoute: HranaPrepeliteRoute,
   MancareAnimaleRoute: MancareAnimaleRoute,
   NisipPisiciRoute: NisipPisiciRoute,
   OfertaFurajeRoute: OfertaFurajeRoute,
+  OuaBrahmaIncubatRoute: OuaBrahmaIncubatRoute,
   PetShopClujRoute: PetShopClujRoute,
+  PorumbBoabeRoute: PorumbBoabeRoute,
   PuiBrahmaRoute: PuiBrahmaRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   MediaSplatRoute: MediaSplatRoute,

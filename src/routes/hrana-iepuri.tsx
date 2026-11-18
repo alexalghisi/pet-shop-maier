@@ -9,7 +9,7 @@ const faqs = [
   { q: "Unde găsesc hrană pentru iepuri în Gilău?", a: "La PetShop Maier, Str. Eroilor 1 – fân, granule și cereale pentru iepuri." },
 ];
 
-const TITLE = "Hrană pentru iepuri în Gilău, Cluj – fân, granule și legume | PetShop Maier";
+const TITLE = "Hrană pentru iepuri – fân, granule | Gilău, Cluj";
 const DESC = "Ce mănâncă iepurii de casă și de crescătorie: fân, granule, legume, ce e interzis. Hrană pentru iepuri la PetShop Maier, Gilău, județul Cluj.";
 
 export const Route = createFileRoute("/hrana-iepuri")({

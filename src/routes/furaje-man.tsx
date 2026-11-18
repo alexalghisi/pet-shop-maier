@@ -26,7 +26,7 @@ const faqs = [
 ];
 
 const TITLE =
-  "Furaje MAN Cluj – găini ouătoare, pui, curcani, prepelițe, vaci | PET SHOP MAIER Gilău";
+  "Furaje MAN Cluj – găini, pui, curcani, prepelițe | Gilău";
 const DESC =
   "Furaje MAN în saci de 5 kg, 10 kg și saci mari: nutreț combinat pentru găini ouătoare, pui, curcani, prepelițe, pești și vaci de lapte. Magazin de furaje în Gilău, jud. Cluj.";
 
@@ -75,6 +75,9 @@ export const Route = createFileRoute("/furaje-man")({
         { to: "/oferta-furaje", label: "Ofertă tărâțe și furaj combinat" },
         { to: "/hrana-prepelite", label: "Hrană prepelițe" },
         { to: "/furaje-vaci-de-lapte", label: "Furaje vaci de lapte" },
+        { to: "/furaje-pui", label: "Furaje pentru pui" },
+        { to: "/furaje-curcani", label: "Furaje pentru curcani" },
+        { to: "/hrana-pesti", label: "Hrană pentru pești de iaz" },
       ]}
     />
   ),

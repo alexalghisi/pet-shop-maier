@@ -9,7 +9,7 @@ const faqs = [
   { q: "Unde găsesc nisip pentru pisici lângă Cluj-Napoca?", a: "La PetShop Maier din Gilău, Str. Eroilor 1 – la 15 minute de Cluj-Napoca și Florești." },
 ];
 
-const TITLE = "Nisip pentru pisici în Gilău, Cluj – bentonită, silicat sau vegetal | PetShop Maier";
+const TITLE = "Nisip pentru pisici – bentonită, silicat | Gilău, Cluj";
 const DESC = "Ce nisip pentru pisici alegi: bentonită aglomerantă, silicat, tofu sau lemn. Sfaturi și nisip pentru pisici la PetShop Maier, Str. Eroilor 1, Gilău.";
 
 export const Route = createFileRoute("/nisip-pisici")({

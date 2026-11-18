@@ -21,7 +21,7 @@ const faqs = [
   },
 ];
 
-const TITLE = "Furaj vaci de lapte 22% proteină – Furaje MAN Cluj | PET SHOP MAIER Gilău";
+const TITLE = "Furaj vaci de lapte 22% proteină | Gilău, Cluj";
 const DESC =
   "Furaj granulat pentru vaci de lapte cu 22% proteină (Furaje MAN), tărâțe și porumb boabe în Gilău, jud. Cluj. Mai mult lapte, vaci sănătoase.";
 
