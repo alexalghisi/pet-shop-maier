@@ -10,10 +10,11 @@ import { KW } from "@/lib/keywords";
 import { AdsterraSlot } from "@/components/ads";
 import hero from "@/assets/hero.webp";
 import fbShop from "@/assets/fb-shop.jpg.asset.json";
+import { SORTIMENT } from "@/lib/sortiment";
 
 
-const TITLE = "Produse și prețuri: furaje, hrană câini, pisici | Gilău";
-const DESC = "Hrană pentru câini și pisici, furaje, semințe și accesorii cu prețuri afișate. Comandă online de la PetShop Maier, Gilău, județul Cluj.";
+const TITLE = "Produse: hrană câini, pisici, furaje, porumbei | Gilău";
+const DESC = "Monge Artù, Versele-Laga, Kudo, Furaje MAN, HippoX, tărâțe, porumb și pui Brahma la PET SHOP MAIER Gilău. Stoc pe WhatsApp, transport la domiciliu.";
 
 export const Route = createFileRoute("/produse/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery),
@@ -47,8 +48,8 @@ function ProductsPage() {
             <img src={fbShop.url} alt="Rafturi cu hrană și accesorii din magazinul PetShop Maier din Gilău" width={726} height={225} loading="lazy" decoding="async" className="w-full rounded-lg object-contain" />
             <div>
               <PackageOpen className="size-7 text-primary" aria-hidden="true" />
-              <h3 className="mt-4 text-2xl">{data.length === 0 ? "Catalogul online se pregătește" : "Momentan nu sunt produse în această categorie"}</h3>
-              <p className="mt-3 leading-relaxed text-muted-foreground">{data.length === 0 ? "Până apar produsele și prețurile aici, ne găsești în magazinul din Gilău. Scrie-ne despre hrana sau accesoriile pe care le cauți." : "Vezi celelalte categorii sau întreabă-ne despre produsul pe care îl cauți."}</p>
+              <h3 className="mt-4 text-2xl">{data.length === 0 ? "Ce găsești în magazinul din Gilău" : "Momentan nu sunt produse în această categorie"}</h3>
+              <p className="mt-3 leading-relaxed text-muted-foreground">{data.length === 0 ? "Hrană pentru câini și pisici, semințe pentru porumbei, furaje la sac, suplimente și pui Brahma. Stocul și prețul ți le confirmăm pe WhatsApp, iar în Gilău, Florești și Cluj-Napoca transportăm și la domiciliu." : "Vezi celelalte categorii sau întreabă-ne despre produsul pe care îl cauți."}</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Button asChild size="lg"><a href={whatsappLink("produsele disponibile în magazin.")} target="_blank" rel="noopener noreferrer"><MessageCircle />Întreabă pe WhatsApp</a></Button>
                 <Button asChild variant="secondary" size="lg"><Link to="/">Pagina principală<ArrowRight /></Link></Button>
@@ -58,6 +59,23 @@ function ProductsPage() {
         ) : (
           <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             {list.map((p) => <ProductCard key={p.id} p={p} />)}
+          </div>
+        )}
+        {list.length === 0 && (
+          <div className="mt-12 grid gap-10 md:grid-cols-2">
+            {SORTIMENT.map((group) => (
+              <div key={group.title}>
+                <h3 className="text-xl">{group.title}</h3>
+                <ul className="mt-4 space-y-3">
+                  {group.items.map((item) => (
+                    <li key={item.name + item.detail}>
+                      <Link to={item.to} className="font-semibold text-primary underline-offset-4 hover:underline">{item.name}</Link>
+                      <p className="text-sm text-muted-foreground">{item.detail}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         )}
       </section>

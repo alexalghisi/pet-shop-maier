@@ -8,8 +8,9 @@ export const BUSINESS = {
   city: "Gilău",
   postal: "407310",
   region: "Cluj",
-  lat: 46.7553,
-  lng: 23.3833,
+  // Pin of the Google Maps listing, so the site and the map point at the same place.
+  lat: 46.7562873,
+  lng: 23.3859578,
   facebook: "https://www.facebook.com/p/PET-SHOP-MAIER-61574444792704/",
   hours: [
     {
@@ -34,8 +35,8 @@ export const BUSINESS = {
   ],
 };
 
-export const MAPS_URL =
-  "https://www.google.com/maps/search/?api=1&query=PET+SHOP+MAIER+Strada+Eroilor+1+Gil%C4%83u+Cluj";
+/** The shop's Google Maps listing (Business Profile), so visitors land on the reviews. */
+export const MAPS_URL = "https://www.google.com/maps?cid=16076475016009110509";
 
 export const abs = (path: string) =>
   path.startsWith("http") ? path : `${SITE_URL}${path === "/" ? "/" : path}`;
@@ -71,7 +72,7 @@ export const localBusinessLd = () => ({
     opens: h.opens,
     closes: h.closes,
   })),
-  sameAs: [BUSINESS.facebook],
+  sameAs: [BUSINESS.facebook, MAPS_URL],
   makesOffer: [
     { "@type": "Offer", name: "Tărâțe – sac 20 kg", price: "40", priceCurrency: "RON" },
     {

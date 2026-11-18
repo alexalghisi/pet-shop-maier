@@ -7,6 +7,7 @@ const faqs = [
   { q: "Cât mănâncă un porumbel pe zi?", a: "Aproximativ 30–40 g de amestec pe zi, în funcție de rasă și activitate." },
   { q: "Pot da pâine porumbeilor?", a: "Nu e recomandat – pâinea nu are nutrienții necesari și poate cauza probleme digestive." },
   { q: "De unde iau hrană pentru porumbei în județul Cluj?", a: "De la PetShop Maier din Gilău, unde găsești amestecuri de semințe și cereale." },
+  { q: "Aveți semințe Versele-Laga pentru porumbei?", a: "Da, Versele-Laga Classic Allround Eco în saci de 20 kg pentru hrana zilnică și suplimentul Colombine Vita de 4 kg. Avem și adăpători de 2 L. Scrie-ne pe WhatsApp la 0758 639 799 pentru stoc." },
 ];
 
 const TITLE = "Hrană pentru porumbei – semințe | Gilău, Cluj";
@@ -22,6 +23,7 @@ export const Route = createFileRoute("/hrana-porumbei")({
       image={img}
       imageAlt="Amestec de semințe pentru porumbei"
       sections={[
+        { h: "Ce găsești la noi în Gilău", p: "Semințe, suplimente și accesorii pentru porumbei, din magazinul nostru din Strada Eroilor 1. Stocul îl confirmăm pe WhatsApp.", list: ["Versele-Laga Classic Allround Eco – sac 20 kg, amestec de semințe pentru hrana zilnică", "Versele-Laga Colombine Vita – 4 kg, supliment pentru condiție și vitalitate", "Adăpătoare pentru porumbei de 2 L"] },
         { h: "Ce conține un amestec bun", p: "Un amestec echilibrat combină cereale și leguminoase.", list: ["Porumb, grâu, orz – energie", "Mazăre, fasole mung – proteine", "Semințe mici (cânepă, rapiță) – grăsimi sănătoase"] },
         { h: "Hrană pe sezoane", p: "În reproducție și năpârlire crește proteina (mai multe leguminoase); în perioada de zbor – mai multă energie; iarna – amestec de întreținere." },
         { h: "Grit și minerale", p: "Porumbeii au nevoie mereu de grit și minerale pentru digestie și oase puternice." },

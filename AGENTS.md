@@ -14,3 +14,4 @@
 - The first account created at /admin automatically gets the admin role (database trigger) — the shop has a single owner.
 - Advertising uses root head metadata for AdSense and shared client-only AdsterraSlot iframes with source-validated size messages; Footer owns the page-end slot to avoid duplicate placements.
 - SEO pages: one page per product or search intent (e.g. /furaje-pui, /furaje-curcani, /porumb-boabe, /oua-brahma-incubat); titles stay under ~60 characters with the keyword first, and only state prices and stock the shop has confirmed (porumb boabe stays "Întreabă").
+- The shop's Google Maps listing is `MAPS_URL` (cid link) in `src/lib/seo.ts`; it is in `sameAs` and the site's geo pin matches it. Products announced on Facebook live in `src/lib/sortiment.ts` and on the matching guide pages; /produse shows that list while the database catalogue is empty.
