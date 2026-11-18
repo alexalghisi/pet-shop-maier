@@ -21,7 +21,7 @@ const faqs = [
   },
 ];
 
-const TITLE = "Hrană pentru prepelițe – furaj prepelițe ouătoare Cluj | PET SHOP MAIER Gilău";
+const TITLE = "Hrană pentru prepelițe ouătoare | Gilău, Cluj";
 const DESC =
   "Furaj pentru prepelițe ouătoare și pui de prepeliță (Furaje MAN, saci de 10 kg) în Gilău, jud. Cluj. Cât mănâncă o prepeliță pe zi și cum o hrănești corect.";
 

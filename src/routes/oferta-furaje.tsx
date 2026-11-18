@@ -22,7 +22,7 @@ const faqs = [
 ];
 
 const TITLE =
-  "Tărâțe 40 lei/20 kg și furaj combinat 60 lei/30 kg – ofertă furaje Gilău | PET SHOP MAIER";
+  "Tărâțe 40 lei/20 kg, furaj combinat 60 lei/30 kg | Gilău";
 const DESC =
   "Ofertă furaje în Gilău, Cluj: tărâțe 40 lei sacul de 20 kg și furaj combinat măcinat universal 60 lei sacul de 30 kg, pentru găini, curcani, rațe, porci și iepuri.";
 
@@ -74,6 +74,7 @@ export const Route = createFileRoute("/oferta-furaje")({
       faqs={faqs}
       related={[
         { to: "/calculator-furaje", label: "Calculator furaje" },
+        { to: "/porumb-boabe", label: "Porumb boabe la sac" },
         { to: "/furaje-man", label: "Furaje MAN" },
         { to: "/furaje-animale", label: "Furaje animale" },
       ]}

@@ -10,7 +10,7 @@ const faqs = [
   { q: "Unde cumpăr furaje în județul Cluj?", a: "La PetShop Maier din Gilău găsești furaje și semințe pentru păsări, rozătoare și iepuri." },
 ];
 
-const TITLE = "Furaje pentru animale și semințe păsări în Gilău | PetShop Maier";
+const TITLE = "Furaje pentru animale și semințe păsări | Gilău, Cluj";
 const DESC = "Furaje pentru păsări, porumbei, iepuri și rozătoare: ce să alegi și cum să le păstrezi. Furaje de calitate la PetShop Maier, Gilău, județul Cluj.";
 
 export const Route = createFileRoute("/furaje-animale")({
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/furaje-animale")({
       ]}
       faqs={faqs}
       photos={byTag("furaje").slice(0, 9)}
-      related={[{ to: "/hrana-animale", label: "Hrană animale" }, { to: "/furaje-man", label: "Furaje MAN" }, { to: "/oferta-furaje", label: "Ofertă tărâțe" }, { to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/hrana-pisici", label: "Hrană pentru pisici" }]}
+      related={[{ to: "/hrana-animale", label: "Hrană animale" }, { to: "/furaje-man", label: "Furaje MAN" }, { to: "/oferta-furaje", label: "Ofertă tărâțe" }, { to: "/porumb-boabe", label: "Porumb boabe" }, { to: "/furaje-curcani", label: "Furaje curcani" }, { to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/hrana-pisici", label: "Hrană pentru pisici" }]}
     />
   ),
 });

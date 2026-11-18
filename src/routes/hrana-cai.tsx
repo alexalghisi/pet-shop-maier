@@ -21,7 +21,7 @@ const faqs = [
   },
 ];
 
-const TITLE = "Hrană pentru cai Deli Nature HippoX – Cluj, Gilău | PET SHOP MAIER";
+const TITLE = "Hrană cai Deli Nature HippoX | Gilău, Cluj";
 const DESC =
   "Hrană pentru cai Deli Nature HippoX, porumb boabe și tărâțe la PET SHOP MAIER din Gilău, județul Cluj. Sfaturi de hrănire și rezervare pe WhatsApp.";
 

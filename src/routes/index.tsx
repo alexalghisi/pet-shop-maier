@@ -10,7 +10,7 @@ import { BUSINESS, MAPS_URL, seoHead, localBusinessLd, faqLd } from "@/lib/seo";
 import { SITE_URL } from "@/lib/products";
 import { KW } from "@/lib/keywords";
 
-const TITLE = "Pet shop Gilău, Cluj – hrană animale, furaje, pui Brahma | PET SHOP MAIER";
+const TITLE = "Pet shop Gilău, Cluj – hrană animale, furaje | PET SHOP MAIER";
 const DESC =
   "PET SHOP MAIER Gilău – hrană și mâncare pentru animale: furaje (tărâțe 40 lei/20 kg, furaj combinat 60 lei/30 kg, Furaje MAN, porumb), pui și ouă Brahma vaccinați, hrană pentru cai, câini și pisici. Deschis 7 zile din 7, la 15 minute de Cluj-Napoca.";
 

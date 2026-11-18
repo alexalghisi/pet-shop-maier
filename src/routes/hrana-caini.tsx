@@ -10,7 +10,7 @@ const faqs = [
   { q: "Unde cumpăr hrană pentru câini în județul Cluj?", a: "La PetShop Maier din Gilău găsești hrană pentru câini de toate vârstele și taliile, plus recomandări personalizate." },
 ];
 
-const TITLE = "Hrană pentru câini în Gilău, județul Cluj – ghid și sfaturi | PetShop Maier";
+const TITLE = "Hrană pentru câini | Gilău, Cluj | PET SHOP MAIER";
 const DESC = "Cum alegi hrana potrivită pentru câine: uscată sau umedă, pui, adult, senior, talie mică sau mare. Găsești hrană pentru câini la PetShop Maier, Gilău.";
 
 export const Route = createFileRoute("/hrana-caini")({

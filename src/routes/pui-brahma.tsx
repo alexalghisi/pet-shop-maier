@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     q: "Vindeți ouă de Brahma pentru incubat?",
-    a: "Da, avem ouă fertile Brahma pentru incubație, de la părinți premiați la expoziții avicole. Stocul variază în funcție de sezon, așa că e bine să le rezervi din timp.",
+    a: "Da, avem ouă fertile Brahma pentru incubație, de la părinți premiați la expoziții avicole. Stocul variază în funcție de sezon, așa că e bine să le rezervi din timp. Detalii și pașii de incubație găsești pe pagina Ouă Brahma de incubat.",
   },
   {
     q: "Cu ce sunt vaccinați puii Brahma?",
@@ -29,7 +29,7 @@ const faqs = [
   },
 ];
 
-const TITLE = "Pui Brahma de vânzare Cluj – pui vaccinați și ouă de incubat | PET SHOP MAIER Gilău";
+const TITLE = "Pui Brahma de vânzare Cluj – vaccinați | PET SHOP MAIER";
 const DESC =
   "Pui Brahma Columbia galben-negru și potârniche de 2–3 luni, vaccinați, plus ouă fertile Brahma pentru incubat, de la părinți campioni la expoziții. Gilău, jud. Cluj.";
 
@@ -88,6 +88,8 @@ export const Route = createFileRoute("/pui-brahma")({
       photos={byTag("brahma")}
       faqs={faqs}
       related={[
+        { to: "/oua-brahma-incubat", label: "Ouă Brahma de incubat" },
+        { to: "/furaje-pui", label: "Furaje pentru pui" },
         { to: "/furaje-gaini", label: "Furaje pentru găini" },
         { to: "/furaje-man", label: "Furaje MAN" },
         { to: "/calculator-furaje", label: "Calculator furaje" },

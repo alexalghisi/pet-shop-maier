@@ -9,7 +9,7 @@ const faqs = [
   { q: "De unde iau hrană pentru porumbei în județul Cluj?", a: "De la PetShop Maier din Gilău, unde găsești amestecuri de semințe și cereale." },
 ];
 
-const TITLE = "Hrană pentru porumbei în Gilău, Cluj – amestecuri de semințe | PetShop Maier";
+const TITLE = "Hrană pentru porumbei – semințe | Gilău, Cluj";
 const DESC = "Ce mănâncă porumbeii: amestecuri de semințe pentru porumbei voiajori și de rasă, vitamine și grit. Hrană porumbei la PetShop Maier, Gilău.";
 
 export const Route = createFileRoute("/hrana-porumbei")({

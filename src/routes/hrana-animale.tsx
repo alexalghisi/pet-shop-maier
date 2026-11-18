@@ -11,7 +11,7 @@ const faqs = [
   { q: "Care e programul magazinului?", a: "Luni–Vineri 09:00–19:00, Sâmbătă–Duminică 09:00–17:00 – deschis 7 zile din 7." },
 ];
 
-const TITLE = "Hrană animale și mâncare pentru animale în Gilău, Cluj | PET SHOP MAIER";
+const TITLE = "Hrană pentru animale în Gilău, Cluj | PET SHOP MAIER";
 const DESC =
   "Hrană pentru animale de companie și de fermă: mâncare câini și pisici, furaje găini, porci, iepuri, porumbei, cai, tărâțe și porumb. PET SHOP MAIER Gilău, lângă Cluj-Napoca și Florești.";
 

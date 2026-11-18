@@ -9,7 +9,7 @@ const faqs = [
   { q: "Care e programul?", a: "Luni–Vineri 09:00–19:00, Sâmbătă–Duminică 09:00–17:00 – deschis 7 zile din 7." },
 ];
 
-const TITLE = "Furaje Florești – tărâțe, furaj combinat, Furaje MAN | PET SHOP MAIER Gilău";
+const TITLE = "Furaje Florești – tărâțe, furaj combinat, Furaje MAN";
 const DESC =
   "Furaje pentru cei din Florești, la 10 minute în Gilău: tărâțe 40 lei/20 kg, furaj combinat 60 lei/30 kg, Furaje MAN, porumb, hrană câini, pisici și cai, pui Brahma. Comandă pe WhatsApp 0758 639 799.";
 

@@ -10,7 +10,7 @@ const faqs = [
   { q: "Unde găsesc hrană pentru pisici în Gilău?", a: "La PetShop Maier, în județul Cluj, avem hrană uscată și umedă, nisip și recompense pentru pisici." },
 ];
 
-const TITLE = "Hrană pentru pisici în Gilău, județul Cluj – ghid complet | PetShop Maier";
+const TITLE = "Hrană pentru pisici | Gilău, Cluj | PET SHOP MAIER";
 const DESC = "Hrană uscată sau umedă pentru pisici, pisici sterilizate, pui și seniori. Sfaturi practice și hrană pentru pisici la PetShop Maier din Gilău, Cluj.";
 
 export const Route = createFileRoute("/hrana-pisici")({
