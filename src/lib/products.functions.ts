@@ -25,7 +25,6 @@ const COLS = "id, slug, name, seo_title, description, price, category, in_stock,
 const PRODUCTS_TTL_MS = 60_000;
 const STALE_WAIT_MS = 1_500;
 let productsCache: { at: number; data: Product[] } | null = null;
-let productsInflight: Promise<Product[] | null> | null = null;
 
 async function fetchProducts(): Promise<Product[] | null> {
   const { data, error } = await publicClient().from("products").select(COLS).order("created_at", { ascending: false });
@@ -38,11 +37,10 @@ async function fetchProducts(): Promise<Product[] | null> {
   return list;
 }
 
+// Each request starts its own fetch: on the edge runtime a promise created by one
+// request cannot be awaited by another (it would never settle).
 function refreshProducts() {
-  productsInflight ??= fetchProducts().finally(() => {
-    productsInflight = null;
-  });
-  return productsInflight;
+  return fetchProducts();
 }
 
 export const listProducts = createServerFn({ method: "GET" }).handler(async () => {
