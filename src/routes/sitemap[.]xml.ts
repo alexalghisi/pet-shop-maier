@@ -3,6 +3,7 @@ import { listProducts } from "@/lib/products.functions";
 import { SITE_URL, mediaUrl } from "@/lib/products";
 import { GALLERY, byTag, photoAbs } from "@/lib/gallery";
 import { PROMO_VIDEO } from "@/components/PromoVideo";
+import { ARTICLES } from "@/components/site";
 
 const esc = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -81,7 +82,13 @@ const STATIC: Entry[] = [
   { path: "/hrana-porumbei", priority: "0.6", freq: "monthly" },
   { path: "/hrana-iepuri", priority: "0.6", freq: "monthly" },
   { path: "/accesorii-caini", priority: "0.6", freq: "monthly" },
+  { path: "/ghiduri", priority: "0.8", freq: "weekly" },
+  ...ARTICLES.map((a) => ({ path: a.to, priority: "0.8", freq: "monthly" })),
+  { path: "/despre-noi", priority: "0.5", freq: "yearly" },
+  { path: "/contact", priority: "0.5", freq: "yearly" },
+  { path: "/termeni-si-conditii", priority: "0.3", freq: "yearly" },
   { path: "/confidentialitate", priority: "0.3", freq: "yearly" },
+  { path: "/politica-cookies", priority: "0.3", freq: "yearly" },
 ];
 
 export const Route = createFileRoute("/sitemap.xml")({
