@@ -73,6 +73,8 @@ export const Route = createFileRoute("/oferta-furaje")({
       )}
       faqs={faqs}
       related={[
+        { to: "/tarate", label: "Tărâțe la sac 20 kg" },
+        { to: "/furaj-combinat", label: "Furaj combinat la sac 30 kg" },
         { to: "/calculator-furaje", label: "Calculator furaje" },
         { to: "/porumb-boabe", label: "Porumb boabe la sac" },
         { to: "/furaje-man", label: "Furaje MAN" },

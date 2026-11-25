@@ -156,3 +156,28 @@ export function seoHead(o: HeadOpts) {
     })),
   };
 }
+
+/** Product + Offer for items whose price the shop has confirmed (shown as price in Google results). */
+export const productOfferLd = (o: {
+  name: string;
+  description: string;
+  path: string;
+  image: string;
+  price: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: o.name,
+  description: o.description,
+  image: [abs(o.image)],
+  brand: { "@type": "Brand", name: BUSINESS.name },
+  offers: {
+    "@type": "Offer",
+    url: abs(o.path),
+    price: o.price,
+    priceCurrency: "RON",
+    availability: "https://schema.org/InStoreOnly",
+    itemCondition: "https://schema.org/NewCondition",
+    seller: { "@id": `${SITE_URL}/#store` },
+  },
+});

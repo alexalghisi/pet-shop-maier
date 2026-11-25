@@ -14,6 +14,7 @@ import { Route as AccesoriiCainiRouteImport } from './routes/accesorii-caini'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as CalculatorFurajeRouteImport } from './routes/calculator-furaje'
 import { Route as ConfidentialitateRouteImport } from './routes/confidentialitate'
+import { Route as FurajCombinatRouteImport } from './routes/furaj-combinat'
 import { Route as FurajeAnimaleRouteImport } from './routes/furaje-animale'
 import { Route as FurajeCurcaniRouteImport } from './routes/furaje-curcani'
 import { Route as FurajeFlorestiRouteImport } from './routes/furaje-floresti'
@@ -21,6 +22,7 @@ import { Route as FurajeGainiRouteImport } from './routes/furaje-gaini'
 import { Route as FurajeManRouteImport } from './routes/furaje-man'
 import { Route as FurajePuiRouteImport } from './routes/furaje-pui'
 import { Route as FurajeVaciDeLapteRouteImport } from './routes/furaje-vaci-de-lapte'
+import { Route as GainiBrahmaRouteImport } from './routes/gaini-brahma'
 import { Route as GalerieRouteImport } from './routes/galerie'
 import { Route as HranaAnimaleRouteImport } from './routes/hrana-animale'
 import { Route as HranaCaiRouteImport } from './routes/hrana-cai'
@@ -38,6 +40,7 @@ import { Route as PetShopClujRouteImport } from './routes/pet-shop-cluj'
 import { Route as PorumbBoabeRouteImport } from './routes/porumb-boabe'
 import { Route as PuiBrahmaRouteImport } from './routes/pui-brahma'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as TarateRouteImport } from './routes/tarate'
 import { Route as MediaSplatRouteImport } from './routes/media.$'
 import { Route as ProduseIndexRouteImport } from './routes/produse.index'
 import { Route as ProduseSlugRouteImport } from './routes/produse.$slug'
@@ -65,6 +68,11 @@ const CalculatorFurajeRoute = CalculatorFurajeRouteImport.update({
 const ConfidentialitateRoute = ConfidentialitateRouteImport.update({
   id: '/confidentialitate',
   path: '/confidentialitate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FurajCombinatRoute = FurajCombinatRouteImport.update({
+  id: '/furaj-combinat',
+  path: '/furaj-combinat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FurajeAnimaleRoute = FurajeAnimaleRouteImport.update({
@@ -100,6 +108,11 @@ const FurajePuiRoute = FurajePuiRouteImport.update({
 const FurajeVaciDeLapteRoute = FurajeVaciDeLapteRouteImport.update({
   id: '/furaje-vaci-de-lapte',
   path: '/furaje-vaci-de-lapte',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GainiBrahmaRoute = GainiBrahmaRouteImport.update({
+  id: '/gaini-brahma',
+  path: '/gaini-brahma',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalerieRoute = GalerieRouteImport.update({
@@ -187,6 +200,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TarateRoute = TarateRouteImport.update({
+  id: '/tarate',
+  path: '/tarate',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MediaSplatRoute = MediaSplatRouteImport.update({
   id: '/media/$',
   path: '/media/$',
@@ -209,6 +227,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/calculator-furaje': typeof CalculatorFurajeRoute
   '/confidentialitate': typeof ConfidentialitateRoute
+  '/furaj-combinat': typeof FurajCombinatRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/furaje-curcani': typeof FurajeCurcaniRoute
   '/furaje-floresti': typeof FurajeFlorestiRoute
@@ -216,6 +235,7 @@ export interface FileRoutesByFullPath {
   '/furaje-man': typeof FurajeManRoute
   '/furaje-pui': typeof FurajePuiRoute
   '/furaje-vaci-de-lapte': typeof FurajeVaciDeLapteRoute
+  '/gaini-brahma': typeof GainiBrahmaRoute
   '/galerie': typeof GalerieRoute
   '/hrana-animale': typeof HranaAnimaleRoute
   '/hrana-cai': typeof HranaCaiRoute
@@ -233,6 +253,7 @@ export interface FileRoutesByFullPath {
   '/porumb-boabe': typeof PorumbBoabeRoute
   '/pui-brahma': typeof PuiBrahmaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tarate': typeof TarateRoute
   '/media/$': typeof MediaSplatRoute
   '/produse/$slug': typeof ProduseSlugRoute
   '/produse/': typeof ProduseIndexRoute
@@ -243,6 +264,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/calculator-furaje': typeof CalculatorFurajeRoute
   '/confidentialitate': typeof ConfidentialitateRoute
+  '/furaj-combinat': typeof FurajCombinatRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/furaje-curcani': typeof FurajeCurcaniRoute
   '/furaje-floresti': typeof FurajeFlorestiRoute
@@ -250,6 +272,7 @@ export interface FileRoutesByTo {
   '/furaje-man': typeof FurajeManRoute
   '/furaje-pui': typeof FurajePuiRoute
   '/furaje-vaci-de-lapte': typeof FurajeVaciDeLapteRoute
+  '/gaini-brahma': typeof GainiBrahmaRoute
   '/galerie': typeof GalerieRoute
   '/hrana-animale': typeof HranaAnimaleRoute
   '/hrana-cai': typeof HranaCaiRoute
@@ -267,6 +290,7 @@ export interface FileRoutesByTo {
   '/porumb-boabe': typeof PorumbBoabeRoute
   '/pui-brahma': typeof PuiBrahmaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tarate': typeof TarateRoute
   '/media/$': typeof MediaSplatRoute
   '/produse/$slug': typeof ProduseSlugRoute
   '/produse': typeof ProduseIndexRoute
@@ -278,6 +302,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/calculator-furaje': typeof CalculatorFurajeRoute
   '/confidentialitate': typeof ConfidentialitateRoute
+  '/furaj-combinat': typeof FurajCombinatRoute
   '/furaje-animale': typeof FurajeAnimaleRoute
   '/furaje-curcani': typeof FurajeCurcaniRoute
   '/furaje-floresti': typeof FurajeFlorestiRoute
@@ -285,6 +310,7 @@ export interface FileRoutesById {
   '/furaje-man': typeof FurajeManRoute
   '/furaje-pui': typeof FurajePuiRoute
   '/furaje-vaci-de-lapte': typeof FurajeVaciDeLapteRoute
+  '/gaini-brahma': typeof GainiBrahmaRoute
   '/galerie': typeof GalerieRoute
   '/hrana-animale': typeof HranaAnimaleRoute
   '/hrana-cai': typeof HranaCaiRoute
@@ -302,6 +328,7 @@ export interface FileRoutesById {
   '/porumb-boabe': typeof PorumbBoabeRoute
   '/pui-brahma': typeof PuiBrahmaRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tarate': typeof TarateRoute
   '/media/$': typeof MediaSplatRoute
   '/produse/$slug': typeof ProduseSlugRoute
   '/produse/': typeof ProduseIndexRoute
@@ -314,6 +341,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/calculator-furaje'
     | '/confidentialitate'
+    | '/furaj-combinat'
     | '/furaje-animale'
     | '/furaje-curcani'
     | '/furaje-floresti'
@@ -321,6 +349,7 @@ export interface FileRouteTypes {
     | '/furaje-man'
     | '/furaje-pui'
     | '/furaje-vaci-de-lapte'
+    | '/gaini-brahma'
     | '/galerie'
     | '/hrana-animale'
     | '/hrana-cai'
@@ -338,6 +367,7 @@ export interface FileRouteTypes {
     | '/porumb-boabe'
     | '/pui-brahma'
     | '/sitemap.xml'
+    | '/tarate'
     | '/media/$'
     | '/produse/$slug'
     | '/produse/'
@@ -348,6 +378,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/calculator-furaje'
     | '/confidentialitate'
+    | '/furaj-combinat'
     | '/furaje-animale'
     | '/furaje-curcani'
     | '/furaje-floresti'
@@ -355,6 +386,7 @@ export interface FileRouteTypes {
     | '/furaje-man'
     | '/furaje-pui'
     | '/furaje-vaci-de-lapte'
+    | '/gaini-brahma'
     | '/galerie'
     | '/hrana-animale'
     | '/hrana-cai'
@@ -372,6 +404,7 @@ export interface FileRouteTypes {
     | '/porumb-boabe'
     | '/pui-brahma'
     | '/sitemap.xml'
+    | '/tarate'
     | '/media/$'
     | '/produse/$slug'
     | '/produse'
@@ -382,6 +415,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/calculator-furaje'
     | '/confidentialitate'
+    | '/furaj-combinat'
     | '/furaje-animale'
     | '/furaje-curcani'
     | '/furaje-floresti'
@@ -389,6 +423,7 @@ export interface FileRouteTypes {
     | '/furaje-man'
     | '/furaje-pui'
     | '/furaje-vaci-de-lapte'
+    | '/gaini-brahma'
     | '/galerie'
     | '/hrana-animale'
     | '/hrana-cai'
@@ -406,6 +441,7 @@ export interface FileRouteTypes {
     | '/porumb-boabe'
     | '/pui-brahma'
     | '/sitemap.xml'
+    | '/tarate'
     | '/media/$'
     | '/produse/$slug'
     | '/produse/'
@@ -417,6 +453,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   CalculatorFurajeRoute: typeof CalculatorFurajeRoute
   ConfidentialitateRoute: typeof ConfidentialitateRoute
+  FurajCombinatRoute: typeof FurajCombinatRoute
   FurajeAnimaleRoute: typeof FurajeAnimaleRoute
   FurajeCurcaniRoute: typeof FurajeCurcaniRoute
   FurajeFlorestiRoute: typeof FurajeFlorestiRoute
@@ -424,6 +461,7 @@ export interface RootRouteChildren {
   FurajeManRoute: typeof FurajeManRoute
   FurajePuiRoute: typeof FurajePuiRoute
   FurajeVaciDeLapteRoute: typeof FurajeVaciDeLapteRoute
+  GainiBrahmaRoute: typeof GainiBrahmaRoute
   GalerieRoute: typeof GalerieRoute
   HranaAnimaleRoute: typeof HranaAnimaleRoute
   HranaCaiRoute: typeof HranaCaiRoute
@@ -441,6 +479,7 @@ export interface RootRouteChildren {
   PorumbBoabeRoute: typeof PorumbBoabeRoute
   PuiBrahmaRoute: typeof PuiBrahmaRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TarateRoute: typeof TarateRoute
   MediaSplatRoute: typeof MediaSplatRoute
   ProduseSlugRoute: typeof ProduseSlugRoute
   ProduseIndexRoute: typeof ProduseIndexRoute
@@ -481,6 +520,13 @@ declare module '@tanstack/react-router' {
       path: '/confidentialitate'
       fullPath: '/confidentialitate'
       preLoaderRoute: typeof ConfidentialitateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/furaj-combinat': {
+      id: '/furaj-combinat'
+      path: '/furaj-combinat'
+      fullPath: '/furaj-combinat'
+      preLoaderRoute: typeof FurajCombinatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/furaje-animale': {
@@ -530,6 +576,13 @@ declare module '@tanstack/react-router' {
       path: '/furaje-vaci-de-lapte'
       fullPath: '/furaje-vaci-de-lapte'
       preLoaderRoute: typeof FurajeVaciDeLapteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gaini-brahma': {
+      id: '/gaini-brahma'
+      path: '/gaini-brahma'
+      fullPath: '/gaini-brahma'
+      preLoaderRoute: typeof GainiBrahmaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/galerie': {
@@ -651,6 +704,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tarate': {
+      id: '/tarate'
+      path: '/tarate'
+      fullPath: '/tarate'
+      preLoaderRoute: typeof TarateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/media/$': {
       id: '/media/$'
       path: '/media/$'
@@ -681,6 +741,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   CalculatorFurajeRoute: CalculatorFurajeRoute,
   ConfidentialitateRoute: ConfidentialitateRoute,
+  FurajCombinatRoute: FurajCombinatRoute,
   FurajeAnimaleRoute: FurajeAnimaleRoute,
   FurajeCurcaniRoute: FurajeCurcaniRoute,
   FurajeFlorestiRoute: FurajeFlorestiRoute,
@@ -688,6 +749,7 @@ const rootRouteChildren: RootRouteChildren = {
   FurajeManRoute: FurajeManRoute,
   FurajePuiRoute: FurajePuiRoute,
   FurajeVaciDeLapteRoute: FurajeVaciDeLapteRoute,
+  GainiBrahmaRoute: GainiBrahmaRoute,
   GalerieRoute: GalerieRoute,
   HranaAnimaleRoute: HranaAnimaleRoute,
   HranaCaiRoute: HranaCaiRoute,
@@ -705,6 +767,7 @@ const rootRouteChildren: RootRouteChildren = {
   PorumbBoabeRoute: PorumbBoabeRoute,
   PuiBrahmaRoute: PuiBrahmaRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TarateRoute: TarateRoute,
   MediaSplatRoute: MediaSplatRoute,
   ProduseSlugRoute: ProduseSlugRoute,
   ProduseIndexRoute: ProduseIndexRoute,

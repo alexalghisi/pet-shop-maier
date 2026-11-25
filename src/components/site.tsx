@@ -24,6 +24,9 @@ export const GUIDES = [
   { to: "/oua-brahma-incubat", label: "Ouă Brahma de incubat" },
   { to: "/furaje-man", label: "Furaje MAN" },
   { to: "/oferta-furaje", label: "Ofertă tărâțe și furaj combinat" },
+  { to: "/tarate", label: "Tărâțe la sac" },
+  { to: "/furaj-combinat", label: "Furaj combinat" },
+  { to: "/gaini-brahma", label: "Găini Brahma" },
   { to: "/calculator-furaje", label: "Calculator furaje" },
   { to: "/hrana-cai", label: "Hrană cai HippoX" },
   { to: "/furaje-vaci-de-lapte", label: "Furaje vaci de lapte" },
@@ -273,7 +276,7 @@ export function GuidePage(props: {
   );
 }
 
-export function guideHead(title: string, desc: string, path: string, faqs: { q: string; a: string }[], opts: { crumb?: string; image?: string; keywords?: string } = {}) {
+export function guideHead(title: string, desc: string, path: string, faqs: { q: string; a: string }[], opts: { crumb?: string; image?: string; keywords?: string; ld?: object[] } = {}) {
   return seoHead({
     title,
     description: desc,
@@ -281,7 +284,7 @@ export function guideHead(title: string, desc: string, path: string, faqs: { q: 
     type: "article",
     image: opts.image,
     keywords: opts.keywords,
-    ld: [faqLd(faqs), breadcrumbLd([{ name: opts.crumb ?? title.split(" – ")[0] ?? title, path }]), localBusinessLd()],
+    ld: [faqLd(faqs), breadcrumbLd([{ name: opts.crumb ?? title.split(" – ")[0] ?? title, path }]), localBusinessLd(), ...(opts.ld ?? [])],
   });
 }
 
