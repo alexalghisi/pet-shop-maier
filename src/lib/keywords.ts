@@ -88,6 +88,9 @@ export const KW = {
   ]),
   "/hrana-animale": join(ANIMAL_FOOD_KEYWORDS.slice(0, 30)),
   "/hrana-caini": join([
+    "monge hrana caini",
+    "hrana caini ieftina",
+    "hrana caini sac mare",
     "monge artu",
     "monge artu 20 kg",
     "monge artu pui",
@@ -168,6 +171,9 @@ export const KW = {
     "furaje cluj",
   ]),
   "/furaje-gaini": join([
+    "furaj gaini ouatoare",
+    "furaje gaini ouatoare",
+    "furaj gaini ouatoare pret",
     "stimulator ouat gaini",
     "stimulator de ouat cu oregano",
     "calciu furajer gaini",
@@ -195,6 +201,8 @@ export const KW = {
     "pet shop cluj",
     "petshop cluj",
     "pet shop cluj napoca",
+    "pet shop deschis duminica cluj",
+    "pet shop cluj program",
     "pet shop floresti",
     "pet shop gilau",
     "pet shop langa mine",

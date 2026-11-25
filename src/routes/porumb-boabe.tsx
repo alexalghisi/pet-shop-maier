@@ -45,7 +45,11 @@ export const Route = createFileRoute("/porumb-boabe")({
       priceBox={[
         { label: "Porumb boabe", price: "Întreabă", unit: "sac de 30 kg · calitate superioară" },
         { label: "Tărâțe", price: "40 lei", unit: "sac de 20 kg · 2 lei/kg" },
-        { label: "Furaj combinat măcinat universal", price: "60 lei", unit: "sac de 30 kg · 2 lei/kg" },
+        {
+          label: "Furaj combinat măcinat universal",
+          price: "60 lei",
+          unit: "sac de 30 kg · 2 lei/kg",
+        },
       ]}
       sections={[
         {
@@ -71,7 +75,13 @@ export const Route = createFileRoute("/porumb-boabe")({
           p: "Boabele întregi sunt prea mari pentru pui. Până cresc, folosește furaj starter pentru pui, nu porumb.",
         },
       ]}
-      photos={GALLERY.filter((p) => ["porumb-boabe-30kg-calitate-superioara", "oferta-tarate-furaj-combinat-gilau", "gaini-brahma-crescute-liber-gilau"].includes(p.slug))}
+      photos={GALLERY.filter((p) =>
+        [
+          "porumb-boabe-30kg-calitate-superioara",
+          "oferta-tarate-furaj-combinat-gilau",
+          "gaini-brahma-crescute-liber-gilau",
+        ].includes(p.slug),
+      )}
       faqs={faqs}
       related={[
         { to: "/oferta-furaje", label: "Ofertă tărâțe și furaj combinat" },

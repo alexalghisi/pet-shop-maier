@@ -12,13 +12,20 @@ import hero from "@/assets/hero.webp";
 import fbShop from "@/assets/fb-shop.jpg.asset.json";
 import { SORTIMENT } from "@/lib/sortiment";
 
-
 const TITLE = "Produse: hrană câini, pisici, furaje, porumbei | Gilău";
-const DESC = "Monge Artù, Versele-Laga, Kudo, Furaje MAN, HippoX, tărâțe, porumb și pui Brahma la PET SHOP MAIER Gilău. Stoc pe WhatsApp, transport la domiciliu.";
+const DESC =
+  "Monge Artù, Versele-Laga, Kudo, Furaje MAN, HippoX, tărâțe, porumb și pui Brahma la PET SHOP MAIER Gilău. Stoc pe WhatsApp, transport la domiciliu.";
 
 export const Route = createFileRoute("/produse/")({
   loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery),
-  head: () => seoHead({ title: TITLE, description: DESC, path: "/produse", keywords: KW["/produse"], ld: [breadcrumbLd([{ name: "Produse", path: "/produse" }])] }),
+  head: () =>
+    seoHead({
+      title: TITLE,
+      description: DESC,
+      path: "/produse",
+      keywords: KW["/produse"],
+      ld: [breadcrumbLd([{ name: "Produse", path: "/produse" }])],
+    }),
   component: ProductsPage,
 });
 
@@ -29,36 +36,83 @@ function ProductsPage() {
     <main className="min-h-screen">
       <Header />
       <section className="relative isolate flex min-h-72 items-center overflow-hidden py-12 sm:min-h-80">
-        <img src={hero} alt="Hrană și accesorii pentru câini și pisici" width={1200} height={756} fetchPriority="high" className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
+        <img
+          src={hero}
+          alt="Hrană și accesorii pentru câini și pisici"
+          width={1200}
+          height={756}
+          fetchPriority="high"
+          className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+        />
         <div className="hero-overlay absolute inset-0 -z-10" />
         <div className="mx-auto w-full max-w-6xl px-6 text-primary-foreground">
-          <Link to="/" className="text-sm underline-offset-4 hover:underline">PetShop Maier · Gilău</Link>
-          <h1 className="mt-4 max-w-xl text-4xl leading-tight md:text-5xl">Produse pentru animale</h1>
-          <p className="mt-4 max-w-lg text-base leading-relaxed">Hrană, furaje și accesorii pentru cei de care ai grijă.</p>
+          <Link to="/" className="text-sm underline-offset-4 hover:underline">
+            PetShop Maier · Gilău
+          </Link>
+          <h1 className="mt-4 max-w-xl text-4xl leading-tight md:text-5xl">
+            Produse pentru animale
+          </h1>
+          <p className="mt-4 max-w-lg text-base leading-relaxed">
+            Hrană, furaje și accesorii pentru cei de care ai grijă.
+          </p>
         </div>
       </section>
       <section className="mx-auto max-w-6xl px-6 py-10 sm:py-12">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border pb-5">
           <h2 className="text-2xl">Toate produsele</h2>
-          <span className="text-sm text-muted-foreground">{data.length > 0 ? `${list.length} produse` : "Magazinul din Str. Eroilor 1"}</span>
+          <span className="text-sm text-muted-foreground">
+            {data.length > 0 ? `${list.length} produse` : "Magazinul din Str. Eroilor 1"}
+          </span>
         </div>
         <AdsterraSlot kind="native" />
         {list.length === 0 ? (
           <div className="mt-10 grid items-center gap-8 border-t border-border pt-10 md:grid-cols-2 md:gap-12">
-            <img src={fbShop.url} alt="Rafturi cu hrană și accesorii din magazinul PetShop Maier din Gilău" width={726} height={225} loading="lazy" decoding="async" className="w-full rounded-lg object-contain" />
+            <img
+              src={fbShop.url}
+              alt="Rafturi cu hrană și accesorii din magazinul PetShop Maier din Gilău"
+              width={726}
+              height={225}
+              loading="lazy"
+              decoding="async"
+              className="w-full rounded-lg object-contain"
+            />
             <div>
               <PackageOpen className="size-7 text-primary" aria-hidden="true" />
-              <h3 className="mt-4 text-2xl">{data.length === 0 ? "Ce găsești în magazinul din Gilău" : "Momentan nu sunt produse în această categorie"}</h3>
-              <p className="mt-3 leading-relaxed text-muted-foreground">{data.length === 0 ? "Hrană pentru câini și pisici, semințe pentru porumbei, furaje la sac, suplimente și pui Brahma. Stocul și prețul ți le confirmăm pe WhatsApp, iar în Gilău, Florești și Cluj-Napoca transportăm și la domiciliu." : "Vezi celelalte categorii sau întreabă-ne despre produsul pe care îl cauți."}</p>
+              <h3 className="mt-4 text-2xl">
+                {data.length === 0
+                  ? "Ce găsești în magazinul din Gilău"
+                  : "Momentan nu sunt produse în această categorie"}
+              </h3>
+              <p className="mt-3 leading-relaxed text-muted-foreground">
+                {data.length === 0
+                  ? "Hrană pentru câini și pisici, semințe pentru porumbei, furaje la sac, suplimente și pui Brahma. Stocul și prețul ți le confirmăm pe WhatsApp, iar în Gilău, Florești și Cluj-Napoca transportăm și la domiciliu."
+                  : "Vezi celelalte categorii sau întreabă-ne despre produsul pe care îl cauți."}
+              </p>
               <div className="mt-6 flex flex-wrap gap-3">
-                <Button asChild size="lg"><a href={whatsappLink("produsele disponibile în magazin.")} target="_blank" rel="noopener noreferrer"><MessageCircle />Întreabă pe WhatsApp</a></Button>
-                <Button asChild variant="secondary" size="lg"><Link to="/">Pagina principală<ArrowRight /></Link></Button>
+                <Button asChild size="lg">
+                  <a
+                    href={whatsappLink("produsele disponibile în magazin.")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle />
+                    Întreabă pe WhatsApp
+                  </a>
+                </Button>
+                <Button asChild variant="secondary" size="lg">
+                  <Link to="/">
+                    Pagina principală
+                    <ArrowRight />
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
         ) : (
           <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-            {list.map((p) => <ProductCard key={p.id} p={p} />)}
+            {list.map((p) => (
+              <ProductCard key={p.id} p={p} />
+            ))}
           </div>
         )}
         {list.length === 0 && (
@@ -69,7 +123,12 @@ function ProductsPage() {
                 <ul className="mt-4 space-y-3">
                   {group.items.map((item) => (
                     <li key={item.name + item.detail}>
-                      <Link to={item.to} className="font-semibold text-primary underline-offset-4 hover:underline">{item.name}</Link>
+                      <Link
+                        to={item.to}
+                        className="font-semibold text-primary underline-offset-4 hover:underline"
+                      >
+                        {item.name}
+                      </Link>
                       <p className="text-sm text-muted-foreground">{item.detail}</p>
                     </li>
                   ))}

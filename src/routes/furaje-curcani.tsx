@@ -66,7 +66,13 @@ export const Route = createFileRoute("/furaje-curcani")({
           p: "Pentru câțiva curcani de curte, sacii mici rămân proaspeți până îi termini. Pentru un lot mai mare, sacii mari sunt mai avantajoși. Întreabă-ne ce avem pe stoc.",
         },
       ]}
-      photos={GALLERY.filter((p) => ["furaje-man-curcani-boboci", "furaje-man-sac-mare", "porumb-boabe-30kg-calitate-superioara"].includes(p.slug))}
+      photos={GALLERY.filter((p) =>
+        [
+          "furaje-man-curcani-boboci",
+          "furaje-man-sac-mare",
+          "porumb-boabe-30kg-calitate-superioara",
+        ].includes(p.slug),
+      )}
       faqs={faqs}
       related={[
         { to: "/furaje-pui", label: "Furaje pentru pui" },

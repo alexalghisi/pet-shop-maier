@@ -25,8 +25,7 @@ const faqs = [
   },
 ];
 
-const TITLE =
-  "Furaje MAN Cluj – găini, pui, curcani, prepelițe | Gilău";
+const TITLE = "Furaje MAN Cluj – găini, pui, curcani, prepelițe | Gilău";
 const DESC =
   "Furaje MAN în saci de 5 kg, 10 kg și saci mari: nutreț combinat pentru găini ouătoare, pui, curcani, prepelițe, pești și vaci de lapte. Magazin de furaje în Gilău, jud. Cluj.";
 

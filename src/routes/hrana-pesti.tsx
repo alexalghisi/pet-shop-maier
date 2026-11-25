@@ -62,7 +62,9 @@ export const Route = createFileRoute("/hrana-pesti")({
           p: "Porumbul și grâul sunt sărace în proteină și se digeră greu. Granulele pentru pești au proteina, vitaminele și mineralele de care au nevoie peștii ca să crească, iar cerealele pot rămâne doar o completare.",
         },
       ]}
-      photos={GALLERY.filter((p) => ["furaje-man-5kg-peste-iaz", "furaje-man-saci-5kg"].includes(p.slug))}
+      photos={GALLERY.filter((p) =>
+        ["furaje-man-5kg-peste-iaz", "furaje-man-saci-5kg"].includes(p.slug),
+      )}
       faqs={faqs}
       related={[
         { to: "/furaje-man", label: "Furaje MAN" },

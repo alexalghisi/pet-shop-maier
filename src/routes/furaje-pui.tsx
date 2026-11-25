@@ -77,7 +77,12 @@ export const Route = createFileRoute("/furaje-pui")({
         },
       ]}
       photos={GALLERY.filter((p) =>
-        ["furaje-man-10kg-pui", "furaje-man-saci-5kg", "closca-brahma-cu-pui", "pui-brahma-2-3-luni-vaccinati"].includes(p.slug),
+        [
+          "furaje-man-10kg-pui",
+          "furaje-man-saci-5kg",
+          "closca-brahma-cu-pui",
+          "pui-brahma-2-3-luni-vaccinati",
+        ].includes(p.slug),
       )}
       faqs={faqs}
       related={[

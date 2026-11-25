@@ -79,8 +79,7 @@ const faqs = [
   },
 ];
 
-const TITLE =
-  "Calculator furaje: cât mănâncă o găină pe zi | PET SHOP MAIER";
+const TITLE = "Calculator furaje: cât mănâncă o găină pe zi | PET SHOP MAIER";
 const DESC =
   "Calculator gratuit de furaje: află câte kilograme și câți saci îți trebuie pentru găini, curcani, rațe, prepelițe, iepuri sau porci, plus costul estimat. Comanzi direct pe WhatsApp.";
 
