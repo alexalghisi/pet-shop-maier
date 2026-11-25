@@ -11,7 +11,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import { WhatsAppFloat } from "@/components/site";
-import { SocialBar } from "@/components/ads";
 import appCss from "../styles.css?url";
 import { afterLoadIdle, loadScriptOnce } from "@/lib/idle";
 import { isAdProductionHost } from "@/lib/ad-host";
@@ -162,7 +161,6 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <WhatsAppFloat />
-      <SocialBar />
     </QueryClientProvider>
   );
 }

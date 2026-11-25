@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { afterLoadIdle } from "@/lib/idle";
-import { ADSTERRA_SANDBOX, SOCIAL_BAR_URL, bannerConfig, slotDocument } from "@/lib/adsterra";
+import { ADSTERRA_SANDBOX, bannerConfig, slotDocument } from "@/lib/adsterra";
 
 export function AdsterraSlot({ kind = "banner" }: { kind?: "banner" | "native" }) {
   const host = useRef<HTMLDivElement>(null);
@@ -96,83 +96,4 @@ export function AdsterraSlot({ kind = "banner" }: { kind?: "banner" | "native" }
       )}
     </div>
   );
-}
-
-export function SocialBar() {
-  useEffect(() => {
-    // Inject the social bar only after the page is interactive (load + idle).
-    const cancelScript = afterLoadIdle(() => {
-      if (document.getElementById("adsterra-social-bar")) return;
-      const script = document.createElement("script");
-      script.id = "adsterra-social-bar";
-      script.dataset["cfasync"] = "false";
-      script.src = SOCIAL_BAR_URL;
-      document.body.appendChild(script);
-    });
-    // Keep WhatsApp clear of fixed overlays inserted by the advertising network.
-    let scheduled = 0;
-    const avoidOverlap = () => {
-      scheduled = 0;
-      const whatsapp = document.querySelector<HTMLElement>('[aria-label="Scrie-ne pe WhatsApp"]');
-      if (!whatsapp) return;
-      whatsapp.style.bottom = "20px";
-      const rect = whatsapp.getBoundingClientRect();
-      let bottom = 20;
-      for (const element of document.body.querySelectorAll<HTMLElement>("*")) {
-        if (
-          element === whatsapp ||
-          element.contains(whatsapp) ||
-          whatsapp.contains(element) ||
-          element.closest("header")
-        )
-          continue;
-        const position = getComputedStyle(element).position;
-        if (position !== "fixed") continue;
-        const box = element.getBoundingClientRect();
-        if (
-          box.width > 0 &&
-          box.height > 0 &&
-          box.left < rect.right &&
-          box.right > rect.left &&
-          box.bottom > rect.top &&
-          box.top < rect.bottom
-        ) {
-          bottom = Math.max(bottom, window.innerHeight - box.top + 16);
-        }
-      }
-      whatsapp.style.bottom = `${Math.min(window.innerHeight - 80, bottom)}px`;
-    };
-    const schedule = () => {
-      if (!scheduled) scheduled = requestAnimationFrame(avoidOverlap);
-    };
-    const observer = new MutationObserver((records) => {
-      if (
-        records.some(
-          (record) =>
-            !(
-              record.target instanceof Element &&
-              record.target.matches('[aria-label="Scrie-ne pe WhatsApp"]')
-            ),
-        )
-      )
-        schedule();
-    });
-    observer.observe(document.body, {
-      childList: true,
-      subtree: true,
-      attributes: true,
-      attributeFilter: ["style", "class"],
-    });
-    window.addEventListener("resize", schedule);
-    window.addEventListener("scroll", schedule, { passive: true });
-    schedule();
-    return () => {
-      cancelScript();
-      observer.disconnect();
-      cancelAnimationFrame(scheduled);
-      window.removeEventListener("resize", schedule);
-      window.removeEventListener("scroll", schedule);
-    };
-  }, []);
-  return null;
 }
