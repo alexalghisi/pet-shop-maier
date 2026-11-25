@@ -16,7 +16,9 @@ const links = [
   { to: "/furaje-man", label: "Furaje" },
   { to: "/calculator-furaje", label: "Calculator" },
   { to: "/produse", label: "Produse" },
+  { to: "/ghiduri", label: "Ghiduri" },
   { to: "/galerie", label: "Galerie" },
+  { to: "/contact", label: "Contact" },
 ] as const;
 
 export const GUIDES = [
@@ -48,7 +50,51 @@ export const GUIDES = [
   { to: "/furaje-floresti", label: "Furaje Florești" },
   { to: "/galerie", label: "Galerie foto" },
 ] as const;
-export type GuidePath = (typeof GUIDES)[number]["to"];
+
+/** Long-form how-to articles, listed on /ghiduri. */
+export const ARTICLES = [
+  {
+    to: "/hranire-gaini-ouatoare",
+    label: "Cum hrănești găinile ouătoare",
+    blurb: "Rația zilnică, calciul, apa și ce schimbi iarna, la năpârlire și pe caniculă.",
+  },
+  {
+    to: "/crestere-pui-de-o-zi",
+    label: "Creșterea puilor de o zi",
+    blurb: "Temperatura pe săptămâni, așternutul, starterul și semnele că ceva nu merge.",
+  },
+  {
+    to: "/cum-alegi-hrana-caini",
+    label: "Cum alegi hrana uscată pentru câini",
+    blurb: "Cum citești eticheta, câte grame dai, cât ține un sac de 20 kg și cum schimbi hrana.",
+  },
+  {
+    to: "/depozitare-furaje",
+    label: "Cum păstrezi furajele și cerealele",
+    blurb: "Umezeală, mucegai, rozătoare și gărgărițe: cum nu pierzi sacul cumpărat.",
+  },
+  {
+    to: "/furajare-iarna",
+    label: "Furajarea animalelor iarna",
+    blurb: "Mai multă energie, apă care nu îngheață și adăpost uscat pentru păsări și iepuri.",
+  },
+  {
+    to: "/cat-furaj-pe-luna",
+    label: "Cât furaj îți trebuie pe lună",
+    blurb: "Consumul pe cap de animal și exemple calculate pentru gospodării obișnuite.",
+  },
+] as const;
+export type GuidePath =
+  (typeof GUIDES)[number]["to"] | (typeof ARTICLES)[number]["to"] | "/ghiduri";
+
+export const LEGAL_LINKS = [
+  { to: "/despre-noi", label: "Despre noi" },
+  { to: "/contact", label: "Contact" },
+  { to: "/ghiduri", label: "Ghiduri" },
+  { to: "/termeni-si-conditii", label: "Termeni și condiții" },
+  { to: "/confidentialitate", label: "Politica de confidențialitate" },
+  { to: "/politica-cookies", label: "Politica de cookie-uri" },
+] as const;
 
 const WaIcon = ({ size = 22 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -133,7 +179,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
           </span>
         </Link>
         <div className="flex items-center gap-3">
-          <div className="hidden items-center gap-6 text-sm md:flex">
+          <div className="hidden items-center gap-5 text-sm lg:flex">
             {links.map((l) => (
               <Link
                 key={l.to}
@@ -160,7 +206,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
             aria-label={open ? "Închide meniul" : "Deschide meniul"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
-            className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-current/20 md:hidden"
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-current/20 lg:hidden"
           >
             <span className="relative block h-3.5 w-5">
               <span
@@ -177,7 +223,7 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
         </div>
       </nav>
       {open && (
-        <div className="border-t border-border bg-background px-6 py-4 text-foreground md:hidden">
+        <div className="border-t border-border bg-background px-6 py-4 text-foreground lg:hidden">
           <div className="flex flex-col gap-3 text-base">
             {links.map((l) => (
               <Link
@@ -275,12 +321,19 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <p className="mx-auto mt-10 max-w-6xl border-t border-white/10 px-6 pt-6 text-xs">
+        <nav
+          aria-label="Informații"
+          className="mx-auto mt-10 flex max-w-6xl flex-wrap gap-x-5 gap-y-2 border-t border-white/10 px-6 pt-6 font-semibold"
+        >
+          {LEGAL_LINKS.map((l) => (
+            <Link key={l.to} to={l.to} className="underline hover:text-gold">
+              {l.label}
+            </Link>
+          ))}
+        </nav>
+        <p className="mx-auto mt-4 max-w-6xl px-6 text-xs">
           © {new Date().getFullYear()} PET SHOP MAIER · Pet shop Gilău · Hrană animale Cluj · Furaje
-          Gilău · Livrăm în Gilău, Florești, Cluj-Napoca și împrejurimi ·{" "}
-          <Link to="/confidentialitate" className="font-semibold underline hover:text-gold">
-            Politica de confidențialitate
-          </Link>
+          Gilău · Livrăm în Gilău, Florești, Cluj-Napoca și împrejurimi
         </p>
       </footer>
     </>
@@ -313,7 +366,7 @@ export function Breadcrumbs({ items }: { items: { name: string; path?: string }[
   );
 }
 
-export type GuideSection = { h: string; p: string; list?: string[] };
+export type GuideSection = { h: string; p: string; more?: string[]; list?: string[] };
 
 export function GuidePage(props: {
   eyebrow: string;
@@ -386,6 +439,11 @@ export function GuidePage(props: {
             <section key={s.h} className="mb-12">
               <h2 className="text-3xl">{s.h}</h2>
               <p className="mt-4 leading-relaxed text-muted-foreground">{s.p}</p>
+              {s.more?.map((m) => (
+                <p key={m} className="mt-4 leading-relaxed text-muted-foreground">
+                  {m}
+                </p>
+              ))}
               {s.list && (
                 <ul className="mt-4 space-y-2">
                   {s.list.map((i) => (
