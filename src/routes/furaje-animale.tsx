@@ -4,14 +4,27 @@ import { KW } from "@/lib/keywords";
 import { GALLERY, byTag, photoSrc } from "@/lib/gallery";
 
 const faqs = [
-  { q: "Ce furaje aveți pentru păsări?", a: "Amestecuri de semințe pentru peruși, canari, papagali și porumbei, plus mei, floarea-soarelui și grit." },
-  { q: "Ce mănâncă iepurii și porcușorii de Guineea?", a: "Fân de calitate la discreție, granule specifice și legume proaspete. Porcușorii de Guineea au nevoie și de vitamina C." },
-  { q: "Cum păstrez furajele?", a: "În recipiente închise, la loc uscat și răcoros, ferite de umezeală și dăunători." },
-  { q: "Unde cumpăr furaje în județul Cluj?", a: "La PetShop Maier din Gilău găsești furaje și semințe pentru păsări, rozătoare și iepuri." },
+  {
+    q: "Ce furaje aveți pentru păsări?",
+    a: "Amestecuri de semințe pentru peruși, canari, papagali și porumbei, plus mei, floarea-soarelui și grit.",
+  },
+  {
+    q: "Ce mănâncă iepurii și porcușorii de Guineea?",
+    a: "Fân de calitate la discreție, granule specifice și legume proaspete. Porcușorii de Guineea au nevoie și de vitamina C.",
+  },
+  {
+    q: "Cum păstrez furajele?",
+    a: "În recipiente închise, la loc uscat și răcoros, ferite de umezeală și dăunători.",
+  },
+  {
+    q: "Unde cumpăr furaje în județul Cluj?",
+    a: "La PetShop Maier din Gilău găsești furaje și semințe pentru păsări, rozătoare și iepuri.",
+  },
 ];
 
 const TITLE = "Furaje pentru animale și semințe păsări | Gilău, Cluj";
-const DESC = "Furaje pentru păsări, porumbei, iepuri și rozătoare: ce să alegi și cum să le păstrezi. Furaje de calitate la PetShop Maier, Gilău, județul Cluj.";
+const DESC =
+  "Furaje pentru păsări, porumbei, iepuri și rozătoare: ce să alegi și cum să le păstrezi. Furaje de calitate la PetShop Maier, Gilău, județul Cluj.";
 
 export const Route = createFileRoute("/furaje-animale")({
   head: () => guideHead(TITLE, DESC, "/furaje-animale", faqs, { keywords: KW["/furaje-animale"] }),
@@ -23,14 +36,39 @@ export const Route = createFileRoute("/furaje-animale")({
       image={photoSrc("porumb-boabe-30kg-calitate-superioara", true)}
       imageAlt="Porumb boabe sac 30 kg pentru păsări, porci și iepuri – PET SHOP MAIER Gilău"
       sections={[
-        { h: "Furaje pentru păsări", p: "Fiecare specie are amestecul ei:", list: ["Peruși și canari: mei, semințe de iarbă, ovăz decorticat", "Papagali mari: floarea-soarelui, nuci, fructe uscate", "Porumbei: porumb, mazăre, grâu, amestecuri de zbor"] },
-        { h: "Iepuri și porcușori de Guineea", p: "Baza dietei este fânul (cel puțin 80%). Granulele se dau în cantități mici, iar legumele verzi zilnic." },
-        { h: "Hamsteri și alte rozătoare", p: "Amestecuri de cereale și semințe, cu bețe de ros pentru dinți care cresc continuu." },
-        { h: "Păstrarea corectă", p: "Furajele vechi sau umede pot face mucegai. Cumpără cantități pe care le consumi în câteva săptămâni și ține-le în recipiente închise." },
+        {
+          h: "Furaje pentru păsări",
+          p: "Fiecare specie are amestecul ei:",
+          list: [
+            "Peruși și canari: mei, semințe de iarbă, ovăz decorticat",
+            "Papagali mari: floarea-soarelui, nuci, fructe uscate",
+            "Porumbei: porumb, mazăre, grâu, amestecuri de zbor",
+          ],
+        },
+        {
+          h: "Iepuri și porcușori de Guineea",
+          p: "Baza dietei este fânul (cel puțin 80%). Granulele se dau în cantități mici, iar legumele verzi zilnic.",
+        },
+        {
+          h: "Hamsteri și alte rozătoare",
+          p: "Amestecuri de cereale și semințe, cu bețe de ros pentru dinți care cresc continuu.",
+        },
+        {
+          h: "Păstrarea corectă",
+          p: "Furajele vechi sau umede pot face mucegai. Cumpără cantități pe care le consumi în câteva săptămâni și ține-le în recipiente închise.",
+        },
       ]}
       faqs={faqs}
       photos={byTag("furaje").slice(0, 9)}
-      related={[{ to: "/hrana-animale", label: "Hrană animale" }, { to: "/furaje-man", label: "Furaje MAN" }, { to: "/oferta-furaje", label: "Ofertă tărâțe" }, { to: "/porumb-boabe", label: "Porumb boabe" }, { to: "/furaje-curcani", label: "Furaje curcani" }, { to: "/hrana-caini", label: "Hrană pentru câini" }, { to: "/hrana-pisici", label: "Hrană pentru pisici" }]}
+      related={[
+        { to: "/hrana-animale", label: "Hrană animale" },
+        { to: "/furaje-man", label: "Furaje MAN" },
+        { to: "/oferta-furaje", label: "Ofertă tărâțe" },
+        { to: "/porumb-boabe", label: "Porumb boabe" },
+        { to: "/furaje-curcani", label: "Furaje curcani" },
+        { to: "/hrana-caini", label: "Hrană pentru câini" },
+        { to: "/hrana-pisici", label: "Hrană pentru pisici" },
+      ]}
     />
   ),
 });

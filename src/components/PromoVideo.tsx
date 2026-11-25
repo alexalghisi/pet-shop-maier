@@ -40,7 +40,7 @@ export function PromoVideo() {
   // Pornește CU SUNET; dacă browserul refuză (nicio interacțiune încă), pornește fără sunet.
   const startPlayback = () => {
     const v = ref.current;
-    if (!v || !v.currentSrc && !v.src) return;
+    if (!v || (!v.currentSrc && !v.src)) return;
     if (userMuted.current) {
       v.muted = true;
       v.play().catch(() => {});
@@ -134,7 +134,10 @@ export function PromoVideo() {
       <h2 id="prezentare-video" className="mt-2 text-3xl md:text-4xl">
         Cunoaște PET SHOP MAIER în mai puțin de un minut
       </h2>
-      <div data-promo-video className="relative mx-auto mt-6 w-full max-w-sm overflow-hidden rounded-3xl bg-black shadow-xl ring-1 ring-border">
+      <div
+        data-promo-video
+        className="relative mx-auto mt-6 w-full max-w-sm overflow-hidden rounded-3xl bg-black shadow-xl ring-1 ring-border"
+      >
         <video
           ref={ref}
           src={near ? PROMO_VIDEO.src : undefined}
@@ -156,7 +159,9 @@ export function PromoVideo() {
           {muted ? "🔊 Pornește sunetul" : "🔇 Oprește sunetul"}
         </button>
       </div>
-      <p className="mx-auto mt-3 max-w-xl text-center text-sm text-muted-foreground">{PROMO_VIDEO.description}</p>
+      <p className="mx-auto mt-3 max-w-xl text-center text-sm text-muted-foreground">
+        {PROMO_VIDEO.description}
+      </p>
     </section>
   );
 }

@@ -18,8 +18,7 @@ type Head = {
   scripts: { type: string; children: string }[];
 };
 
-const headOf = (route: { options: { head?: unknown } }) =>
-  (route.options.head as () => Head)();
+const headOf = (route: { options: { head?: unknown } }) => (route.options.head as () => Head)();
 const titleOf = (head: Head) => head.meta.find((m) => m.title)?.title ?? "";
 const descriptionOf = (head: Head) =>
   head.meta.find((m) => m.name === "description")?.content ?? "";
@@ -43,20 +42,28 @@ describe("SEO landing pages", () => {
     expect(router.matchRoutes(path).at(-1)?.routeId).toBe(path);
   });
 
-  it.each(PAGES)("$path leads its title with the keyword, within 60 characters", ({ route, keyword }) => {
-    const title = titleOf(headOf(route));
+  it.each(PAGES)(
+    "$path leads its title with the keyword, within 60 characters",
+    ({ route, keyword }) => {
+      const title = titleOf(headOf(route));
 
-    expect(title.startsWith(keyword)).toBe(true);
-    expect(title.length).toBeLessThanOrEqual(60);
-  });
+      expect(title.startsWith(keyword)).toBe(true);
+      expect(title.length).toBeLessThanOrEqual(60);
+    },
+  );
 
-  it.each(PAGES)("$path has a description, a canonical URL, FAQ and breadcrumb data", ({ path, route }) => {
-    const head = headOf(route);
+  it.each(PAGES)(
+    "$path has a description, a canonical URL, FAQ and breadcrumb data",
+    ({ path, route }) => {
+      const head = headOf(route);
 
-    expect(descriptionOf(head).length).toBeGreaterThan(80);
-    expect(canonicalOf(head)).toBe(`https://pethopmaier.shop${path}`);
-    expect(ldTypes(head)).toEqual(expect.arrayContaining(["FAQPage", "BreadcrumbList", "PetStore"]));
-  });
+      expect(descriptionOf(head).length).toBeGreaterThan(80);
+      expect(canonicalOf(head)).toBe(`https://pethopmaier.shop${path}`);
+      expect(ldTypes(head)).toEqual(
+        expect.arrayContaining(["FAQPage", "BreadcrumbList", "PetStore"]),
+      );
+    },
+  );
 
   it.each([
     { route: Tarate, price: "40" },
@@ -64,7 +71,7 @@ describe("SEO landing pages", () => {
   ])("publishes the confirmed price of $price lei as a product offer", ({ route, price }) => {
     const product = ldOf(headOf(route)).find((d) => d["@type"] === "Product");
 
-    expect(product?.offers).toMatchObject({ price, priceCurrency: "RON" });
+    expect(product?.["offers"]).toMatchObject({ price, priceCurrency: "RON" });
   });
 
   it("does not publish a product offer where no price is confirmed", () => {
