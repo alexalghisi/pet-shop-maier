@@ -17,10 +17,18 @@ export const Route = createFileRoute("/produse/$slug")({
     return p;
   },
   head: ({ loaderData: p, params }) => {
-    if (!p) return seoHead({ title: "Produs negăsit | PET SHOP MAIER", description: "Produsul nu a fost găsit.", path: `/produse/${params.slug}`, noindex: true });
+    if (!p)
+      return seoHead({
+        title: "Produs negăsit | PET SHOP MAIER",
+        description: "Produsul nu a fost găsit.",
+        path: `/produse/${params.slug}`,
+        noindex: true,
+      });
     const title = `${p.seo_title || p.name} – ${formatPrice(p.price)} | PET SHOP MAIER Gilău`;
     const desc = `${(p.description || p.name).replace(/\s+/g, " ").slice(0, 140)} Preț ${formatPrice(p.price)}, Gilău, jud. Cluj.`;
-    const imgs = p.media.filter((m) => m.type === "image").map((m) => `${SITE_URL}${mediaUrl(m.path)}`);
+    const imgs = p.media
+      .filter((m) => m.type === "image")
+      .map((m) => `${SITE_URL}${mediaUrl(m.path)}`);
     const path = `/produse/${params.slug}`;
     return seoHead({
       title,
@@ -41,13 +49,18 @@ export const Route = createFileRoute("/produse/$slug")({
             "@type": "Offer",
             price: p.price.toFixed(2),
             priceCurrency: "RON",
-            availability: p.in_stock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+            availability: p.in_stock
+              ? "https://schema.org/InStock"
+              : "https://schema.org/OutOfStock",
             itemCondition: "https://schema.org/NewCondition",
             url: `${SITE_URL}${path}`,
             seller: { "@id": `${SITE_URL}/#store` },
           },
         },
-        breadcrumbLd([{ name: "Produse", path: "/produse" }, { name: p.name, path }]),
+        breadcrumbLd([
+          { name: "Produse", path: "/produse" },
+          { name: p.name, path },
+        ]),
       ],
     });
   },
@@ -61,7 +74,9 @@ function ProductNotFound() {
       <Header />
       <div className="py-24 text-center">
         <h1 className="text-3xl">Produsul nu a fost găsit</h1>
-        <Link to="/produse" className="mt-4 inline-block text-primary underline">Vezi toate produsele</Link>
+        <Link to="/produse" className="mt-4 inline-block text-primary underline">
+          Vezi toate produsele
+        </Link>
       </div>
     </main>
   );
@@ -80,9 +95,19 @@ function ProductPage() {
           <div className="aspect-square overflow-hidden rounded-xl border bg-muted">
             {m ? (
               m.type === "video" ? (
-                <video src={mediaUrl(m.path)} controls preload="metadata" className="h-full w-full object-contain" />
+                <video
+                  src={mediaUrl(m.path)}
+                  controls
+                  preload="metadata"
+                  className="h-full w-full object-contain"
+                />
               ) : (
-                <img src={mediaUrl(m.path)} alt={p.name} fetchPriority="high" className="h-full w-full object-cover" />
+                <img
+                  src={mediaUrl(m.path)}
+                  alt={p.name}
+                  fetchPriority="high"
+                  className="h-full w-full object-cover"
+                />
               )
             ) : (
               <div className="grid h-full place-items-center text-muted-foreground">Fără poză</div>
@@ -91,24 +116,53 @@ function ProductPage() {
           {p.media.length > 1 && (
             <div className="mt-3 grid grid-cols-5 gap-2">
               {p.media.map((x, i) => (
-                <button key={x.path} onClick={() => setActive(i)} className={`aspect-square overflow-hidden rounded-lg border-2 ${i === active ? "border-primary" : "border-transparent"}`}>
-                  {x.type === "video" ? <div className="grid h-full place-items-center bg-muted text-xs">▶ Video</div> : <img src={mediaUrl(x.path)} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover" />}
+                <button
+                  key={x.path}
+                  onClick={() => setActive(i)}
+                  className={`aspect-square overflow-hidden rounded-lg border-2 ${i === active ? "border-primary" : "border-transparent"}`}
+                >
+                  {x.type === "video" ? (
+                    <div className="grid h-full place-items-center bg-muted text-xs">▶ Video</div>
+                  ) : (
+                    <img
+                      src={mediaUrl(x.path)}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover"
+                    />
+                  )}
                 </button>
               ))}
             </div>
           )}
         </div>
         <div>
-          <Link to="/produse" className="text-sm text-muted-foreground hover:text-primary">← {categoryLabel(p.category)}</Link>
+          <Link to="/produse" className="text-sm text-muted-foreground hover:text-primary">
+            ← {categoryLabel(p.category)}
+          </Link>
           <h1 className="mt-2 text-3xl md:text-4xl">{p.name}</h1>
           <p className="mt-4 text-3xl font-bold text-primary">{formatPrice(p.price)}</p>
-          <p className={`mt-2 text-sm font-semibold ${p.in_stock ? "text-primary" : "text-destructive"}`}>{p.in_stock ? "✓ În stoc" : "Stoc epuizat"}</p>
-          <a href={whatsappLink(`produsul ${p.name}.`)} target="_blank" rel="noopener noreferrer" className="mt-6 inline-flex items-center gap-2 rounded-lg bg-whatsapp px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">
+          <p
+            className={`mt-2 text-sm font-semibold ${p.in_stock ? "text-primary" : "text-destructive"}`}
+          >
+            {p.in_stock ? "✓ În stoc" : "Stoc epuizat"}
+          </p>
+          <a
+            href={whatsappLink(`produsul ${p.name}.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-whatsapp px-6 py-3 font-semibold text-primary-foreground hover:opacity-90"
+          >
             Întreabă pe WhatsApp despre acest produs
           </a>
-          <p className="mt-3 text-sm text-muted-foreground">Vino în magazin la Str. Eroilor 1, Gilău, sau sună-ne pentru disponibilitate.</p>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Vino în magazin la Str. Eroilor 1, Gilău, sau sună-ne pentru disponibilitate.
+          </p>
           <AdsterraSlot kind="native" />
-          <div className="mt-8 whitespace-pre-line leading-relaxed text-muted-foreground">{p.description}</div>
+          <div className="mt-8 whitespace-pre-line leading-relaxed text-muted-foreground">
+            {p.description}
+          </div>
         </div>
       </section>
       <Footer />

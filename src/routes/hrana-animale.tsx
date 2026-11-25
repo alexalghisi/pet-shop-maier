@@ -4,11 +4,26 @@ import { KW, ANIMAL_FOOD_KEYWORDS } from "@/lib/keywords";
 import { byTag, photoSrc } from "@/lib/gallery";
 
 const faqs = [
-  { q: "Unde găsesc hrană pentru animale în Gilău și Cluj?", a: "La PET SHOP MAIER, Strada Eroilor 1, Gilău – la 15 minute de Cluj-Napoca și 10 minute de Florești. Avem mâncare pentru câini, pisici, păsări, iepuri, cai și animale de fermă." },
-  { q: "Ce mâncare pentru animale de companie aveți?", a: "Hrană uscată și umedă pentru câini și pisici (Kudo, Wildfull și alte branduri), nisip pentru pisici, semințe pentru păsări de colivie, fân și granule pentru iepuri și rozătoare." },
-  { q: "Aveți hrană pentru animale de fermă?", a: "Da: tărâțe (40 lei/20 kg), furaj combinat (60 lei/30 kg), porumb boabe, Furaje MAN pentru găini, pui, curcani, prepelițe și vaci de lapte, plus hrană pentru cai Deli Nature HippoX." },
-  { q: "Pot comanda mâncare pentru animale pe WhatsApp?", a: "Da. Scrie-ne la 0758 639 799 ce îți trebuie și îți pregătim comanda pentru ridicare din Gilău." },
-  { q: "Care e programul magazinului?", a: "Luni–Vineri 09:00–19:00, Sâmbătă–Duminică 09:00–17:00 – deschis 7 zile din 7." },
+  {
+    q: "Unde găsesc hrană pentru animale în Gilău și Cluj?",
+    a: "La PET SHOP MAIER, Strada Eroilor 1, Gilău – la 15 minute de Cluj-Napoca și 10 minute de Florești. Avem mâncare pentru câini, pisici, păsări, iepuri, cai și animale de fermă.",
+  },
+  {
+    q: "Ce mâncare pentru animale de companie aveți?",
+    a: "Hrană uscată și umedă pentru câini și pisici (Kudo, Wildfull și alte branduri), nisip pentru pisici, semințe pentru păsări de colivie, fân și granule pentru iepuri și rozătoare.",
+  },
+  {
+    q: "Aveți hrană pentru animale de fermă?",
+    a: "Da: tărâțe (40 lei/20 kg), furaj combinat (60 lei/30 kg), porumb boabe, Furaje MAN pentru găini, pui, curcani, prepelițe și vaci de lapte, plus hrană pentru cai Deli Nature HippoX.",
+  },
+  {
+    q: "Pot comanda mâncare pentru animale pe WhatsApp?",
+    a: "Da. Scrie-ne la 0758 639 799 ce îți trebuie și îți pregătim comanda pentru ridicare din Gilău.",
+  },
+  {
+    q: "Care e programul magazinului?",
+    a: "Luni–Vineri 09:00–19:00, Sâmbătă–Duminică 09:00–17:00 – deschis 7 zile din 7.",
+  },
 ];
 
 const TITLE = "Hrană pentru animale în Gilău, Cluj | PET SHOP MAIER";
@@ -16,7 +31,11 @@ const DESC =
   "Hrană pentru animale de companie și de fermă: mâncare câini și pisici, furaje găini, porci, iepuri, porumbei, cai, tărâțe și porumb. PET SHOP MAIER Gilău, lângă Cluj-Napoca și Florești.";
 
 export const Route = createFileRoute("/hrana-animale")({
-  head: () => guideHead(TITLE, DESC, "/hrana-animale", faqs, { crumb: "Hrană animale", keywords: KW["/hrana-animale"] }),
+  head: () =>
+    guideHead(TITLE, DESC, "/hrana-animale", faqs, {
+      crumb: "Hrană animale",
+      keywords: KW["/hrana-animale"],
+    }),
   component: () => (
     <GuidePage
       eyebrow="Hrană animale · Gilău, Cluj"

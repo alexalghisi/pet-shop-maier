@@ -88,6 +88,7 @@ export const Route = createFileRoute("/pui-brahma")({
       photos={byTag("brahma")}
       faqs={faqs}
       related={[
+        { to: "/gaini-brahma", label: "Găini Brahma – ghidul rasei" },
         { to: "/oua-brahma-incubat", label: "Ouă Brahma de incubat" },
         { to: "/furaje-pui", label: "Furaje pentru pui" },
         { to: "/furaje-gaini", label: "Furaje pentru găini" },
