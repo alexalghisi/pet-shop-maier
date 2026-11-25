@@ -14,7 +14,8 @@ export function afterLoadIdle(cb: () => void, timeout = 3000): () => void {
       requestIdleCallback?: (fn: () => void, opts?: { timeout: number }) => number;
       cancelIdleCallback?: (id: number) => void;
     };
-    if (w.requestIdleCallback) idleId = w.requestIdleCallback(() => !cancelled && cb(), { timeout });
+    if (w.requestIdleCallback)
+      idleId = w.requestIdleCallback(() => !cancelled && cb(), { timeout });
     else timerId = window.setTimeout(() => !cancelled && cb(), 1);
   };
   const onLoad = () => {
