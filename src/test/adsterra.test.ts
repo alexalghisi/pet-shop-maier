@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { bannerConfig, slotDocument, SOCIAL_BAR_URL } from "@/lib/adsterra";
+import { readFileSync } from "node:fs";
+import { bannerConfig, slotDocument } from "@/lib/adsterra";
 
 describe("Adsterra rules", () => {
   it("uses 320x50 only below 400px", () => {
@@ -24,7 +25,12 @@ describe("Adsterra rules", () => {
       'src="https://bauval.org/21/295af5bb4bb21bdbb9a3dd1905d16419"',
     );
   });
-  it("uses the supplied global social bar endpoint", () => {
-    expect(SOCIAL_BAR_URL).toBe("https://bauval.org/14/672fb36d446ac9312b9cab5919848f4d");
+  it("never loads the overlay Social Bar format (Google abusive-experience rules)", () => {
+    const sources = ["src/routes/__root.tsx", "src/components/ads.tsx", "src/lib/adsterra.ts"]
+      .map((f) => readFileSync(f, "utf8"))
+      .join("\n");
+
+    expect(sources).not.toContain("bauval.org/14/");
+    expect(sources).not.toContain("SocialBar");
   });
 });

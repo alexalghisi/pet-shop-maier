@@ -1,6 +1,5 @@
 export const ADSTERRA_SANDBOX =
   "allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin";
-export const SOCIAL_BAR_URL = "https://bauval.org/14/672fb36d446ac9312b9cab5919848f4d";
 
 export function bannerConfig(viewportWidth: number) {
   return viewportWidth < 400
