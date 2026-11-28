@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header, Footer, PHONE, PHONE_HREF, WhatsAppButton } from "@/components/site";
 import { ProductCard } from "@/components/ProductCard";
 import { Gallery } from "@/components/Gallery";
-import { AdsterraSlot } from "@/components/ads";
 import { PromoVideo, promoVideoLd } from "@/components/PromoVideo";
 import { productsQuery } from "@/lib/products.queries";
 import { GALLERY, photoSrc, photoThumb } from "@/lib/gallery";
@@ -12,7 +11,7 @@ import { KW } from "@/lib/keywords";
 
 const TITLE = "Pet shop Gilău, Cluj – hrană animale, furaje | PET SHOP MAIER";
 const DESC =
-  "PET SHOP MAIER Gilău – hrană și mâncare pentru animale: furaje (tărâțe 40 lei/20 kg, furaj combinat 60 lei/30 kg, Furaje MAN, porumb), pui și ouă Brahma vaccinați, hrană pentru cai, câini și pisici. Deschis 7 zile din 7, la 15 minute de Cluj-Napoca.";
+  "Pet shop în Gilău, la 15 minute de Cluj: furaje, tărâțe, porumb, hrană pentru câini, pisici și cai, pui și ouă Brahma. Deschis 7 zile din 7.";
 
 const faqs = [
   {
@@ -171,8 +170,6 @@ function Index() {
       </section>
 
       <PromoVideo />
-
-      <AdsterraSlot />
 
       {/* OFERTA */}
       <section className="mx-auto max-w-6xl px-6 pt-16">

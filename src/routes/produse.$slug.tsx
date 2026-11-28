@@ -1,7 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { queryOptions } from "@tanstack/react-query";
 import { useState } from "react";
-import { AdsterraSlot } from "@/components/ads";
 import { Header, Footer } from "@/components/site";
 import { getProduct } from "@/lib/products.functions";
 import { seoHead, breadcrumbLd } from "@/lib/seo";
@@ -159,7 +158,6 @@ function ProductPage() {
           <p className="mt-3 text-sm text-muted-foreground">
             Vino în magazin la Str. Eroilor 1, Gilău, sau sună-ne pentru disponibilitate.
           </p>
-          <AdsterraSlot kind="native" />
           <div className="mt-8 whitespace-pre-line leading-relaxed text-muted-foreground">
             {p.description}
           </div>

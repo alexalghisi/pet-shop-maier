@@ -131,10 +131,10 @@ function TermsPage() {
 
       <Section h="7. Publicitate și linkuri externe">
         <p>
-          Site-ul afișează reclame furnizate de terți (Google AdSense, Adsterra), marcate
-          „Publicitate”. Nu alegem noi fiecare reclamă și nu răspundem de conținutul site-urilor
-          către care trimit reclamele sau alte linkuri externe (Facebook, WhatsApp, Google Maps).
-          Modul în care partenerii de publicitate folosesc cookie-uri este descris în{" "}
+          Site-ul afișează reclame furnizate de terți (Google AdSense), marcate „Publicitate”. Nu
+          alegem noi fiecare reclamă și nu răspundem de conținutul site-urilor către care trimit
+          reclamele sau alte linkuri externe (Facebook, WhatsApp, Google Maps). Modul în care
+          partenerii de publicitate folosesc cookie-uri este descris în{" "}
           <Link to="/politica-cookies" className={L}>
             Politica de cookie-uri
           </Link>{" "}

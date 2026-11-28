@@ -6,7 +6,7 @@ import { SITE_URL } from "@/lib/products";
 
 const TITLE = "Politica de confidențialitate | PET SHOP MAIER Gilău";
 const DESC =
-  "Politica de confidențialitate și cookie-uri PET SHOP MAIER (pethopmaier.shop): ce date prelucrăm, Google AdSense, Adsterra, drepturile tale conform GDPR.";
+  "Politica de confidențialitate și cookie-uri PET SHOP MAIER (pethopmaier.shop): ce date prelucrăm, Google AdSense, drepturile tale conform GDPR.";
 const UPDATED = "26 noiembrie 2026";
 const HOST = SITE_URL.replace("https://", "");
 
@@ -133,12 +133,6 @@ function PrivacyPage() {
           .
         </p>
         <p>
-          <strong>Adsterra.</strong> Unele spații publicitare sunt furnizate de rețeaua Adsterra,
-          care încarcă reclame în cadre izolate (iframe) și poate folosi cookie-uri și date tehnice
-          (IP, browser, dispozitiv) pentru afișarea și măsurarea reclamelor și prevenirea fraudei.
-          Detalii: <A href="https://adsterra.com/privacy-policy/">adsterra.com/privacy-policy</A>.
-        </p>
-        <p>
           <strong>Google Maps.</strong> Pe pagina principală este inclusă o hartă Google Maps cu
           locația magazinului; la încărcarea ei Google poate primi adresa IP și poate seta
           cookie-uri, conform{" "}
@@ -156,9 +150,9 @@ function PrivacyPage() {
 
       <Section h="5. Transferuri în afara UE">
         <p>
-          Unii parteneri (de exemplu Google sau Adsterra) pot prelucra date și în afara Spațiului
-          Economic European. Aceste transferuri se fac pe baza garanțiilor prevăzute de GDPR, cum ar
-          fi Cadrul UE-SUA privind confidențialitatea datelor sau clauzele contractuale standard ale
+          Unii parteneri (de exemplu Google) pot prelucra date și în afara Spațiului Economic
+          European. Aceste transferuri se fac pe baza garanțiilor prevăzute de GDPR, cum ar fi
+          Cadrul UE-SUA privind confidențialitatea datelor sau clauzele contractuale standard ale
           Comisiei Europene.
         </p>
       </Section>

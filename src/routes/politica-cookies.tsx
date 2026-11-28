@@ -5,7 +5,7 @@ import { SITE_URL } from "@/lib/products";
 
 const TITLE = "Politica de cookie-uri | PET SHOP MAIER Gilău";
 const DESC =
-  "Ce cookie-uri folosește pethopmaier.shop: cookie-uri necesare, cookie-uri de publicitate Google AdSense și DoubleClick, Adsterra, Google Maps. Cum îți dai sau retragi acordul.";
+  "Ce cookie-uri folosește pethopmaier.shop: cookie-uri necesare, cookie-uri de publicitate Google AdSense și DoubleClick, Google Maps. Cum îți dai sau retragi acordul.";
 const UPDATED = "26 noiembrie 2026";
 const HOST = SITE_URL.replace("https://", "");
 const L = "font-semibold text-primary underline";
@@ -34,12 +34,6 @@ const COOKIES = [
     names: "IDE, DSID, test_cookie",
     why: "Reclame personalizate pe baza vizitelor pe acest site și pe alte site-uri; măsurarea conversiilor.",
     life: "de la 15 minute la 13 luni",
-  },
-  {
-    who: "Adsterra",
-    names: "identificatori ai rețelei de publicitate",
-    why: "Afișarea reclamelor în cadre izolate, măsurare și prevenirea fraudei.",
-    life: "stabilită de Adsterra",
   },
   {
     who: "Google Maps",
