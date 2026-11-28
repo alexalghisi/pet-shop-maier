@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle, PackageOpen } from "lucide-react";
 import { seoHead, breadcrumbLd } from "@/lib/seo";
 import { KW } from "@/lib/keywords";
-import { AdsterraSlot } from "@/components/ads";
 import hero from "@/assets/hero.webp";
 import fbShop from "@/assets/fb-shop.jpg.asset.json";
 import { SORTIMENT } from "@/lib/sortiment";
@@ -64,7 +63,6 @@ function ProductsPage() {
             {data.length > 0 ? `${list.length} produse` : "Magazinul din Str. Eroilor 1"}
           </span>
         </div>
-        <AdsterraSlot kind="native" />
         {list.length === 0 ? (
           <div className="mt-10 grid items-center gap-8 border-t border-border pt-10 md:grid-cols-2 md:gap-12">
             <img

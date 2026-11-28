@@ -3,7 +3,6 @@ import { useState, type ReactNode } from "react";
 import { whatsappLink } from "@/lib/products";
 import { BUSINESS, MAPS_URL, seoHead, breadcrumbLd, faqLd, localBusinessLd } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
-import { AdsterraSlot } from "@/components/ads";
 import { Gallery } from "@/components/Gallery";
 import type { GalleryPhoto } from "@/lib/gallery";
 
@@ -257,7 +256,6 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
 export function Footer() {
   return (
     <>
-      <AdsterraSlot />
       <footer className="bg-foreground pt-14 pb-24 text-sm text-white/75">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-3">
           <div>
@@ -454,9 +452,6 @@ export function GuidePage(props: {
                 </ul>
               )}
             </section>
-            {index === Math.max(0, Math.floor(props.sections.length / 2) - 1) && (
-              <AdsterraSlot kind="native" />
-            )}
           </div>
         ))}
 
